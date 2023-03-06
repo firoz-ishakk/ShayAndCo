@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from cartzilla.createx.studio/food-delivery-cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Dec 2022 04:02:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <title>Cartzilla | Food Delivery - Cart</title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Cartzilla - Bootstrap E-commerce Template">
+    <meta name="keywords" content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap, html5, css3, js, gallery, slider, touch, creative, clean">
+    <meta name="author" content="Createx Studio">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" media="screen" href="vendor/simplebar/dist/simplebar.min.css"/>
+    <link rel="stylesheet" media="screen" href="vendor/tiny-slider/dist/tiny-slider.css"/>
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="css/theme.min.css">
+    <!-- Google Tag Manager-->
+    <script>
+      
+    </script>
+  </head>
+  <!-- Body-->
+  <body class="handheld-toolbar-enabled">
+    <!-- Google Tag Manager (noscript)-->
+    <noscript>
+      <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+    </noscript>
+    <!-- Sign in / sign up modal-->
+    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-secondary">
+            <ul class="nav nav-tabs card-header-tabs" role="tablist">
+              <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>Sign in</a></li>
+              <li class="nav-item"><a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab" role="tab" aria-selected="false"><i class="ci-user me-2 mt-n1"></i>Sign up</a></li>
+            </ul>
+            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body tab-content py-4">
+            <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">
+            
+                <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center">
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool navbar-stuck-toggler" href="#"><span class="navbar-tool-tooltip">Toggle menu</span>
+                    <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-menu"></i></div></a><a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="#signin-modal" data-bs-toggle="modal">
+                    <div class="navbar-tool-text ms-n3" >sign in </div></a>
+                   
+                        <form action="/signout" method="get">
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown " type="button" id="dropdownMenuButton"  aria-haspopup="true" aria-expanded="false" >
+                       
+                        </button>
+                       
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <button class="dropdown-item" href="#">Sign Out</button>
+  
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                    
+                
+              <div class="mb-3 d-flex flex-wrap justify-content-between">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="si-remember">
+                  <label class="form-check-label" for="si-remember">Remember me</label>
+                </div><a class="fs-sm" href="#">Forgot password?</a>
+              </div>
+              <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign in</button>
+            </form>
+            <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
+              <div class="mb-3">
+                <label class="form-label" for="su-name">Full name</label>
+                <input class="form-control" type="text" id="su-name" placeholder="John Doe" required>
+                <div class="invalid-feedback">Please fill in your name.</div>
+              </div>
+              <div class="mb-3">
+                <label for="su-email">Email address</label>
+                <input class="form-control" type="email" id="su-email" placeholder="johndoe@example.com" required>
+                <div class="invalid-feedback">Please provide a valid email address.</div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="su-password">Password</label>
+                <div class="password-toggle">
+                  <input class="form-control" type="password" id="su-password" required>
+                  <label class="password-toggle-btn" aria-label="Show/hide password">
+                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="su-password-confirm">Confirm password</label>
+                <div class="password-toggle">
+                  <input class="form-control" type="password" id="su-password-confirm" required>
+                  <label class="password-toggle-btn" aria-label="Show/hide password">
+                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                  </label>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign up</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <main class="page-wrapper">
+      <!-- Navbar for Food Delivery Service demo-->
+      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+      <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header bg-secondary">
+              <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>Sign in</a></li>
+                <li class="nav-item"><a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab" role="tab" aria-selected="false"><i class="ci-user me-2 mt-n1"></i>Sign up</a></li>
+              </ul>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body tab-content py-4">
+              <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">
+              
+                  <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool navbar-stuck-toggler" href="#"><span class="navbar-tool-tooltip">Toggle menu</span>
+                      <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-menu"></i></div></a><a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="#signin-modal" data-bs-toggle="modal">
+                      <div class="navbar-tool-text ms-n3" >sign in </div></a>
+                     
+                       
+                          <form action="/signout" method="get">
+                        <div class="dropdown">
+                          <button class="btn btn-secondary dropdown " type="button" id="dropdownMenuButton"  aria-haspopup="true" aria-expanded="false" >
+                         
+                          </button>
+                         
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <button class="dropdown-item" href="#">Sign Out</button>
+    
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                      
+                  
+                <div class="mb-3 d-flex flex-wrap justify-content-between">
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="si-remember">
+                    <label class="form-check-label" for="si-remember">Remember me</label>
+                  </div><a class="fs-sm" href="#">Forgot password?</a>
+                </div>
+                <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign in</button>
+              </form>
+              <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
+                <div class="mb-3">
+                  <label class="form-label" for="su-name">Full name</label>
+                  <input class="form-control" type="text" id="su-name" placeholder="John Doe" required>
+                  <div class="invalid-feedback">Please fill in your name.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="su-email">Email address</label>
+                  <input class="form-control" type="email" id="su-email" placeholder="johndoe@example.com" required>
+                  <div class="invalid-feedback">Please provide a valid email address.</div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="su-password">Password</label>
+                  <div class="password-toggle">
+                    <input class="form-control" type="password" id="su-password" required>
+                    <label class="password-toggle-btn" aria-label="Show/hide password">
+                      <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="su-password-confirm">Confirm password</label>
+                  <div class="password-toggle">
+                    <input class="form-control" type="password" id="su-password-confirm" required>
+                    <label class="password-toggle-btn" aria-label="Show/hide password">
+                      <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                    </label>
+                  </div>
+                </div>
+                <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign up</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <main class="page-wrapper">
+      <div class="container pt-4 pb-3 py-sm-4">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb flex-lg-nowrap justify-content-center justify-content-lg-start">
+            <li class="breadcrumb-item"><a class="text-nowrap" href="/home"><i class="ci-home"></i>Home</a></li>
+            <li class="breadcrumb-item text-nowrap active" aria-current="page">Cart</li>
+          </ol>
+        </nav>
+        <div class="rounded-3 shadow-lg mt-4 mb-5">
+          <ul class="nav nav-tabs nav-justified mb-4">
+            <li class="nav-item"><a class="nav-link fs-lg fw-medium py-4 active" href="food-delivery-cart.html">1. Your order</a></li>
+            <li class="nav-item"><a class="nav-link fs-lg fw-medium py-4" href="food-delivery-checkout.html">2. Checkout</a></li>
+          </ul>
+          <div class="px-3 px-sm-4 px-xl-5 pt-1 pb-4 pb-sm-5">
+            <div class="row">
+              <!-- Items in cart-->
+              <div class="col-lg-8 col-md-7 pt-sm-2">
+                <!-- Item-->
+
+                <% if(cartItems.length == 0) {%>
+                <div class="d-sm-flex justify-content-between align-items-center mt-3 mb-4 pb-3 border-bottom align-items-center">
+                  
+                  <h2><i>cart is empty</i></h2>
+                </div>
+                <% }else{ %>
+           
+               <% cartItems.forEach((el,index) => { %>
+                <div id="cartItem<%= el._id %>" class="d-sm-flex justify-content-between align-items-center mt-3 mb-4 pb-3 border-bottom">
+                  <div class="d-block d-sm-flex align-items-center text-center text-sm-start"><a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="#"><img src="<%= el.productId.images %>" width="120" alt="Pizza"></a>
+                    <div class="pt-2">
+                      <h3 class="product-title fs-base mb-2"><a href="#"><%= el.productId.title %></a></h3>
+                      <div class="fs-sm"><span class="text-muted me-2">Size:</span>Medium</div>
+                      <div class="fs-sm"><span class="text-muted me-2">Base:</span>Standard</div>
+                      <div class="fs-lg text-accent pt-2">$<%= el.productId.price %>.<small>00</small></div>
+                    </div>
+                  </div>
+                  <div class="pt-2 pt-sm-0 ps-sm-3 mx-auto mx-sm-0 text-center text-sm-start" style="max-width: 9rem;">
+                    <label class="form-label" for="quantity1">Quantity</label>
+                    
+                    <button onclick="changequantity('<%=el._id %>','<%= el.productId._id %>',1)">+</button>
+                    <input id="qty<%= el._id %>" class="form-control" type="number" id="quantity1" value="<%= el.qty %>" min="1" >
+                    <button onclick="changequantity('<%=el._id %>','<%= el.productId._id %>',-1)">-</button>
+                    
+                    <button onclick="changequantity('<%=el._id %>','<%= el.productId._id %>',-2)" class="btn btn-link px-0 text-danger" id="removeitem" type="button"><i class="ci-close-circle me-2"></i><span class="fs-sm">Remove</span></button>
+
+                  </div>
+                </div>
+                <% }) %>
+                <% } %>
+              
+              </div>
+              <!-- Sidebar-->
+              
+              <div class="col-lg-4 col-md-5 pt-3 pt-sm-4">
+                <div class="rounded-3 bg-secondary px-3 px-sm-4 py-4">
+                  <div class="text-center mb-4 pb-3 border-bottom">
+                    <h3 class="h5 mb-3 pb-1">Total</h3>
+                    <h4 class="fw-normal" >$<span id="cartTotal"><%= cartTotal %></span>.<small>00</small></h4>
+                  </div>  
+                  <a class="btn btn-primary btn-shadow d-block w-100 mt-4 mb-3" href="/checkoutpage?id=<%=loginaccess %>"><i class="ci-card fs-lg me-2"></i>Proceed to Checkout</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="jquery-3.6.3.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+      <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    
+    <script>
+
+
+
+      const changequantity = function(cart_id,id,count){
+        console.log(id,"id in cart ajax");
+        console.log(count, " count in cart ajax");
+        let qtyVal = $('#qty'+cart_id).val()
+        console.log('qty val: ',qtyVal)
+        if(count == -1 && qtyVal == 1|| count == -2){
+            Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                
+                $.ajax({
+                url:"/changequantity",
+                method:"post",
+                dataType:"json",
+                encoded:"true",
+                data:{id:id,count:count}
+                }).done((data)=>{
+                console.log(data)   //|| data.qty == 1 && count == -1
+                console.log('total: ',data.totalPrice)
+                if(data.remove){
+                  
+                  $('#cartItem'+cart_id).remove()
+                $('#cartTotal').text(data.totalPrice) //html tag is regarded as text. so as to get updated version of the text. //part of jquer
+                Swal.fire(
+                  'Deleted!',
+                  'Your file has been deleted.',
+                  'success'
+
+                )
+              }
+            })
+          }
+        
+        })
+      }else{
+        $.ajax({
+            url:"/changequantity",
+            method:"post",
+            dataType:"json",
+            encoded:"true",
+            data:{id:id,count:count}
+          }).done((data)=>{
+            console.log(data,"dataaaaaaaaaaaaaaaaaaaaaaaaa")
+            console.log('total: ',data.totalPrice)
+              $('#qty'+cart_id).val(data.qty)
+              $('#cartTotal').text(data.totalPrice)
+          })
+      }
+      }
+    </script>
+    <!-- Footer-->
+    <footer class="footer bg-darker pt-5">
+      <div class="container pt-2">
+        <div class="row pb-2">
+          <div class="col-lg-2 col-sm-4 pb-2 mb-4">
+            <div class="mt-n1"><a class="d-inline-block align-middle" href="#"><img class="d-block mb-4" src="img/footer-logo-light.png" width="117" alt="Cartzilla"></a></div>
+            <div class="btn-group dropdown disable-autohide">
+              <button class="btn btn-outline-light border-light btn-sm dropdown-toggle px-2" type="button" data-bs-toggle="dropdown"><img class="me-2" src="img/flags/en.png" width="20" alt="English">Eng / $</button>
+              <ul class="dropdown-menu my-1">
+                <li class="dropdown-item">
+                  <select class="form-select form-select-sm">
+                    <option value="usd">$ USD</option>
+                    <option value="eur">€ EUR</option>
+                    <option value="ukp">£ UKP</option>
+                    <option value="jpy">¥ JPY</option>
+                  </select>
+                </li>
+                <li><a class="dropdown-item pb-1" href="#"><img class="me-2" src="img/flags/fr.png" width="20" alt="Français">Français</a></li>
+                <li><a class="dropdown-item pb-1" href="#"><img class="me-2" src="img/flags/de.png" width="20" alt="Deutsch">Deutsch</a></li>
+                <li><a class="dropdown-item" href="#"><img class="me-2" src="img/flags/it.png" width="20" alt="Italiano">Italiano</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-4">
+            <div class="widget widget-links widget-light pb-2 mb-4">
+              <h3 class="widget-title text-light">Join us</h3>
+              <ul class="widget-list">
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Careers</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Restaurants</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Become a Courier</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">About</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-4">
+            <div class="widget widget-links widget-light pb-2 mb-4">
+              <h3 class="widget-title text-light">Let us help you</h3>
+              <ul class="widget-list">
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Help Center</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Support</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Contacts</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-4">
+            <div class="widget widget-links widget-light pb-2 mb-4">
+              <h3 class="widget-title text-light">Follow us</h3>
+              <ul class="widget-list">
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Facebook</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Twitter</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Instagram</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-8">
+            <div class="widget pb-2 mb-4">
+              <h3 class="widget-title text-light pb-1">Download our app</h3>
+              <div class="d-flex flex-wrap"><a class="btn-market btn-apple border border-light me-3 mb-2" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">App Store</span></a><a class="btn-market btn-google border border-light mb-2" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">Google Play</span></a></div>
+            </div>
+          </div>
+        </div>
+        <hr class="hr-light mt-md-2 mb-3">
+        <div class="d-md-flex justify-content-between pt-4 pb-1">
+          <!-- <div class="pb-4 fs-xs text-light opacity-50 text-center text-md-start">© All rights reserved. Made by <a class="text-light" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></div> -->
+          <div class="widget widget-links widget-light pb-4">
+            <ul class="widget-list d-flex flex-wrap justify-content-center justify-content-md-start">
+              <li class="widget-list-item ms-4"><a class="widget-list-link fs-ms" href="#">Privacy Policy</a></li>
+              <li class="widget-list-item ms-4"><a class="widget-list-link fs-ms" href="#">Terms &amp; Conditions</a></li>
+              <li class="widget-list-item ms-4"><a class="widget-list-link fs-ms" href="#">Cookies Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Toolbar for handheld devices (Food delivery)-->
+    <div class="handheld-toolbar">
+      <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="#signin-modal" data-bs-toggle="modal"><span class="handheld-toolbar-icon"><i class="ci-user"></i></span><span class="handheld-toolbar-label">Account</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" href="food-delivery-cart.html"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">3</span></span><span class="handheld-toolbar-label">$24.00</span></a></div>
+    </div>
+    <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+    <script src="vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="vendor/tiny-slider/dist/min/tiny-slider.js"></script>
+    <script src="vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <!-- Main theme script-->
+    <script src="js/theme.min.js"></script>
+  </body>
+
+<!-- Mirrored from cartzilla.createx.studio/food-delivery-cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Dec 2022 04:02:08 GMT -->
+</html>

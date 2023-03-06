@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from cartzilla.createx.studio/shop-grid-ft.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Dec 2022 04:01:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <title>Cartzilla | Shop grid filters on top</title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Cartzilla - Bootstrap E-commerce Template">
+    <meta name="keywords" content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap, html5, css3, js, gallery, slider, touch, creative, clean">
+    <meta name="author" content="Createx Studio">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" media="screen" href="vendor/simplebar/dist/simplebar.min.css"/>
+    <link rel="stylesheet" media="screen" href="vendor/tiny-slider/dist/tiny-slider.css"/>
+    <link rel="stylesheet" media="screen" href="vendor/nouislider/dist/nouislider.min.css"/>
+    <link rel="stylesheet" media="screen" href="vendor/drift-zoom/dist/drift-basic.min.css"/>
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="css/theme.min.css">
+    <!-- Google Tag Manager-->
+  </head>
+  <!-- Body-->
+  <body class="handheld-toolbar-enabled">
+    <!-- Google Tag Manager (noscript)-->
+    <noscript>
+      <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+    </noscript>
+    <!-- Sign in / sign up modal-->
+    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-secondary">
+            <ul class="nav nav-tabs card-header-tabs" role="tablist">
+              <li class="nav-item"><a class="nav-link fw-medium active" href="#login" data-bs-toggle="tab" role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i></a></li>
+            </ul>
+          </div>
+          <div class="modal-body tab-content py-4">
+            <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">
+             
+              <a class="btn btn-primary btn-shadow d-block w-100" type="submit" href="/login">login</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <main class="page-wrapper">
+      <!-- Quick View Modal-->
+      <% products.forEach((el)=>{ %> 
+        <div class="modal-quick-view modal fade" id="quick-view-electro<%= el._id %>" tabindex="-1">
+          <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title product-title"><a href="shop-single-v2.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Go to product page"><%=el.title %> <i class="ci-arrow-right fs-lg ms-2"></i></a></h4>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+           
+              <div class="modal-body">
+                <div class="row">
+                  <!-- Product gallery-->
+                  <div class="col-lg-7 pe-lg-0">
+                    <div class="product-gallery">
+                      <div class="product-gallery-preview order-sm-2">
+                       <% let arr=["first","second","third"] %>
+                       <% for(let i=0;i< el.images.length;i++) { %>
+                        <div class="product-gallery-preview-item active"  id="<%=arr[i] %>"><img class="image-zoom" src="<%= el.images[i] %> " data-zoom="<%= el.images[i] %> " alt="">
+                          <div class="image-zoom-pane" ></div>
+                        </div>
+                        <% } %>
+                      
+                      </div>
+                      <div class="product-gallery-thumblist order-sm-1">
+                      <% for(let i=0;i< el.images.length;i++) { %>
+                     <a class="product-gallery-thumblist-item active" href="#<%= arr[i] %>"><img src="<%= el.images[i] %>"></a>
+                      <% } %>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Product details-->
+                  <div class="col-lg-5 pt-4 pt-lg-0 image-zoom-pane">
+                    <div class="product-details ms-auto pb-3">
+                      <div class="mb-2">
+                        <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
+                        </div><span class="d-inline-block fs-sm text-body align-middle mt-1 ms-1"></span>
+                      </div>
+                      <div class="h3 fw-normal text-accent mb-3 me-1">$<%=el.price %> .<small>99</small></div>
+                      
+                      <div class="position-relative me-n4 mb-3">
+                        <div class="form-check form-option form-check-inline mb-2">
+                          <input class="form-check-input" type="radio" name="color" id="color1" data-bs-label="colorOptionText" value="Dark blue/Orange" checked>
+                          <label class="form-option-label rounded-circle" for="color1"><span class="form-option-color rounded-circle" style="background-color: #f25540;"></span></label>
+                        </div>
+                        <div class="form-check form-option form-check-inline mb-2">
+                          <input class="form-check-input" type="radio" name="color" id="color2" data-bs-label="colorOptionText" value="Dark gray/Green">
+                          <label class="form-option-label rounded-circle" for="color2"><span class="form-option-color rounded-circle" style="background-color: #65805b;"></span></label>
+                        </div>
+                        <div class="form-check form-option form-check-inline mb-2">
+                          <input class="form-check-input" type="radio" name="color" id="color3" data-bs-label="colorOptionText" value="White">
+                          <label class="form-option-label rounded-circle" for="color3"><span class="form-option-color rounded-circle" style="background-color: #f5f5f5;"></span></label>
+                        </div>
+                        <div class="form-check form-option form-check-inline mb-2">
+                          <input class="form-check-input" type="radio" name="color" id="color4" data-bs-label="colorOptionText" value="Black">
+                          <label class="form-option-label rounded-circle" for="color4"><span class="form-option-color rounded-circle" style="background-color: #333;"></span></label>
+                        </div>
+                        <div class="product-badge product-available mt-n1"><i class="ci-security-check"></i>Product available</div>
+                      </div>
+                      <div class="d-flex align-items-center pt-2 pb-4">
+                        <select class="form-select me-3" style="width: 5rem;">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                        <button class="btn btn-primary btn-shadow d-block w-100" type="button"><i class="ci-cart fs-lg me-2"></i>Add to Cart</button>
+                      </div>
+                      <div class="d-flex mb-4">
+                        <div class="w-100 me-3">
+                          <button class="btn btn-secondary d-block w-100" type="button"><i class="ci-heart fs-lg me-2"></i><span cFlass='d-none d-sm-inline'>Add to </span>Wishlist</button>
+                        </div>
+                        <div class="w-100">
+                          <button class="btn btn-secondary d-block w-100" type="button"><i class="ci-compare fs-lg me-2"></i>Compare</button>
+                        </div>
+                      </div>
+                      <h5 class="h6 mb-3 py-2 border-bottom"><i class="ci-announcement text-muted fs-lg align-middle mt-n1 me-2"></i>Product info</h5>
+              
+                      <ul class="fs-sm pb-2">
+                        <li><span class="text-muted">Model: </span><%= el.title %> </li>
+                        <li><span class="text-muted">brand: </span><%=el.brand  %> </li>
+                        <li><span class="text-muted">category: </span><%=el.category.title  %></li>
+                      </ul>
+                      <h6 class="fs-sm mb-2"></h6>
+                      <ul class="fs-sm pb-2">
+                        
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <% }) %> 
+          
+      <!-- Navbar 3 Level (Light)-->
+      <header class="shadow-sm">
+   
+        <div class="navbar-sticky bg-light">
+          <div class="navbar navbar-expand-lg navbar-light">
+            <div class="container"><a class="navbar-brand d-none d-sm-block flex-shrink-0" href="index.html"><img src="img/logo-dark.png" width="142" alt="Cartzilla"></a><a class="navbar-brand d-sm-none flex-shrink-0 me-2" href="index.html"><img src="img/logo-icon.png" width="74" alt="Cartzilla"></a>
+              <div class="input-group d-none d-lg-flex mx-4">
+                <form action="/shop" method="get" class="d-block w-100">
+                  <input class="form-control rounded-end pe-5" type="text" name="q" placeholder="Search for products"><i class="ci-search position-absolute top-50 end-0 translate-middle-y text-muted fs-base me-3"></i>
+                  <button type="submit" class="d-none"></button>
+                </form>
+              </div>
+              <% if(!loginaccess){ %> 
+                <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center">
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool navbar-stuck-toggler" href="#"><span class="navbar-tool-tooltip">Toggle menu</span>
+                    <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-menu"></i></div></a><a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="#signin-modal" data-bs-toggle="modal">
+                    <div class="navbar-tool-text ms-n3" >sign in </div></a>
+                   
+                      <% }else{ %> 
+                        <form action="/signout" method="get">
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown " type="button" id="dropdownMenuButton"  aria-haspopup="true" aria-expanded="false" >
+                       <p><%=loginaccess.name %></p>
+                        </button>
+                       
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <button class="dropdown-item" href="#">Sign Out</button>
+  
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <% } %>
+                  
+                  <div class="navbar-tool dropdown ms-3"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="shop-cart.html"><span id="cartlength" class="navbar-tool-label"><%= cartlength %></span><i class="navbar-tool-icon ci-cart"></i></a><a  id="cartprice" class="navbar-tool-text" href="shop-cart.html"><small>My Cart</small><%=cartprice%></a>                  <!-- Cart dropdown-->
+                    
+                  <div class="dropdown-menu dropdown-menu-end">
+                    <div class="widget widget-cart px-3 pt-2 pb-3" style="width: 20rem;">
+                      <div style="height: 15rem;" data-simplebar data-simplebar-auto-hide="false">
+                       
+                      </div>
+                      <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
+                        <div class="fs-sm me-2 py-2"><span class="text-muted">Subtotal:</span><span class="text-accent fs-base ms-1">$<%=cartprice %>.<small>00</small></span></div><a class="btn btn-outline-secondary btn-sm" href="shop-cart.html">Expand cart<i class="ci-arrow-right ms-1 me-n1"></i></a>
+                      </div><a class="btn btn-primary btn-sm d-block w-100" href="/cart"><i class="ci-card me-2 fs-base align-middle"></i>Checkout</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="navbar navbar-expand-lg navbar-light navbar-stuck-menu mt-n2 pt-0 pb-2">
+            <div class="container">
+              <div class="collapse navbar-collapse" id="navbarCollapse">
+                <!-- Search-->
+                <div class="input-group d-lg-none my-3"><i class="ci-search position-absolute top-50 start-0 translate-middle-y text-muted fs-base ms-3"></i>
+                  <input class="form-control rounded-start" type="text" placeholder="Search for products">
+                </div>
+                <!--tootlbar for login-->
+                
+                
+                <!-- Primary menu-->
+                <ul class="navbar-nav">
+                  <li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" href="/home" >Home</a>
+                   
+                  </li>
+                  <!-- <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Shop</a> -->
+                    <div class="dropdown-menu p-0">
+                      <div class="d-flex flex-wrap flex-sm-nowrap px-2">
+                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
+                          <div class="widget widget-links mb-4">
+
+                          </div>
+                        </div>
+                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
+                        
+                        </div>
+                        <div class="mega-dropdown-column pt-1 pt-lg-4 px-2 px-lg-3">
+                         
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Account</a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Shop User Account</a>
+                        <ul class="dropdown-menu">
+                 
+                          <li><a class="dropdown-item" href="/profilepage">Profile Settings</a></li>
+                          <li><a class="dropdown-item" href="account-address.html">Account Addresses</a></li>
+                          <li><a class="dropdown-item" href="account-payment.html">Payment Methods</a></li>
+                       
+                         
+                     
+                        </ul>
+                      </li>
+
+                        
+                      </li>
+                     
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Pages</a>
+                    <ul class="dropdown-menu">
+                     
+                      <li class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="about.html">About Us</a></li>
+                      <li><a class="dropdown-item" href="contacts.html">Contacts</a></li>
+                      <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Help Center</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="help-topics.html">Help Topics</a></li>
+                          <li><a class="dropdown-item" href="help-single-topic.html">Single Topic</a></li>
+                          <li><a class="dropdown-item" href="help-submit-request.html">Submit a Request</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <class="nav-item dropdown><a class="nav-link dropdown-toggle" href="/shop">Products</a>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Page Title (Shop Alt)-->
+      <!-- used for shop templates with filters on top-->
+      <div class="bg-dark pt-4 pb-5">
+        <div class="container pt-2 pb-3 pt-lg-3 pb-lg-4">
+          <div class="d-lg-flex justify-content-between pb-3">
+            <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
+                  <li class="breadcrumb-item"><a class="text-nowrap" href="/home"><i class="ci-home"></i>Home</a></li>
+                  </li>
+                  <li class="breadcrumb-item text-nowrap active" aria-current="page">Products</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+              <h1 class="h3 text-light mb-0">PRODUCTS</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container pb-5 mb-2 mb-md-4">
+        <!-- Toolbar-->
+       
+        <div class="bg-light shadow-lg rounded-3 p-4 mt-n5 mb-4">
+         
+
+          <div class="d-flex justify-content-between align-items-center">
+            <a class="dropdown-item" href="/wishlistpage"><i class="ci-heart text-muted me-2"></i>Wishlist</a>
+            <div class="dropdown me-2"><a class="btn btn-secondary dropdown-toggle"  href="#shop-filters" data-bs-toggle="collapse"><i class="ci-filter me-2"></i>Filters</a></div>
+            <div class="d-flex"><a class="nav-link-style me-3" href="#"></div>
+            <div class="--"><a class="--" href="#"><i class="--"></i></a><a class="--" href=""><i class="--"></i></a></div>
+           
+          </div>
+        
+          <!-- Toolbar with expandable filters-->
+          
+          <div class="collapse" id="shop-filters">
+            <div class="row pt-4">
+              <div class="col-lg-4 col-sm-6">
+                <!-- Categories-->
+                
+                <div class="card mb-grid-gutter">
+                  <div class="card-body px-4">
+                    <div class="widget widget-categories">
+                      <h3 class="widget-title">Categories</h3>
+                      <div class="accordion mt-n1" id="shop-categories">
+                        <% categories.forEach((el)=>{ %> 
+                        <div class="accordion-item">
+                          <h3 class="accordion-header"><a class="accordion-button " href="/shop?cat=<%=el._id%>" ><%= el.title %></a></h3>
+                        </div>
+                        <% }) %> 
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-sm-6">
+                <!-- Price range-->
+                
+              </div>
+              <div class="col-lg-4 col-sm-6">
+         
+               
+              </div>
+            </div>
+          </div>
+        
+        </div>
+       
+        <!-- Products grid-->
+        <div class="row pt-3 mx-n2">
+          <!-- Product --> <!-- FOREACH -->
+          <% products.forEach((el)=>{ %> 
+          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
+            <div class="card product-card">
+              <button onclick="addWishList('<%=el._id%>')" class="btn-wishlist btn-sm" type='submit' data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="/singleproduct?id=<%=el.id %>"><img width="300" height="300" src="<%= el.images[0] %>" data-zoom="<%= el.images %>"  alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#"><%= el.category.title %> </a>
+                <h3 class="product-title fs-sm"><a href=""><%= el.title %> </a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price"><span class="text-accent">Rs<%=el.price %><small>.00</small></span></div>
+                  <div class="star-rating">
+                  </div>
+                </div>
+              </div>
+              
+              <div class="card-body card-body-hidden">
+                <div class="text-center pb-2">
+                </div>
+                <button onclick="addToCart('<%= el._id%>')" class="btn btn-primary btn-sm d-block w-100 mb-2 text-white"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
+                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view-electro<%= el._id %>" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
+              </div>
+        
+            </div>
+            <hr class="d-sm-none">
+          </div>
+          <% }) %>
+        <!-- Banners-->
+        <div class="row py-sm-2">
+          <div class="col-md-8 mb-1">
+            <div class="d-sm-flex justify-content-between align-items-center bg-secondary overflow-hidden rounded-3">
+              <div class="py-4 my-2 my-md-0 py-md-5 px-4 ms-md-3 text-center text-sm-start">
+                <h4 class="fs-lg fw-light mb-2"></h4>
+                <h3 class="mb-4">Make Your life easy. Shop at our online store</h3><a class="btn btn-primary btn-shadow btn-sm" href="#shop.ejs">Shop Now</a>
+              </div><img class="d-block ms-auto" height="50px" src="/img/2023-01-21T12-14-24.025Ziphone-13-pink-select-2021.png" alt="">
+            </div>
+          </div>
+          <div class="col-md-4 mt-5">
+            <div class="d-flex flex-column h-100 bg-size-cover bg-position-center rounded-5 py-5" style="background-image: url(/img/2023-02-06T06-31-06.595Zxbox.jpg );">
+              <div class="py-4 my-2 px-4 text-center">
+                <h3 class="mb-5" src=""></h3>
+                <!-- <p class="fs-sm text-muted"></p><a class="btn btn-primary btn-shadow btn-sm mb-5" href="#" >Bu</a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Products grid-->
+
+        <div class="row mx-n2">
+        <hr class="my-3">
+        <!-- Pagination-->
+        <nav class="d-flex justify-content-between pt-2" aria-label="Page navigation">
+          <ul class="pagination">
+            <li class="page-item  <% if((pagination.q-1)<1){ %>disabled <%}%>"><a class="page-link" href="<%=pagination.urlpath+(pagination.q-1) %>"><i class="ci-arrow-left me-2"></i>Prev</a></li>
+          </ul>
+          <ul class="pagination">
+            <!-- <li class="page-item d-sm-none"><span class="page-link page-link-static">1 / 5</span></li> -->
+            <% let paginationCount = Number(pagination.totalcount)/Number(pagination.limit);
+                  for (let i = 0; i < paginationCount; i++) { %>
+                      <li class="page-item  d-none d-sm-block <% if((i+1)==pagination.q){ %>disabled active <%}%>"><a class="page-link" href="<%=pagination.urlpath+(i+1) %>"><%=i+1%></a></li>
+            
+                <% } %> 
+            <li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">1<span class="visually-hidden">(current)</span></span></li>
+            <li class="page-item d-none d-sm-block"><a class="page-link" href="#">2</a></li>
+            <li class="page-item d-none d-sm-block"><a class="page-link" href="#">3</a></li>
+            <li class="page-item d-none d-sm-block"><a class="page-link" href="#">4</a></li>
+            <li class="page-item d-none d-sm-block"><a class="page-link" href="#">5</a></li>
+          </ul>
+          <ul class="pagination">
+            <li class="page-item <% if((pagination.q+1)>paginationCount){ %>disabled <%}%>"><a class="page-link" href="<%=pagination.urlpath+(pagination.q+1) %>" aria-label="Next">Next<i class="ci-arrow-right ms-2"></i></a></li>
+          </ul>
+        </nav>
+      </div>
+    
+    </main>
+  
+    
+    <footer class="footer bg-dark pt-5">
+      <div class="container">
+        <div class="row pb-2">
+          <div class="col-md-4 col-sm-6">
+            <div class="widget widget-links widget-light pb-2 mb-4">
+              <h3 class="widget-title text-light">Shop departments</h3>
+              <ul class="widget-list">
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Electronic </a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Phones</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Consoles</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">TV</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Smart Watches &amp; Tops</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Headsets</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Mouse</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Monitor</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">CPU &amp; Mules</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Laptops &amp; Wallets</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Gaming Gears</a></li>
+               
+              </ul>
+              <ul class="widget-list">
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="widget widget-links widget-light pb-2 mb-4">
+              <h3 class="widget-title text-light">Account &amp; shipping info</h3>
+              <ul class="widget-list">
+        
+              </ul>
+            </div>
+            <div class="widget widget-links widget-light pb-2 mb-4">
+              <h3 class="widget-title text-light">About us</h3>
+              <ul class="widget-list">
+                <li class="widget-list-item"><a class="widget-list-link" href="#">About company</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Our team</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Careers</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">News</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="widget pb-2 mb-4">
+              <h3 class="widget-title text-light pb-1">Stay informed</h3>
+              <form class="subscription-form validate" action="https://studio.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;amp;id=29ca296126" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group flex-nowrap"><i class="ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
+                  <input class="form-control rounded-start" type="email" name="EMAIL" placeholder="Your email" required>
+                  <button class="btn btn-primary" type="submit" name="subscribe">Subscribe*</button>
+                </div>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                  <input class="subscription-form-antispam" type="text" name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
+                </div>
+                <div class="form-text text-light opacity-50">*Subscribe to our newsletter to receive early discount offers, updates and new products info.</div>
+                <div class="subscription-status"></div>
+              </form>
+            </div>
+            <div class="widget pb-2 mb-4">
+              <h3 class="widget-title text-light pb-1">Download our app</h3>
+              <div class="d-flex flex-wrap">
+                <div class="me-2 mb-2"><a class="btn-market btn-apple" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">App Store</span></a></div>
+                <div class="mb-2"><a class="btn-market btn-google" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">Google Play</span></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-5 bg-darker">
+        <div class="container">
+          <div class="row pb-3">
+            <div class="col-md-3 col-sm-6 mb-4">
+              <div class="d-flex"><i class="ci-rocket text-primary" style="font-size: 2.25rem;"></i>
+                <div class="ps-3">
+                  <h6 class="fs-base text-light mb-1">Fast and free delivery</h6>
+                  <p class="mb-0 fs-ms text-light opacity-50">Free delivery for all orders over $200</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+              <div class="d-flex"><i class="ci-currency-exchange text-primary" style="font-size: 2.25rem;"></i>
+                <div class="ps-3">
+                  <h6 class="fs-base text-light mb-1">Money back guarantee</h6>
+                  <p class="mb-0 fs-ms text-light opacity-50">We return money within 30 days</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+              <div class="d-flex"><i class="ci-support text-primary" style="font-size: 2.25rem;"></i>
+                <div class="ps-3">
+                  <h6 class="fs-base text-light mb-1">24/7 customer support</h6>
+                  <p class="mb-0 fs-ms text-light opacity-50">Friendly 24/7 customer support</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+              <div class="d-flex"><i class="ci-card text-primary" style="font-size: 2.25rem;"></i>
+                <div class="ps-3">
+                  <h6 class="fs-base text-light mb-1">Secure online payment</h6>
+                  <p class="mb-0 fs-ms text-light opacity-50">We possess SSL / Secure сertificate</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="hr-light mb-5">
+          <div class="row pb-2">
+            <div class="col-md-6 text-center text-md-start mb-4">
+              <div class="text-nowrap mb-4"><a class="d-inline-block align-middle mt-n1 me-3" href="#"><img class="d-block" src="img/footer-logo-light.png" width="117" alt="Cartzilla"></a>
+                <div class="btn-group dropdown disable-autohide">
+                  <button class="btn btn-outline-light border-light btn-sm dropdown-toggle px-2" type="button" data-bs-toggle="dropdown"><img class="me-2" src="img/flags/en.png" width="20" alt="English">Eng / $</button>
+                  <ul class="dropdown-menu my-1">
+                    <li class="dropdown-item">
+                      <select class="form-select form-select-sm">
+                        <option value="usd">$ USD</option>
+                        <option value="eur">€ EUR</option>
+                        <option value="ukp">£ UKP</option>
+                        <option value="jpy">¥ JPY</option>
+                      </select>
+                    </li>
+                    <li><a class="dropdown-item pb-1" href="#"><img class="me-2" src="img/flags/fr.png" width="20" alt="Français">Français</a></li>
+                    <li><a class="dropdown-item pb-1" href="#"><img class="me-2" src="img/flags/de.png" width="20" alt="Deutsch">Deutsch</a></li>
+                    <li><a class="dropdown-item" href="#"><img class="me-2" src="img/flags/it.png" width="20" alt="Italiano">Italiano</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="widget widget-links widget-light">
+                <ul class="widget-list d-flex flex-wrap justify-content-center justify-content-md-start">
+                  <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Outlets</a></li>
+                  <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Affiliates</a></li>
+                  <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Support</a></li>
+                  <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Privacy</a></li>
+                  <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Terms of use</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6 text-center text-md-end mb-4">
+              <div class="mb-3"><a class="btn-social bs-light bs-twitter ms-2 mb-2" href="#"><i class="ci-twitter"></i></a><a class="btn-social bs-light bs-facebook ms-2 mb-2" href="#"><i class="ci-facebook"></i></a><a class="btn-social bs-light bs-instagram ms-2 mb-2" href="#"><i class="ci-instagram"></i></a><a class="btn-social bs-light bs-pinterest ms-2 mb-2" href="#"><i class="ci-pinterest"></i></a><a class="btn-social bs-light bs-youtube ms-2 mb-2" href="#"><i class="ci-youtube"></i></a></div><img class="d-inline-block" src="img/cards-alt.png" width="187" alt="Payment methods">
+            </div>
+          </div>
+          <div class="pb-4 fs-xs text-light opacity-50 text-center text-md-start">© All rights reserved. Made by <a class="text-light" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></div>
+        </div>
+      </div>
+      <script src="jquery-3.6.3.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+      <script>
+      const addToCart = function(proId){
+        console.log(proId)
+        $.ajax({
+          url:'/addtocart',
+          method:'post',
+          dataType:'json',
+          encoded:true,
+          data:{id:proId}
+        }).done((data)=>{
+          if(data.success){
+            console.log(data.cartlength)
+            document.getElementById('cartlength').innerHTML=data.cartlength
+            document.getElementById('cartprice').innerHTML=data.cartprice
+          }
+        })
+      }
+      </script>
+      <script>
+      const addWishList = function(id){
+      console.log(id);
+      $.ajax({
+        url:"/addToWishlist",
+        method:"post",
+        dataType:"json",
+        encoded:true,
+        data:{id:id},
+      }).done((data)=>{
+        console.log();
+        if(data.success){
+          
+        Swal.fire('DONE ✔')
+          
+        }else{
+          Swal.fire('not added... check again later')
+        }
+      
+      })
+      }
+
+      </script>
+    </footer>
+    <!-- Toolbar for handheld devices (Default)-->
+    <div class="handheld-toolbar">
+      <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="account-wishlist.html"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">Wishlist</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" href="shop-cart.html"><span class="handheld-toolbar-icon"><i class="ci-cart">5</i><span  class="badge bg-primary rounded-pill ms-1"></span><span class="handheld-toolbar-label">$265.00</span></a></div>
+    </div>
+    <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+    <script src="vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="vendor/tiny-slider/dist/min/tiny-slider.js"></script>
+    <script src="vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="vendor/nouislider/dist/nouislider.min.js"></script>
+    <script src="vendor/drift-zoom/dist/Drift.min.js"></script>
+    <!-- Main theme script-->
+    <script src="js/theme.min.js"></script>
+    
+  </body>
+
+
+</html>

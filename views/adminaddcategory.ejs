@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--here is where the submission of categories take place--> 
+
+
+<!-- Mirrored from cartzilla.createx.studio/dashboard-add-new-product.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Dec 2022 04:02:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Cartzilla - Bootstrap E-commerce Template">
+    <meta name="keywords" content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap, html5, css3, js, gallery, slider, touch, creative, clean">
+    <meta name="author" content="Createx Studio">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" media="screen" href="/vendor/simplebar/dist/simplebar.min.css"/>
+    <link rel="stylesheet" media="screen" href="/vendor/tiny-slider/dist/tiny-slider.css"/>
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="/public/css/theme.min.css">
+    <!-- Google Tag Manager-->
+    <script></script>
+   
+  </head>
+  <!-- Body-->
+  <body class="handheld-toolbar-enabled">
+    <!-- Google Tag Manager (noscript)-->
+    <noscript>
+      <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+    </noscript>
+    <!-- Sign in / sign up modal-->
+    <!-- <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-secondary">
+            
+          </div>
+          <div class="modal-body tab-content py-4">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <main class="page-wrapper">
+      
+      </header>
+      <!-- Dashboard header-->
+      <div class="page-title-overlap bg-accent pt-4">
+        <div class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center pt-2">
+      
+      </div>
+      <div class="container mb-5 pb-3">
+        <div class="bg-light shadow-lg rounded-3 overflow-hidden">
+          <div class="row">
+            <!-- Sidebar-->
+            <aside class="col-lg-4 pe-xl-5">
+              <!-- Account menu toggler (hidden on screens larger 992px)-->
+              <!-- Actual menu-->
+              <div class="h-100 border-end mb-2">
+                <div class="d-lg-block collapse" id="account-menu">
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/admin/category"><i class="me-2"></i><h1>Go back</h1><span class="fs-sm text-muted ms-auto"></span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </aside>
+            <!-- Content-->
+            <section class="col-lg-8 pt-lg-4 pb-4 mb-3">
+              <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
+              
+                 
+                <!-- Title-->
+                <div class="d-sm-flex flex-wrap justify-content-between align-items-center pb-2">
+                  <h2 class="h3 py-2 me-2 text-center text-sm-start">Add new category</h2>
+                  <div class="py-2">
+                  </div>
+                </div>
+                <% if(err) { %>
+                  <p class="h1 text-danger"><%= err %></p>
+                  <% } %>
+                <form action="/admin/addcategory" method="post" enctype="multipart/form-data" id="addcategory">
+                  <% if(categoryAddErr.length>0){ %>
+                    <!-- <div
+                      class="alert alert-danger col-md-12 text-center"
+                      style="color: white; background-color: rgb(221, 118, 118)"
+                      role="alert"
+                    > -->
+                      <p class="h1 text-danger"><%=categoryAddErr %></p>
+                    <!-- </div> -->
+                    <% } %>
+                  <div class="mb-3 pb-2">
+                    <label class="form-label" for="unp-product-name">category name</label>
+                    <div id="categorynamerror"></div>
+                    <input class="form-control" name="categoryname" type="text" id="categoryname">
+                    <div class="form-text">Maximum 100 characters</div>
+                  </div>
+                  <div class="mb-3 py-2">
+                    <label class="form-label" for="unp-product-name">Category Description</label>
+                    <div id="categorydescriptionerror"></div>
+
+                    <input class="form-control" name="categorydescription" type="text" id="categorydescription">
+                  </div>
+                  <div class="row">
+                  <div class="mb-3 pb-2">
+                    <label class="form-label" for="unp-product-files">Product files for sale</label>
+                    <div id="categoryimagerror"></div>
+
+                    <input class="form-control" name="image" type="file" id="categoryimage">
+                    <div class="form-text">Maximum file size is 1GB</div>
+                  </div>
+                  <button class="btn btn-primary d-block w-100" type="submit" id="submit"><i class="ci-cloud-upload fs-lg me-2"></i>Upload category</button>
+                </form>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Footer-->
+    <footer class="footer bg-dark pt-5">
+      <div class="container pt-2 pb-3">
+        <div class="row">
+          <div class="col-md-6 text-center text-md-start mb-4">
+            <div class="text-nowrap mb-3"><a class="d-inline-block align-middle mt-n2 me-2" href="#"><img class="d-block" src="" width="117" alt="ShayAndCo"></a><span class="d-inline-block align-middle h5 fw-light text-white mb-0"></span></div>
+            <p class="fs-sm text-white opacity-70 pb-1">High quality items from our shop</p>
+            <h6 class="d-inline-block me-3"><span class="text-primary"></span><span class="fw-normal text-white"></span></h6>
+            <div class="widget mt-4 text-md-nowrap text-center text-md-start"><a class="btn-social bs-light bs-twitter me-2 mb-2" href="#"><i class="ci-twitter"></i></a><a class="btn-social bs-light bs-facebook me-2 mb-2" href="#"><i class="ci-facebook"></i></a><a class="btn-social bs-light bs-dribbble me-2 mb-2" href="#"><i class="ci-dribbble"></i></a><a class="btn-social bs-light bs-behance me-2 mb-2" href="#"><i class="ci-behance"></i></a><a class="btn-social bs-light bs-pinterest me-2 mb-2" href="#"><i class="ci-pinterest"></i></a></div>
+          </div>
+          <!-- Mobile dropdown menu (visible on screens below md)-->
+          <div class="col-12 d-md-none text-center mb-4 pb-2">
+            <div class="btn-group dropdown d-block mx-auto mb-3">
+            </div>
+            
+          </div>
+          <!-- Desktop menu (visible on screens above md)-->
+          
+          
+        </div>
+      </div>
+      <!-- Second row-->
+      <div class="pt-5 bg-darker">
+        <div class="container">
+          <div class="widget w-100 mb-4 pb-3 text-center mx-auto" style="max-width: 28rem;">
+            <h3 class="widget-title text-light pb-1">Subscribe to newsletter</h3>
+            <form class="subscription-form validate" action="https://studio.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;amp;id=29ca296126" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+              <div class="input-group flex-nowrap"><i class="ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
+                <input class="form-control rounded-start" name = "subscribe" type="email" name="EMAIL" placeholder="Your email" required>
+                <button class="btn btn-primary" type="submit" name="subscribe">Subscribe</button>
+              </div>
+              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                <input class="subscription-form-antispam" type="text" name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
+              </div>
+              <div class="form-text text-light opacity-50">Receive early discount offers, updates and new products info.</div>
+              <div class="subscription-status"></div>
+            </form>
+          </div>
+          <hr class="hr-light mb-3">
+        </div>
+      </div>
+    </footer>
+    <!-- Toolbar for handheld devices (Marketplace)-->
+    <div class="handheld-toolbar">
+      <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="dashboard-favorites.html"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">Favorites</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" href="marketplace-cart.html"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">3</span></span><span class="handheld-toolbar-label">$56.00</span></a></div>
+    </div>
+    <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+    <script src="/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="/vendor/tiny-slider/dist/min/tiny-slider.js"></script>
+    <script src="/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <!-- Main theme script-->
+    <script src="/js/theme.min.js"></script>
+    <script>
+      const formEl = document.querySelector("#addcategory")
+      formEl.addEventListener('submit',event=>{
+        if($('#categoryname').val().trim().length <= 0 ||
+        $('#categorydescription').val().trim().length <= 0 ||
+        $('#categoryimage').val().trim().length <= 0 )
+        {
+          if($('#categoryname').val().trim().length <= 0 ){
+            $('#categorynameerror').html(`<p class="text-danger" style="font-size: small;">FULL NAME REQUIRED</p>`)
+            $('#categoryname').css('border-color','red')
+          }
+          else{
+            $('#categorynameerror').html('')
+            $('#categoryname').css('border-color','')
+          }
+          if($('#categorydescription').val().trim().length <= 0 ){
+            $('#categorydescriptionerror').html(`<p class="text-danger" style="font-size: small;">DESCRIPTION REQUIRED</p>`)
+            $('#categorydescription').css('border-color','red')
+          }
+          else{
+            $('#categorydescriptionerror').html('')
+            $('#categorydescription').css('border-color','')
+          }
+          if($('#categoryimage').val().trim().length <= 0 ){
+            $('#categoryimageerror').html(`<p class="text-danger" style="font-size: small;">IMAGE REQUIRED</p>`)
+            $('#categoryimage').css('border-color','red')
+          }
+          else{
+            $('#categorynameerror').html('')
+            $('#categoryname').css('border-color','')
+          }
+        }else{
+          $.ajax({
+                url: '/addcategory',
+                method: 'post',
+                dataType: 'json',
+                encode: true,
+                data: $('#addcategory').serialize(),
+            }).done((data) => {if (data.success) {
+                    console.log(data);
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'success',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500)
+                } else {
+                    console.log("ERROR! data didn't saved")
+                }
+            })
+        }
+        event.defaultPrevented()
+      })
+
+    </script>
+  </body>
+
+<!-- Mirrored from cartzilla.createx.studio/dashboard-add-new-product.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Dec 2022 04:02:23 GMT -->
+</html>
+

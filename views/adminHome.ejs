@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <meta
+      name="description"
+      content="Cartzilla - Bootstrap E-commerce Template"
+    />
+    <meta
+      name="keywords"
+      content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap, html5, css3, js, gallery, slider, touch, creative, clean"
+    />
+    <meta name="author" content="Createx Studio" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" />
+    <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="/vendor/simplebar/dist/simplebar.min.css"
+    />
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="/vendor/tiny-slider/dist/tiny-slider.css"
+    />
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="/vendor/chartist/dist/chartist.min.css"
+    />
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="/css/theme.min.css" />
+    <!-- Google Tag Manager-->
+    <script></script>
+  </head>
+  <!-- Body-->
+  <body class="handheld-toolbar-enabled">
+    <!-- Google Tag Manager (noscript)-->
+    <noscript>
+      <iframe
+        src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe>
+    </noscript>
+    <!-- Sign in / sign up modal-->
+    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-secondary">
+            <ul class="nav nav-tabs card-header-tabs" role="tablist">
+              <li class="nav-item">
+                <a
+                  class="nav-link fw-medium active"
+                  href="#signin-tab"
+                  data-bs-toggle="tab"
+                  role="tab"
+                  aria-selected="true"
+                  ><i class="ci-unlocked me-2 mt-n1"></i>Sign in</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link fw-medium"
+                  href="#signup-tab"
+                  data-bs-toggle="tab"
+                  role="tab"
+                  aria-selected="false"
+                  ><i class="ci-user me-2 mt-n1"></i>Sign up</a
+                >
+              </li>
+            </ul>
+            <button
+              class="btn-close"
+              type="button"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body tab-content py-4">
+            <form
+              class="needs-validation tab-pane fade show active"
+              autocomplete="off"
+              novalidate
+              id="signin-tab"
+            >
+              <div class="mb-3">
+                <label class="form-label" for="si-email">Email address</label>
+                <input
+                  class="form-control"
+                  type="email"
+                  id="si-email"
+                  placeholder="johndoe@example.com"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Please provide a valid email address.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="si-password">Password</label>
+                <div class="password-toggle">
+                  <input
+                    class="form-control"
+                    type="password"
+                    id="si-password"
+                    required
+                  />
+                  <label
+                    class="password-toggle-btn"
+                    aria-label="Show/hide password"
+                  >
+                    <input class="password-toggle-check" type="checkbox" /><span
+                      class="password-toggle-indicator"
+                    ></span>
+                  </label>
+                </div>
+              </div>
+              <div class="mb-3 d-flex flex-wrap justify-content-between">
+                <div class="form-check mb-2">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="si-remember"
+                  />
+                  <label class="form-check-label" for="si-remember"
+                    >Remember me</label
+                  >
+                </div>
+                <a class="fs-sm" href="#">Forgot password?</a>
+              </div>
+              <button
+                class="btn btn-primary btn-shadow d-block w-100"
+                type="submit"
+              >
+                Sign in
+              </button>
+            </form>
+            <form
+              class="needs-validation tab-pane fade"
+              autocomplete="off"
+              novalidate
+              id="signup-tab"
+            >
+              <div class="mb-3">
+                <label class="form-label" for="su-name">Full name</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  id="su-name"
+                  placeholder="John Doe"
+                  required
+                />
+                <div class="invalid-feedback">Please fill in your name.</div>
+              </div>
+              <div class="mb-3">
+                <label for="su-email">Email address</label>
+                <input
+                  class="form-control"
+                  type="email"
+                  id="su-email"
+                  placeholder="johndoe@example.com"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Please provide a valid email address.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="su-password">Password</label>
+                <div class="password-toggle">
+                  <input
+                    class="form-control"
+                    type="password"
+                    id="su-password"
+                    required
+                  />
+                  <label
+                    class="password-toggle-btn"
+                    aria-label="Show/hide password"
+                  >
+                    <input class="password-toggle-check" type="checkbox" /><span
+                      class="password-toggle-indicator"
+                    ></span>
+                  </label>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="su-password-confirm"
+                  >Confirm password</label
+                >
+                <div class="password-toggle">
+                  <input
+                    class="form-control"
+                    type="password"
+                    id="su-password-confirm"
+                    required
+                  />
+                  <label
+                    class="password-toggle-btn"
+                    aria-label="Show/hide password"
+                  >
+                    <input class="password-toggle-check" type="checkbox" /><span
+                      class="password-toggle-indicator"
+                    ></span>
+                  </label>
+                </div>
+              </div>
+              <button
+                class="btn btn-primary btn-shadow d-block w-100"
+                type="submit"
+              >
+                Sign up
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <main class="page-wrapper">
+      <!-- Navbar Marketplace-->
+      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+      <header class="bg-light shadow-sm navbar-sticky">
+        <div class="navbar navbar-expand-lg navbar-light">
+          <div class="container">
+            <a
+              class="navbar-brand d-none d-sm-block flex-shrink-0 me-4 order-lg-1"
+              href="index.html"
+              ><img src="/img/logo-dark.png" width="142" alt="Cartzilla" /></a
+            ><a class="navbar-brand d-sm-none me-2 order-lg-1" href="index.html"
+              ><img src="img/logo-icon.png" width="74" alt="Cartzilla"
+            /></a>
+            <!-- Toolbar-->
+            <div class="navbar-toolbar d-flex align-items-center order-lg-3">
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse"
+              >
+                <span class="navbar-toggler-icon"></span></button
+              ><a
+                class="navbar-tool d-none d-lg-flex"
+                href="javascript:void(0)"
+                data-bs-toggle="collapse"
+                data-bs-target="#searchBox"
+                role="button"
+                aria-expanded="false"
+                aria-controls="searchBox"
+                ><span class="navbar-tool-tooltip">Search</span>
+                <div class="navbar-tool-icon-box">
+                  <i class="navbar-tool-icon ci-search"></i></div></a
+              ><a
+                class="navbar-tool d-none d-lg-flex"
+                href="dashboard-favorites.html"
+                ><span class="navbar-tool-tooltip">Favorites</span>
+                <div class="navbar-tool-icon-box">
+                  <i class="navbar-tool-icon ci-heart"></i></div
+              ></a>
+              <div class="navbar-tool dropdown ms-2">
+                <a
+                  class="navbar-tool-icon-box border dropdown-toggle"
+                  href="dashboard-sales.html"
+                  ><img
+                    src="/img/marketplace/account/avatar-sm.png"
+                    width="32"
+                    alt="Createx Studio" /></a
+                ><a class="navbar-tool-text ms-n1" href="dashboard-sales.html"
+                  ><small>Createx Std.</small>$1,375.00</a
+                >
+                <div class="dropdown-menu dropdown-menu-end">
+                  <div style="min-width: 14rem">
+                    <h6 class="dropdown-header">Account</h6>
+                    <a
+                      class="dropdown-item d-flex align-items-center"
+                      href="dashboard-settings.html"
+                      ><i class="ci-settings opacity-60 me-2"></i>Settings</a
+                    ><a
+                      class="dropdown-item d-flex align-items-center"
+                      href="dashboard-purchases.html"
+                      ><i class="ci-basket opacity-60 me-2"></i>Purchases</a
+                    ><a
+                      class="dropdown-item d-flex align-items-center"
+                      href="dashboard-favorites.html"
+                      ><i class="ci-heart opacity-60 me-2"></i>Favorites<span
+                        class="fs-xs text-muted ms-auto"
+                        >4</span
+                      ></a
+                    >
+                    <div class="dropdown-divider"></div>
+                    <h6 class="dropdown-header">Seller Dashboard</h6>
+                    <a
+                      class="dropdown-item d-flex align-items-center"
+                      href="dashboard-sales.html"
+                      ><i class="ci-dollar opacity-60 me-2"></i>Sales<span
+                        class="fs-xs text-muted ms-auto"
+                        >$1,375.00</span
+                      ></a
+                    ><a
+                      class="dropdown-item d-flex align-items-center"
+                      href="dashboard-products.html"
+                      ><i class="ci-package opacity-60 me-2"></i>Products<span
+                        class="fs-xs text-muted ms-auto"
+                        >5</span
+                      ></a
+                    ><a
+                      class="dropdown-item d-flex align-items-center"
+                      href="dashboard-add-new-product.html"
+                      ><i class="ci-cloud-upload opacity-60 me-2"></i>Add New
+                      Product</a
+                    ><a
+                      class="dropdown-item d-flex align-items-center"
+                      href="dashboard-payouts.html"
+                      ><i class="ci-currency-exchange opacity-60 me-2"></i
+                      >Payouts</a
+                    >
+                    <div class="dropdown-divider"></div>
+                    <a
+                      class="dropdown-item d-flex align-items-center"
+                      href="account-signin.html"
+                      ><i class="ci-sign-out opacity-60 me-2"></i>Sign Out</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="navbar-tool ms-4">
+                <a
+                  class="navbar-tool-icon-box bg-secondary dropdown-toggle"
+                  href="marketplace-cart.html"
+                  ><span class="navbar-tool-label">3</span
+                  ><i class="navbar-tool-icon ci-cart"></i
+                ></a>
+              </div>
+            </div>
+            <div
+              class="collapse navbar-collapse me-auto order-lg-2"
+              id="navbarCollapse"
+            >
+              <!-- Search-->
+              <div class="input-group d-lg-none my-3">
+                <i
+                  class="ci-search position-absolute top-50 start-0 translate-middle-y text-muted fs-base ms-3"
+                ></i>
+                <input
+                  class="form-control rounded-start"
+                  type="text"
+                  placeholder="Search marketplace"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Search collapse-->
+        <div class="search-box collapse" id="searchBox">
+          <div class="card pt-2 pb-4 border-0 rounded-0">
+            <div class="container">
+              <div class="input-group">
+                <i
+                  class="ci-search position-absolute top-50 start-0 translate-middle-y text-muted fs-base ms-3"
+                ></i>
+                <input
+                  class="form-control rounded-start"
+                  type="text"
+                  placeholder="Search marketplace"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Dashboard header-->
+      <div class="page-title-overlap bg-accent pt-4">
+        <div
+          class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center pt-2"
+        >
+          <div class="d-flex align-items-center pb-3">
+            <div class="ps-3"></div>
+          </div>
+          <div class="d-flex">
+            <div class="text-sm-end me-5">
+              <div class="text-light fs-base">Total sales</div>
+              <h3 class="text-light">0</h3>
+            </div>
+            <div class="text-sm-end">
+              <div class="text-light fs-base">Seller rating</div>
+              <div class="star-rating">
+                <i class="star-rating-icon ci-star-filled active"></i
+                ><i class="star-rating-icon ci-star-filled active"></i
+                ><i class="star-rating-icon ci-star-filled active"></i
+                ><i class="star-rating-icon ci-star-filled active"></i
+                ><i class="star-rating-icon ci-star"></i>
+              </div>
+              <div class="text-light opacity-60 fs-xs">SAMPLE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container mb-5 pb-3">
+        <div class="bg-light shadow-lg rounded-3 overflow-hidden">
+          <div class="row">
+            <!-- Sidebar-->
+            <aside class="col-lg-4 pe-xl-5">
+              <!-- Account menu toggler (hidden on screens larger 992px)-->
+              <div class="d-block d-lg-none p-4">
+                <a
+                  class="btn btn-outline-accent d-block"
+                  href="#account-menu"
+                  data-bs-toggle="collapse"
+                  ><i class="ci-menu me-2"></i>Account menu</a
+                >
+              </div>
+              <!-- Actual menu-->
+              <div class="h-100 border-end mb-2">
+                <div class="d-lg-block collapse" id="account-menu">
+                  <div class="bg-secondary p-4">
+                    <h3 class="fs-sm mb-0 text-muted">ADMIN</h3>
+                  </div>
+                  <ul class="list-unstyled mb-0">
+                    <li class="border-bottom mb-0">
+                      <a
+                        class="nav-link-style d-flex align-items-center px-4 py-3"
+                        href="/dashboard-purchases.html"
+                        ><i class="ci-basket opacity-60 me-2"></i>Purchases</a
+                      >
+                    </li>
+                  </ul>
+                  <div class="bg-secondary p-4">
+                    <h3 class="fs-sm mb-0 text-muted">Seller Dashboard</h3>
+                  </div>
+                  <ul class="list-unstyled mb-0">
+                    <li class="border-bottom mb-0">
+                      <a
+                        class="nav-link-style d-flex align-items-center px-4 py-3 active"
+                        href="/admin/report"
+                        ><i class="ci-dollar opacity-60 me-2"></i>Report<span
+                          class="fs-sm text-muted ms-auto"
+                          ></span
+                        ></a
+                      >
+                    </li>
+                    <li class="border-bottom mb-0">
+                      <a
+                        class="nav-link-style d-flex align-items-center px-4 py-3"
+                        href="/admin/productmgt"
+                        ><i class="ci-package opacity-60 me-2"></i>Products<span
+                          class="fs-sm text-muted ms-auto"
+                          >5</span
+                        ></a
+                      >
+                    </li>
+                    <li class="border-bottom mb-0">
+                      <a
+                        class="nav-link-style d-flex align-items-center px-4 py-3"
+                        href="/admin/add-product"
+                        ><i class="ci-cloud-upload opacity-60 me-2"></i>Add New
+                        Product</a
+                      >
+                    </li>
+                    <li class="border-bottom mb-0">
+                      <a
+                        class="nav-link-style d-flex align-items-center px-4 py-3"
+                        href="admin/adminuserdata"
+                        ><i class="ci-cloud-upload opacity-60 me-2"></i>User
+                        Management</a
+                      >
+                    </li>
+                    <li class="border-bottom mb-0">
+                      <a
+                        class="nav-link-style d-flex align-items-center px-4 py-3"
+                        href="/admin/category"
+                        ><i class="ci-currency-exchange opacity-60 me-2"></i
+                        >Category Management</a
+                      >
+                    </li>
+                    <li class="border-bottom mb-0">
+                      <a
+                        class="nav-link-style d-flex align-items-center px-4 py-3"
+                        href="/admin/coupon"
+                        ><i class="ci-currency-exchange opacity-60 me-2"></i
+                        >Coupon management</a
+                      >
+                    </li>
+                    <li class="border-bottom mb-0">
+                      <a
+                        class="nav-link-style d-flex align-items-center px-4 py-3"
+                        href="/admin/ordermanagementpage"
+                        ><i class="ci-currency-exchange opacity-60 me-2"></i
+                        >Order Management</a
+                      >
+                    </li>
+                    <li class="mb-0">
+                      <a
+                        class="nav-link-style d-flex align-items-center px-4 py-3"
+                        href="/account-signin.html"
+                        ><i class="ci-sign-out opacity-60 me-2"></i>Sign out</a
+                      >
+                    </li>
+                  </ul>
+                  <hr />
+                </div>
+              </div>
+            </aside>
+            <!--  graph Content-->
+            <section class="col-lg-8 pt-lg-4 pb-4 mb-3">
+              <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
+                <h2 class="h3 py-2 text-center text-sm-start">
+                  Your sales / earnings
+                </h2>
+                <div class="row mx-n2 pt-2">
+                  <div class="col-md-4 col-sm-6 px-2 mb-4">
+                    <div class="bg-secondary h-100 rounded-3 p-4 text-center">
+                      <h3 class="fs-sm text-muted">Earnings (before taxes)</h3>
+                      <p class="h2 mb-2">0<small>50</small></p>
+                      <p class="fs-ms text-muted mb-0">
+                        Sales 8/1/2021 - 8/15/2021
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6 px-2 mb-4">
+                    <div class="bg-secondary h-100 rounded-3 p-4 text-center">
+                      <h3 class="fs-sm text-muted">Your balance</h3>
+                      <p class="h2 mb-2">00.<small>00</small></p>
+                      <p class="fs-ms text-muted mb-0">
+                        To be paid on 8/15/2021
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-12 px-2 mb-4">
+                    <div class="bg-secondary h-100 rounded-3 p-4 text-center">
+                      <h3 class="fs-sm text-muted">Lifetime earnings</h3>
+                      <p class="h2 mb-2">00.<small>74</small></p>
+                      <p class="fs-ms text-muted mb-0">Based on list price</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mx-n2">
+                  <div class="col-lg-8 px-2">
+                    <div class="card mb-4">
+                      <div class="card-body">
+                        <h3 class="fs-sm pb-3 mb-3 border-bottom">Monthly Sales<span
+                            class="fw-normal fs-xs text-muted"></span></h3>
+                            <!-- <div class="ct-chart ct-golden-section" id="chart1"></div> -->
+                            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                      </div>
+                    </div>
+                    <!-- <div class="card mb-4">
+                      <div class="card-body">
+                        <h3 class="fs-sm pb-3 mb-3 border-bottom">Monthly Revenue <span
+                            class="fw-normal fs-xs text-muted"></span></h3>
+                            <div class="ct-chart ct-golden-section" id="chart2"></div>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+                <div>
+                  <div class="card-header border-bottom d-flex">
+                    <h4>Daily Sales</h4><a href="/admin/btn_one" class="ps-5" id="btn_one">📄</a>
+                  </div>
+                  <canvas id="myChart"></canvas>
+                </div>
+                <!-- < % let yearlyCount = yearlySales.map((val )=>{ return val.total}) %>  -->
+                <!-- < % let monthlyRev = salesChartDt.map((val )=>{ return val.total}) %>  -->
+                <% let dates = salesChartDt.map((val)=>{ return val._id.slice(-2)}) %>
+                <% let salesCount = salesChartDt.map((val)=>{ return val.count}) %>
+                <!-- <h1> < %=monthlyRev%></h1> -->
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+      <script>
+//              const ctx = document.getElementById('myChart');
+//              new Chartist.Line('#chart1',{
+//   // A labels array that can contain any sort of values
+//   labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May','Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+//   // Our series array that contains series objects or in this case series data arrays
+//   series: [< %=yearlyCount%>]
+// });
+//    new Chartist.Line('#chart2',{
+//   // A labels array that can contain any sort of values
+//   labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May','Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+//   // Our series array that contains series objects or in this case series data arrays
+//   series: [< %=montlyRev%>]
+// });
+
+// const data = {
+//   labels: ['placed','Canceled', 'Delivered', 'Canceled'],
+//   datasets: [
+//     {
+//       label: 'Dataset 1',
+//       data: Utils.numbers(NUMBER_CFG),
+//       backgroundColor: Object.values(Utils.CHART_COLORS),
+//     }
+//   ]
+// };
+      // NEW
+
+      var xValues = [<%=dates%>];
+var yValues = [<%=salesCount%>];
+
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,0.1)",
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 6, max:16}}],
+    }
+  }
+});
+      </script>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Footer-->
+    <footer class="footer bg-dark pt-5">
+      <div class="container pt-2 pb-3">
+        <div class="row">
+          <div class="col-md-6 text-center text-md-start mb-4">
+            <div class="text-nowrap mb-3">
+              <a class="d-inline-block align-middle mt-n2 me-2" href="#"
+                ><img
+                  class="d-block"
+                  src="/img/footer-logo-light.png"
+                  width="117"
+                  alt="Cartzilla" /></a
+              ><span
+                class="d-inline-block align-middle h5 fw-light text-white mb-0"
+                >Marketplace</span
+              >
+            </div>
+            <p class="fs-sm text-white opacity-70 pb-1">
+              High quality items created by our global community.
+            </p>
+            <h6 class="d-inline-block pe-3 me-3 border-end border-light">
+              <span class="text-primary">65,478 </span
+              ><span class="fw-normal text-white">Products</span>
+            </h6>
+            <h6 class="d-inline-block pe-3 me-3 border-end border-light">
+              <span class="text-primary">2,521 </span
+              ><span class="fw-normal text-white">Members</span>
+            </h6>
+            <h6 class="d-inline-block me-3">
+              <span class="text-primary">897 </span
+              ><span class="fw-normal text-white">Vendors</span>
+            </h6>
+            <div class="widget mt-4 text-md-nowrap text-center text-md-start">
+              <a class="btn-social bs-light bs-twitter me-2 mb-2" href="#"
+                ><i class="ci-twitter"></i></a
+              ><a class="btn-social bs-light bs-facebook me-2 mb-2" href="#"
+                ><i class="ci-facebook"></i></a
+              ><a class="btn-social bs-light bs-dribbble me-2 mb-2" href="#"
+                ><i class="ci-dribbble"></i></a
+              ><a class="btn-social bs-light bs-behance me-2 mb-2" href="#"
+                ><i class="ci-behance"></i></a
+              ><a class="btn-social bs-light bs-pinterest me-2 mb-2" href="#"
+                ><i class="ci-pinterest"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="pt-5 bg-darker">
+            <div class="container">
+              <div
+                class="widget w-100 mb-4 pb-3 text-center mx-auto"
+                style="max-width: 28rem"
+              >
+                <h3 class="widget-title text-light pb-1">
+                  Subscribe to newsletter
+                </h3>
+                <form
+                  class="subscription-form validate"
+                  action="https://studio.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;amp;id=29ca296126"
+                  method="post"
+                  name="mc-embedded-subscribe-form"
+                  target="_blank"
+                  novalidate
+                >
+                  <div class="input-group flex-nowrap">
+                    <i
+                      class="ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3"
+                    ></i>
+                    <input
+                      class="form-control rounded-start"
+                      type="email"
+                      name="EMAIL"
+                      placeholder="Your email"
+                      required
+                    />
+                    <button
+                      class="btn btn-primary"
+                      type="submit"
+                      name="subscribe"
+                    >
+                      Subscribe*
+                    </button>
+                  </div>
+                  <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                  <div
+                    style="position: absolute; left: -5000px"
+                    aria-hidden="true"
+                  >
+                    <input
+                      class="subscription-form-antispam"
+                      type="text"
+                      name="b_c7103e2c981361a6639545bd5_29ca296126"
+                      tabindex="-1"
+                    />
+                  </div>
+                  <div class="form-text text-light opacity-50">
+                    *Receive early discount offers, updates and new products
+                    info.
+                  </div>
+                  <div class="subscription-status"></div>
+                </form>
+              </div>
+              <hr class="hr-light mb-3" />
+              <div class="d-md-flex justify-content-between pt-4">
+                <div
+                  class="pb-4 fs-xs text-light opacity-50 text-center text-md-start"
+                >
+                  © All rights reserved. Made by
+                  <a class="text-light" target="_blank" rel="noopener"
+                    >Createx Studio</a
+                  >
+                </div>
+                <div class="widget widget-links widget-light pb-4">
+                  <ul
+                    class="widget-list d-flex flex-wrap justify-content-center justify-content-md-start"
+                  >
+                    <li class="widget-list-item ms-4">
+                      <a class="widget-list-link fs-ms" href="#">Help Center</a>
+                    </li>
+                    <li class="widget-list-item ms-4">
+                      <a class="widget-list-link fs-ms" href="#">Affiliates</a>
+                    </li>
+                    <li class="widget-list-item ms-4">
+                      <a class="widget-list-link fs-ms" href="#">Support</a>
+                    </li>
+                    <li class="widget-list-item ms-4">
+                      <a class="widget-list-link fs-ms" href="#"
+                        >Terms &amp; Conditions</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- </footer> -->
+          <!-- Toolbar for handheld devices (Marketplace)-->
+          <div class="handheld-toolbar">
+            <div class="d-table table-layout-fixed w-100">
+              <a
+                class="d-table-cell handheld-toolbar-item"
+                href="dashboard-favorites.html"
+                ><span class="handheld-toolbar-icon"
+                  ><i class="ci-heart"></i></span
+                ><span class="handheld-toolbar-label">Favorites</span></a
+              ><a
+                class="d-table-cell handheld-toolbar-item"
+                href="javascript:void(0)"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse"
+                onclick="window.scrollTo(0, 0)"
+                ><span class="handheld-toolbar-icon"
+                  ><i class="ci-menu"></i></span
+                ><span class="handheld-toolbar-label">Menu</span></a
+              ><a
+                class="d-table-cell handheld-toolbar-item"
+                href="marketplace-cart.html"
+                ><span class="handheld-toolbar-icon"
+                  ><i class="ci-cart"></i
+                  ><span class="badge bg-primary rounded-pill ms-1"
+                    >3</span
+                  ></span
+                ><span class="handheld-toolbar-label">$56.00</span></a
+              >
+            </div>
+          </div>
+          <!-- Back To Top Button--><a
+            class="btn-scroll-top"
+            href="#top"
+            data-scroll
+            ><span class="btn-scroll-top-tooltip text-muted fs-sm me-2"
+              >Top</span
+            ><i class="btn-scroll-top-icon ci-arrow-up"> </i
+          ></a>
+          <!-- Vendor scrits: js libraries and plugins-->
+          <script src="/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+          <script src="/vendor/simplebar/dist/simplebar.min.js"></script>
+          <script src="/vendor/tiny-slider/dist/min/tiny-slider.js"></script>
+          <script src="/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+          <script src="/vendor/chartist/dist/chartist.min.js"></script>
+          <!-- Main theme script-->
+          <script src="/js/theme.min.js"></script>
+
+          <!-- Mirrored from cartzilla.createx.studio/dashboard-sales.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Dec 2022 04:02:21 GMT -->
+          
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
