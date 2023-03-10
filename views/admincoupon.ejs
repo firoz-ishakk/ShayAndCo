@@ -159,7 +159,6 @@
         font-size: 13px;
     }
     </style>
-    
     </head>
     <body>
     <div class="container-xl">
@@ -175,32 +174,31 @@
                             <a href="/admin/addcouponpage" class="btn btn-secondary"><i class="null"></i> <span>Add New Coupon</span></a> 
                         </div>
                     </div>
-                </div>
-             
+                </div>           
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Code</th>
                             <th scope="col">Status</th>
-                  
-                            
+                            <th scope="col">user allowed</th>
+                            <th scope="col">Minumum purchase</th>                      
+                            <th scope="col">expiry</th>
+                            <th scope="col">discount</th>
+                            <th scope="col">Action</th>                         
                         </tr>
                     </thead>
-                    <tbody>
-                        
+                    <tbody>                       
                         <% couponDetails.forEach((el,index)=>{ %>
                         <tr id="<%=el._id  %>">
-
-
-                            <td><%=index+1 %></td>
-                            
+                            <td><%=index+1 %></td>                         
                              <td><a href="#"> </a><%=el.code  %></td>
                              <td><a href="#"> </a><%=el.status %></td>
-                            <td><a href="#"> </a></td>
-                                               
-                            
-                            <td><a href="/admin/couponeditpage/<%=el._id %>" class="btn btn-primary text-white">Edit</a></td>
+                             <td><a href="#"> </a><%=el.user_allowed %></td>
+                             <td><a href="#"> </a><%=el.minimum_purchase %></td>                         
+                             <td><a href="#"> </a><%=el.expiry %></td>
+                             <td><a href="#"> </a><%=el.discount %></td>
+                            <td><a href="/admin/couponeditpage?id=<%=el._id %>" class="btn btn-primary text-white">Edit</a></td>
                             <td><a class="btn btn-danger text-white">list</a></td>
                                 
                         </tr>

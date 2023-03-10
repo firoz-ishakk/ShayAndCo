@@ -65,47 +65,56 @@
             <section class="col-lg-8 pt-lg-4 pb-4 mb-3">
               <div class="pt-2 px-4 ps-lg-0 pe-xl-5">
                 <!-- Title-->
+                
+                
                 <div class="d-sm-flex flex-wrap justify-content-between align-items-center pb-2">
                   <h2 class="h3 py-2 me-2 text-center text-sm-start">edit coupon</h2>
                   <div class="py-2">
                   </div>
                 </div>
-                <form action="/admin/couponedit" method="post" id="editcoupon">
+             <!--used userDAta._id because here wehave passed the userData to the rendering page. so along with the _id we pass it to the edit-->
+                <form action="/admin/couponedit?id=<%=userData._id%>" method="post" id="editcoupon">
+            
                   <div class="mb-3 pb-2">
                     <label class="form-label" for="unp-product-name">Coupon code</label>
                     <div id="productnamerror"></div>
-                    <input class="form-control" name="editcode" type="text" id="editcode">
+                    <input class="form-control" name="code" type="text" id="editcode" value="<%=userData.code%>" required>
                     <div class="form-text"></div>
                   </div>
                   <div class="mb-3 pb-2">
                     <label class="form-label" for="unp-product-name">Maximum allowed user</label>
                     <div id="producttitleerror"></div>
-                    <input class="form-control" name="editcouponmax" type="number" id="editcouponmax">
+                    <input class="form-control" name="user_allowed" type="number" id="editcouponmax" value="<%=userData.user_allowed %>" required>
                     <div class="form-text"></div>
                   </div>
                   <div class="mb-3 pb-2">
                     <label class="form-label" for="unp-product-name">Minimum purchase limit</label>
                     <div id="productdescriptionerror"></div>
-                    <input class="form-control" name="editcouponmin" type="number" id="editcouponmin">
+                    <input class="form-control" name="minimum_purchase" type="number" id="editcouponmin" value="<%=userData.minimum_purchase%>" required>
                     <div class="form-text"></div>
                   </div>
                   <div class="mb-3 pb-2">
                     <label class="form-label" for="unp-product-name">Discount amount</label>
                     <div id="productpricerror"></div>
-                    <input class="form-control" name="editdiscount" type="number" id="editdiscount">
+                    <input class="form-control" name="discount" type="number" id="editdiscount" value="<%=userData.discount %>" required>
                     <div class="form-text"></div>
                   </div>
                   <div class="mb-3 py-2">
-                    <label class="form-label"  for="unp-product-name">Expiry Date</label>
-                    <input class="form-control" name="editexpiry" type="date" id="editexpiry">
+                    <label class="form-label"  for="unp-product-name">Expiry Date:</label>
+                    <div class="date small bg-light"><b>Former Date: <%=userData.expiry.toLocaleDateString()%></b></div> <!--for using PROPER DATES-->
+
+                    <input class="form-control" name="expiry" type="date" id="editexpiry" value=""  required>
                   </div>
                   <button class="btn btn-primary d-block w-100" type="submit" id="submit"><i class="ci-cloud-upload fs-lg me-2"></i>Upload edited coupon</button>
+                  
                 </form>
+               
               </div>
             </section>
           </div>
         </div>
       </div>
+      
     </main>
     <!-- Footer-->
     <footer class="footer bg-dark pt-5">

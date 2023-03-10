@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--here is where the submission of categories take place--> 
-
-
-<!-- Mirrored from cartzilla.createx.studio/dashboard-add-new-product.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Dec 2022 04:02:23 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8">
@@ -29,7 +25,6 @@
     <link rel="stylesheet" media="screen" href="/public/css/theme.min.css">
     <!-- Google Tag Manager-->
     <script></script>
-   
   </head>
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
@@ -41,8 +36,7 @@
     <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <div class="modal-header bg-secondary">
-            
+          <div class="modal-header bg-secondary">          
           </div>
           <div class="modal-body tab-content py-4">
             </form>
@@ -51,20 +45,16 @@
       </div>
     </div>
     <main class="page-wrapper">
-
-         
-      </header>
+    </header>
       <!-- Dashboard header-->
       <div class="page-title-overlap bg-accent pt-4">
-        <div class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center pt-2">
-      
+        <div class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center pt-2">    
       </div>
       <div class="container mb-5 pb-3">
         <div class="bg-light shadow-lg rounded-3 overflow-hidden">
           <div class="row">
             <!-- Sidebar-->
             <aside class="col-lg-4 pe-xl-5">
-              <!-- Account menu toggler (hidden on screens larger 992px)-->
               <!-- Actual menu-->
               <div class="h-100 border-end mb-2">
                 <div class="d-lg-block collapse" id="account-menu">
@@ -88,25 +78,21 @@
                   <h2 class="h3 py-2 me-2 text-center text-sm-start">Edit category</h2>
                   <div class="py-2">
                   </div>
-                </div>
-                
+                </div>              
                 <form action="/admin/updatecategory/<%=id %>  " method="post" enctype="multipart/form-data">
                   <div class="mb-3 pb-2">
                     <label class="form-label" for="unp-product-name">category name</label>
                     <input class="form-control" name="title" type="text" id="unp-product-name" value="<%= edit.title %> ">
                     <div class="form-text">Maximum 100 characters</div>
-                  </div>
-                 
+                  </div>              
                   <div class="mb-3 py-2">
                     <label class="form-label" for="unp-product-name">Category Description</label>
                     <input class="form-control" name="description" type="text" id="unp-product-name" value="<%= edit.description %> ">
-                  </div>
-                  
+                  </div>    
                   <div class="row">
                   <div class="mb-3 pb-2">
                     <label class="form-label" for="unp-product-files">Product files for sale</label>
-                    <input class="form-control" name="image" type="file" id="unp-product-files" value="<%=edit.image%> ">
-                    
+                    <input class="form-control" name="image" type="file" id="unp-product-files" value="<%=edit.image%> ">                   
                   </div>
                   <button class="btn btn-primary d-block w-100" type="submit"><i class="ci-cloud-upload fs-lg me-2"></i>Edit category</button>
                 </form>
@@ -126,15 +112,11 @@
             <h6 class="d-inline-block me-3"><span class="text-primary"></span><span class="fw-normal text-white"></span></h6>
             <div class="widget mt-4 text-md-nowrap text-center text-md-start"><a class="btn-social bs-light bs-twitter me-2 mb-2" href="#"><i class="ci-twitter"></i></a><a class="btn-social bs-light bs-facebook me-2 mb-2" href="#"><i class="ci-facebook"></i></a><a class="btn-social bs-light bs-dribbble me-2 mb-2" href="#"><i class="ci-dribbble"></i></a><a class="btn-social bs-light bs-behance me-2 mb-2" href="#"><i class="ci-behance"></i></a><a class="btn-social bs-light bs-pinterest me-2 mb-2" href="#"><i class="ci-pinterest"></i></a></div>
           </div>
-          <!-- Mobile dropdown menu (visible on screens below md)-->
           <div class="col-12 d-md-none text-center mb-4 pb-2">
             <div class="btn-group dropdown d-block mx-auto mb-3">
             </div>
             
           </div>
-          <!-- Desktop menu (visible on screens above md)-->
-          
-          
         </div>
       </div>
       <!-- Second row-->
@@ -172,6 +154,4 @@
     <!-- Main theme script-->
     <script src="/js/theme.min.js"></script>
   </body>
-
-<!-- Mirrored from cartzilla.createx.studio/dashboard-add-new-product.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Dec 2022 04:02:23 GMT -->
 </html>

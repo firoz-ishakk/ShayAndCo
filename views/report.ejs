@@ -1,3 +1,7 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+    integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <style>
 
     body {
@@ -159,8 +163,7 @@
         margin-top: 10px;
         font-size: 13px;
     }
-    </style>
-    
+    </style> 
     </head>
     <body>
     <div class="container-xl">
@@ -169,53 +172,61 @@
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-5">
-                            <h2>Coupon <b>Management</b></h2>
+                            <h2>Report</b></h2>
                         </div>
                         <div class="col-sm-7">
                             <a href="/admin/" class="btn btn-secondary"><i class="null"></i> <span>Back to dashboard</span></a>
                             
-                            <a href="/admin/" class="btn btn-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
+                            <button id="download-button" class="btn btn-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
                                 <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
                                 <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/>
-                        </svg>Print</a>
+                        </svg>Print</button>
                         </div>
                     </div>
                 </div>
-             
-                <table class="table table-striped table-hover">
-                 
+                <div id="invoice" class="table-responsive">
+                <table class="table table-striped table-hover">                
                     <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Date & Time</th>
                             <th scope="col">orderID</th>
                             <th scope="col">Customer</th>
-                            <th scope="col">Item count</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Total</thCustomer>
-                    
+                            <th scope="col">Total</th>            
             </thead>
                     <tbody>
-                        <% order.forEach((el,index)=>{ %>
-                       
-                          
-                            
+                        <% order.forEach((el,index)=>{ %>  
                              <td><a href="#"><%=index+1  %></a></td>
-                             <td><a href="#"><%=el.createdAt  %></a></td>
-                            <td><a href="#"><%=el._id %></a></td>     
-                            <td><a href="#"><%=el.user%></a></td>     
-                            <td><a href="#"><%=  %></a></td>     
-                            <td><a href="#"><%=  %></a></td>     
-                            <td><a href="#"><%=  %></a></td>     
+                             <td><a href="#"><%=el.createdAt%></a></td>
+                             <td><a href="#"><%=el._id %></a></td>     
+                             <td><a href="#"><%=el.user.name%></a></td>       
+                            <td><a href="#"><%=el.orderStat  %></a></td>     
+                            <td><a href="#"><%=el.totalPrice %></a></td>     
                             <td><a href="#"><%=  %></a></td>     
                         </tr>
-                    </tbody>
+                    </tbody>    
                     <% }) %>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><b>TOTAL:</b></td>
+                    <td><b>₹<%=total[0].total%></b></td>
                 </table>
                 <div class="clearfix">
-                    
-                    
-                </div>
+                 </div>
+               <tr>
             </div>
         </div>
     </div>
+    <script>
+        const button = document.getElementById('download-button');
+        function generatePDF() {
+            // Choose the element that your content will be rendered to.
+            const element = document.getElementById('invoice');
+            // Choose the element and save the PDF for your user.
+            html2pdf().from(element).save();
+        }
+        button.addEventListener('click', generatePDF);
+    </script>

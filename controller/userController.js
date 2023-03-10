@@ -44,7 +44,7 @@ const userHome = async (req, res) => {
   }
 };
 
-const userLogin = (req, res) => {
+const userLogin = (req, res, next) => {
   try {
     if (req.session.userId) {
       res.redirect("/home");
@@ -54,12 +54,13 @@ const userLogin = (req, res) => {
       console.log("error: ", err);
       res.render("userLogin", { err });
     }
-  } catch (err) {
+  } catch (error) {
     console.log("page not found");
+    next(error);
   }
 };
 
-const userSignup = (req, res) => {
+const userSignup = (req, res, next) => {
   try {
     if (req.session.loggedIn) {
       res.redirect("/home");
@@ -67,36 +68,47 @@ const userSignup = (req, res) => {
     res.render("userSignup");
   } catch (error) {
     console.log("404 not found ", error);
+    next(error);
   }
 };
 
-const userOtp = (req, res) => {
+const userOtp = (req, res, next) => {
   try {
     res.render("userOtp");
   } catch (error) {
     console.log("page not found");
+    next(error);
   }
 };
 
-const doRegister = (req, res) => {
-  userHelpers.doRegister(req.body, res, req, (user) => {
-    console.log("after signup success ");
-    res.redirect("/otp");
-  });
+const doRegister = (req, res, next) => {
+  try {
+    userHelpers.doRegister(req.body, res, req, (user) => {
+      res.redirect("/otp");
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 
-const loggedIn = (req, res) => {
-  console.log(req.body);
-  userHelpers.doLogin(req, res);
+const loggedIn = (req, res, next) => {
+  try {
+    userHelpers.doLogin(req, res);
+    
+  } catch (error) {
+    next(error);
+  }
 };
 
-const otpVerification = (req, res) => {
-  userHelpers.otp(req.body.otp, res, (user) => {
-    req.session.loggedIn = true;
-
-    console.log("data saved");
-    res.redirect("/home");
-  });
+const otpVerification = (req, res,next) => {
+  try {
+    userHelpers.otp(req.body.otp, res, (user) => {
+      req.session.loggedIn = true;
+      res.redirect("/home");
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 
 const shop = async (req, res) => {
@@ -120,7 +132,6 @@ const shop = async (req, res) => {
         pagination.limit * Number(req.query.page) - pagination.limit;
       // pagination.limit =pagination.limit*Number(req.query.page);
       pagination.q = Number(req.query.page);
-      console.log(pagination);
     }
   }
   if (req.query.cat) {
@@ -135,7 +146,6 @@ const shop = async (req, res) => {
       });
       pagination.urlpath = "?cat=" + req.query.cat + "&page=";
     } catch (error) {
-      console.log(error);
       next(createError(404));
     }
     typeData.type = "catlisting";
@@ -145,7 +155,6 @@ const shop = async (req, res) => {
 
     try {
       let skey = req.query.q;
-      // productsList  = await products.find({ name: { $regex: new RegExp('^'+req.query.q.toString()+'.*','i')}})
       let regex = new RegExp("^" + skey + ".*", "i");
       productsList = await productData
         .aggregate([
@@ -177,14 +186,12 @@ const shop = async (req, res) => {
     });
     pagination.urlpath = "?page=";
   }
-  // let productlisting = await productData.find({access:true}).populate("category")
   const user = await usersession.findById(req.session.userId);
   let cartprice = 0;
   let cartlength = 0;
   if (req.session.userId) {
     cartprice = user.cart.totalPrice;
     cartlength = user.cart.items.length;
-    // console.log(cartlength, " over herree");
   }
 
   let categories = await categoryMgtModel.find({});
@@ -200,12 +207,13 @@ const shop = async (req, res) => {
 };
 
 //sessionout
-const signOut = async (req, res) => {
+const signOut = async (req, res,next) => {
   try {
     req.session.destroy();
     res.redirect("/home");
   } catch (error) {
     console.log(error);
+    next(error);
   }
 };
 
@@ -222,84 +230,71 @@ const resendOtp = async (req, res) => {
   res.redirect("/otp");
 };
 
-/* to add product to cart */
-const addToCart = async (req, res) => {
+// to add product to cart
+const addToCart = async (req, res, next) => {
   try {
     let proId = req.body.id;
-    console.log(proId, " good? good");
-    console.log(req.session.userId);
     let userId = req.session.userId;
     let cartUser = await User.findById({ _id: userId });
     productData
       .findById({ _id: proId })
       .then((product) => {
-        console.log("product: ", product);
         cartUser.addItemToCart(product).then((result) => {
           res.json({
             success: true,
             cartprice: cartUser.cart.totalPrice,
             cartlength: cartUser.cart.items.length,
           });
-          console.log(cartUser.cart.items.length);
         });
       })
       .catch((e) => {
-        console.log("ERROR!! " + e);
         res.json({
           success: false,
           cartprice: 0,
           cartlength: 0,
         });
       });
-  } catch (err) {
-    console.log("ERROR IN ADD TO CART!! " + err);
+  } catch (error) {
+    next(error);
   }
 };
 
 //cartpage
-const cartPage = async (req, res) => {
+const cartPage = async (req, res, next) => {
   try {
     const user = req.session.userId;
-
     const cartproduct = await User.findOne({ _id: user }).populate(
       "cart.items.productId"
     );
-    console.log(cartproduct.cart.items, "for cart products");
-    console.log(
-      user,
-    );
     res.render("cart", {
-     
       cartItems: cartproduct.cart.items,
       cartTotal: cartproduct.cart.totalPrice,
       loginaccess: user,
       message:"error"
     });
   } catch (error) {
-    console.log("error!!", error);
+    next(error);
   }
 };
 
 //changequantity
-const changeQuantity = (req, res) => {
-  if (req.session.userId) {
-    console.log(
-      req.body,
-      "naan bodyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
-    );
-    userHelpers.changeQuantity(req, res);
-  } else {
-    res.redirect("/login");
+const changeQuantity = (req, res, next) => {
+  try {
+    if (req.session.userId) {
+      userHelpers.changeQuantity(req, res);
+    } else {
+      res.redirect("/login");
+    }
+  } catch (error) {
+    next(error);
   }
 };
 
 //wishlist
-const wishListPage = async (req, res) => {
+const wishListPage = async (req, res, next) => {
   try {
-    if(req.session.userId){
-    console.log("wishlist....");
+    if(req.session.userId){ 
     const user = req.session.userId;
-    // const wishlistpage = await User.findPne({_id:user})
     let products = [];
     let product = await User.findOne({ _id: user }).populate(
       "wishlist.items.wishlistId"
@@ -309,25 +304,21 @@ const wishListPage = async (req, res) => {
         products.push(product.wishlist.items[i]);
       }
     }
-    console.log(products, " productssssss");
-    console.log("user: ", product.wishlist.items);
     res.render("accountwishlist", { loginaccess: user, products });
   }else{
     res.redirect('/login')
   }
   } catch (error) {
-    console.log("wishlist error!", error);
+    next(error);
   }
 };
 
 //add to wishlist page
-const addToWishlist = async (req, res) => {
+const addToWishlist = async (req, res, next) => {
   try {
     if(req.session.userId){
     let proId = req.body.id;
-    console.log(proId, "wishlist proID");
     let user = req.session.userId;
-    console.log(user);
     let wishUser = await User.findById({ _id: user });
     productData
       .findById({ _id: proId })
@@ -337,7 +328,6 @@ const addToWishlist = async (req, res) => {
         });
       })
       .catch((e) => {
-        console.log("ERROR!! " + e);
         res.json({
           success: false,
         });
@@ -346,16 +336,15 @@ const addToWishlist = async (req, res) => {
       res.redirect("/login")
     }
   } catch (error) {
-    console.log("error in wishlist", error);
+    next(error);
   }
 };
 
 //profile
-const profilePage = async (req, res) => {
+const profilePage = async (req, res, next) => {
   try {
     if (req.session.userId) {
       let users = await User.findById(req.session.userId);
-      console.log("profile: ", users);
       res.render("accountprofile", {
         loginaccess: users,
         users: users,
@@ -363,16 +352,14 @@ const profilePage = async (req, res) => {
     } else {
       res.redirect("/login");
     }
-  } catch (e) {
-    console.log("user profile ERROR! ", e);
+  } catch (error) {
+    next(error);
   }
 };
 
 /* user details edit */
-const editUserDetails = async (req, res) => {
+const editUserDetails = async (req, res, next) => {
   try{
-  console.log("id: " + req.session.userId);
-  console.log(req.body);
   let userId = req.session.userId;
   let phone = parseInt(req.body.phone);
   let user = await User.findOneAndUpdate(
@@ -400,7 +387,6 @@ const editUserDetails = async (req, res) => {
       });
     
     } else {
-      console.log("data saving successful! " + data);
       res.json({
         success: true,
      
@@ -408,49 +394,42 @@ const editUserDetails = async (req, res) => {
       
     }
   });
-}catch(e){
-  console.log('ERORR!! ',e)
+}catch(error){
+  console.log('ERORR!!')
+  next(error);
 }
 };
 
 //single view product
 const viewProduct = async(req,res)=>{
   const productView = await productData.findById({_id:req.query.id})
-  console.log(productView , " body received")
   res.render("singleproduct",{products:productView})
   }
 
 //add address in profile page
-const addAddressPage = async(req,res)=>{
+const addAddressPage = async(req,res,next)=>{
   try {
   let userId =req.session.userId
-  console.log(userId)
   let address = await Address.find({user:userId}) 
     res.render("accountaddress",{loginaccess:userId, address:address})
   } catch (error) {
     if(error){
-      console.log("there is an error in the address add @addAddressPage", error)
+      next(error);
     }
   }
 }
 
 
 //add addresss in profile
-const addAddressProfile = async(req,res)=>{
+const addAddressProfile = async(req,res,next)=>{
   try {
-    
-    console.log(req.body,"this is body for add address" ) 
     let address = req.body
     let addressDATA = await Address.find({_id:req.body.address})
-    
-    console.log("these are the address Datas @addAddressPage: ", addressDATA)
     let addressData = Address({
       address : [address],
       user : req.session.userId
     })
-    console.log(addressData, " this is address data @addAddressProfile")
     const addressPush = await addressData.save().then((result)=>{
-      console.log(result, " this is the result of adaddress @addaddressProfile")
       User.findById(req.session.userId,(err,data)=>{
         if(err){
           console.log(err)
@@ -459,19 +438,16 @@ const addAddressProfile = async(req,res)=>{
           console.log(data,"data received in @addAddressProfile")
         }
       })
-
-      // console.log(userPush, "  user puhs happening here")
     })
     if(address){
       res.redirect("/profilepage")
     }else{
-      console.log("error in sending address @addAddress" , error);
       res.redirect("/cart")
     }
 
   } catch (error) {
     if(error){
-      console.log("there is an error in the add address part @addAddres route", error)
+      next(error);
     }
   }
 
@@ -479,66 +455,57 @@ const addAddressProfile = async(req,res)=>{
 
 
 //add address
-const addAddress = async(req,res)=>{
+const addAddress = async(req,res,next)=>{
   try {
-    console.log(req.body,"this is body for add address" ) 
     let address = req.body
     let addressData = Address({
       address : [address],
       user : req.session.userId
     })
-    console.log(addressData, " this is address data  @addAddress")
     const addressPush = await addressData.save()
-    console.log(addressPush, "the data is pushed to the database")
     if(address){
       res.redirect("/checkoutpage")
     }else{
-      console.log("error in sending address @addAddress" , error);
       res.redirect("/cart")
     }
 
   } catch (error) {
     if(error){
-      console.log("there is an error in the add address part @addAddres route", error)
+      next(error);
     }
   }
 }
 
 
 //deletion of address
-const addressDelete = async(req,res)=>{
+const addressDelete = async(req,res,next)=>{
   try {
     let addressDel  = await Address.findByIdAndDelete(req.query.id)
     console.log(addressDel, " adress got deleted" )
    res.json({done: true})
   } catch (error) {
-    console.log(error, " error in deletion of address")
+    next(error);
   }
 }
 
 //page for editing address
-const editAddressPage = async(req,res)=>{
+const editAddressPage = async(req,res,next)=>{
   try {
     let address = await Address.findOne({_id:req.query.id})
     let user = req.query.id
-    console.log(address," req.body received at @editAddressPage")
-    console.log(user," this is user @editAddressPage");
     res.render("addressEdit",{loginaccess:user, data: address})}
  catch (error) {
-  console.log("edit page is in error @editAddressPage",error)
+  next(error);
 }}
 
 //editing of address 
-const editAddress = async(req,res)=>{
+const editAddress = async(req,res,next)=>{
   try{
-   console.log(req.body," this is quesrybbbbbbbbbbbbbbbbbbbbbbbbbbb")
   let userId = req.session.userId;
-  // let phone = parseInt(req.body.phone);
   await Address.findByIdAndUpdate(req.query.id, {
     $set: {
       address: {
         fullName: req.body.name,
-    
         pincode: req.body.pincode,
         district: req.body.district,
         state: req.body.state,
@@ -547,29 +514,26 @@ const editAddress = async(req,res)=>{
       },
     },
   }).then((doc)=>{
-    console.log(doc, "ze docccccccccccccccccc")
+    console.log(doc)
   }) ;
   res.redirect("/addresspage")
   
-}catch(e){
-  console.log('ERORR!! ',e)
+}catch(error){
+  next(error);
 }
 };
 
 //checkout page
-const checkoutPage = async(req,res)=>{
+const checkoutPage = async(req,res,next)=>{
 
   let pass = req.body
-  console.log("this is req.body @checkout page ", pass)
   let userId = req.session.userId
   let address = await Address.find()
-  console.log(address," this is address @checkoutPage")
   let user =  await User.findById(req.session.userId).populate('cart.items.productId')  
-  console.log(user," user in checkout @checkoutpage")
   try {
     res.render("checkout",{loginaccess:user,address:address})
   } catch (error) {
-    console.log("checkout page error", error)
+    next(error);
   }
 }
 
@@ -577,11 +541,8 @@ const checkoutPage = async(req,res)=>{
 //new order
 const confirmOrder =async(req,res)=>{
   try{
-  console.log(req.body,'body ethiiiiiiiiiiiiiiiiiii')
   let coupon = await Coupon.findOne({code: req.body.couponRedeme })
-  console.log(coupon," this here is coupon in @newOrder")
   let userData = await User.findById(req.session.userId)
-  console.log(userData,'useerrrrr')
   let finalTotalPrice = userData.cart.totalPrice - coupon.discount
   if(req.body.paymentMethod === "cod"){
     const newOrderData =  new Order({
@@ -592,9 +553,7 @@ const confirmOrder =async(req,res)=>{
       orderStat: "Placed",
       paymentMethod: req.body.paymentMethod
     })
-    console.log( newOrderData,'orderrrrrrrrrrrrrrrr getting');
    const orderAdded =  await newOrderData.save();
-   console.log(orderAdded,'orderrrrrrrrrrrrrrrr getted');
     userData.cart.items.forEach(async(eachItems)=>{
       const proId = eachItems.productId;
       await productData.findByIdAndUpdate(proId,{
@@ -606,19 +565,17 @@ const confirmOrder =async(req,res)=>{
    let result =  await userData.save()
      
     if(result){
-      console.log("the result  for confirmation of order: is done", result)
-      console.log("the order is damn confirmed")
       res.json({ codDelivery: true })
     }else{
-      console.log("not confirmed? check the error")
+      console.log("error")
     }
-}//onine payment
+}//online payment
 else{
 const newOrderData = Order({
   user:req.session.userId,
   address : req.body.address,
   items: userData.cart.items,
-totalPrice :finalTotalPrice ,
+  totalPrice :finalTotalPrice ,
   orderStat: "Pending",
   paymentMethod: req.body.paymentMethod
 })
@@ -643,7 +600,6 @@ const orderAdded = await newOrderData.save().then((doc)=>{
         order: response,
       });
     });
-
 }
 )}
 let UserId = await User.findById(req.session.userId)
@@ -652,7 +608,7 @@ await Coupon.findOneAndUpdate(
   { $addToSet: { usedUsers : UserId } }
 )
 }catch(error){
-  console.log("error in online payment", error)
+  console.log(error)
 }
 }
 
@@ -660,22 +616,15 @@ await Coupon.findOneAndUpdate(
 //coupons
 const checkCoupon = async (req, res, next) => {
   try {
-    console.log("getting here");
-    
     let couponData = await Coupon.findOne({ code: req.body.promo });
     let user = await User.findOne({_id:req.session.userId})
-    console.log(couponData," this the the coupon data");
-    
-    console.log(user.cart.totalPrice - couponData.discount," this is the total cart amount")
     if (couponData) {
       let currentDate = new Date()
       let expiryDate = couponData.expiry
       if (expiryDate > currentDate ) {
         if (user.cart.totalPrice > couponData.minimum_purchase) {
           let userId = req.session.userId;
-          console.log("getting here 111111");
           if (couponData. claimed_users.length <= 0) {
-            console.log("getting here222222s");
             let couponAmount = couponData.discount;
             let couponName = couponData.code;
             res.json({ couponAvailable: true, couponAmount, couponName });
@@ -683,7 +632,6 @@ const checkCoupon = async (req, res, next) => {
             let isClaimed = couponData.usedUsers.findIndex(
               (element) => element.toString() === userId
             );
-
             if (isClaimed === -1) {
               let couponAmount = couponData.discount;
               res.json({ couponAvailable: true, couponAmount });
@@ -704,59 +652,47 @@ const checkCoupon = async (req, res, next) => {
       res.json({ erro: true, errorMessage: "Enter a valid Promo Code" });
     }
   } catch (error) {
-    console.log(error.message);
-    console.log(error.message);
     next(error);
   }
 };
 
 
 //page for confirmation of order
-const confirmOrderPage = (req,res)=>{
+const confirmOrderPage = (req,res,next)=>{
   try {
     res.render("checkoutcomplete")
-    console.log("order confirmed")
   } catch (error) {
-    console.log("something wrong with the checkout, try again later")
+    next(error);
   }
 }
 
 //userMgt Page
-const orderManagementPage = async(req,res)=>{
+const orderManagementPage = async(req,res,next)=>{
   try {
-
     let user = await User.findById(req.session.userId)
     let orders = await Order.find().populate("items.productId")
-    
-     console.log(orders, "orders by the user @orderManagementPage")
-
     res.render("userordermgt",{loginaccess:user,orders:orders})
   } catch (error) {
-    console.log("error in Usermgt page", error)
+    next(error);
   }
 }
 
 
 //userManagement 
-const cancelOrder = (req,res)=>{
+const cancelOrder = (req,res,next)=>{
   try {
     let user = req.session.userId
-    console.log(user," the user is signed innnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn" );
    let order =  Order.findOneAndUpdate({_id:req.body.id},{
       $set:{
         orderStat : "cancelled"
        }
     },{new:true},(err,doc)=>{
       if(err){
-        console.log("error",err)
+        console.log(err)
       }else{
-        
-        console.log("success in cancelling the order",doc)
         const billAmount = doc.totalPrice
-        console.log(billAmount, " this is the bill amount after Cancelling order ")
         res.json({success:true})
         if(doc.paymentMethod == "online"){
-          console.log(req.session.userId," THIS IS THE USERiD DSKJFGNADSLKFJGNSLDKFJGNLKSDFJNGLSKDFJNGLKJDFNGLKSGN")
            User.findByIdAndUpdate(req.session.userId,
            {
             $inc:{wallet_balance:billAmount}
@@ -765,40 +701,33 @@ const cancelOrder = (req,res)=>{
       }
     })
   } catch (error) {
-    
+    next(error);
   }
 }
 
+//verification of payment
 const verifyPayement = async (req, res, next) => {
   try {    
     let body =
     req.body['response[razorpay_order_id]']+
       "|" +
       req.body['response[razorpay_payment_id]']; 
-    
-  
-console.log(body,'body');
     var crypto = require("crypto");
     var expectedSignature = crypto.createHmac('sha256', 'O4RlOXRxnLAX8IaXM3ifqFZZ')
       .update(body.toString())
       .digest("hex");
-    console.log("sig received ", req.body['response[razorpay_signature]']);
-    console.log("sig generated ", expectedSignature);
     var response = { signatureIsValid: "false" };
 
     if (expectedSignature.trim() === req.body['response[razorpay_signature]']) {
       response = { signatureIsValid: "true" };
-
       const userId = req.session.userId;
       const user = await User.findById(userId);
-
       user.cart.items.forEach(async (eachItems) => {
         const proId = eachItems.productId;
         await productData.findByIdAndUpdate(proId, {
           $inc: { stock: -eachItems.qty },
         });
       });
-    console.log(req.body._id," sdkgfjbaljsbgnlkjadshgflkjafgkljashbdfglkjansdlgkjbas;dkjgfbUIWHG;OJsdnf")
      await Order.findOneAndUpdate(
         { _id: req.body['order[receipt]']},
         { $set:
@@ -808,20 +737,9 @@ console.log(body,'body');
     }
     res.json({ response: response });
   } catch (error) {
-    console.log("error in payment thingy");
-    console.log(error.message);
     next(error);
   }
 };
-
-//cancell
-
-
-
-//wallet
-const wallet = (req,res)=>{
-
-}
 
 
 module.exports = {
@@ -857,6 +775,6 @@ module.exports = {
   cancelOrder,
   orderManagementPage,
   verifyPayement,
-  wallet
+ 
 
 }

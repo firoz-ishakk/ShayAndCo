@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-<!-- Mirrored from cartzilla.createx.studio/shop-grid-ft.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Dec 2022 04:01:54 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8">
@@ -45,8 +43,7 @@
             </ul>
           </div>
           <div class="modal-body tab-content py-4">
-            <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">
-             
+            <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">            
               <a class="btn btn-primary btn-shadow d-block w-100" type="submit" href="/login">login</a>
             </form>
           </div>
@@ -62,8 +59,7 @@
               <div class="modal-header">
                 <h4 class="modal-title product-title"><a href="shop-single-v2.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Go to product page"><%=el.title %> <i class="ci-arrow-right fs-lg ms-2"></i></a></h4>
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-           
+              </div>          
               <div class="modal-body">
                 <div class="row">
                   <!-- Product gallery-->
@@ -75,8 +71,7 @@
                         <div class="product-gallery-preview-item active"  id="<%=arr[i] %>"><img class="image-zoom" src="<%= el.images[i] %> " data-zoom="<%= el.images[i] %> " alt="">
                           <div class="image-zoom-pane" ></div>
                         </div>
-                        <% } %>
-                      
+                        <% } %>                    
                       </div>
                       <div class="product-gallery-thumblist order-sm-1">
                       <% for(let i=0;i< el.images.length;i++) { %>
@@ -92,8 +87,7 @@
                         <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
                         </div><span class="d-inline-block fs-sm text-body align-middle mt-1 ms-1"></span>
                       </div>
-                      <div class="h3 fw-normal text-accent mb-3 me-1">$<%=el.price %> .<small>99</small></div>
-                      
+                      <div class="h3 fw-normal text-accent mb-3 me-1">$<%=el.price %> .<small>99</small></div>                     
                       <div class="position-relative me-n4 mb-3">
                         <div class="form-check form-option form-check-inline mb-2">
                           <input class="form-check-input" type="radio" name="color" id="color1" data-bs-label="colorOptionText" value="Dark blue/Orange" checked>
@@ -577,9 +571,10 @@
           data:{id:proId}
         }).done((data)=>{
           if(data.success){
-            console.log(data.cartlength)
+            
             document.getElementById('cartlength').innerHTML=data.cartlength
             document.getElementById('cartprice').innerHTML=data.cartprice
+            Swal.Fire("Product Added to Cart")
           }
         })
       }

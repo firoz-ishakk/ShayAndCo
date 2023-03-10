@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   
-<!-- Mirrored from cartzilla.createx.studio/account-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Dec 2022 04:02:18 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <head>
     <meta charset="utf-8">
     <title>Cartzilla | Profile info</title>
@@ -25,10 +25,6 @@
     <link rel="stylesheet" media="screen" href="vendor/tiny-slider/dist/tiny-slider.css"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="css/theme.min.css">
-    <!-- Google Tag Manager-->
-    <script>
-    
-    </script>
   </head>
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
@@ -245,7 +241,6 @@
                   <li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" href="/home" data-bs-toggle="dropdown">Home</a>
                    
                   </li>
-                  <!-- <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Shop</a> -->
                     <div class="dropdown-menu p-0">
                       <div class="d-flex flex-wrap flex-sm-nowrap px-2">
                         <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
@@ -340,16 +335,13 @@
                 <ul class="list-unstyled mb-0">
                   <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/cart"><i class="ci-bag opacity-60 me-2"></i>Orders<span class="fs-sm text-muted ms-auto">1</span></a></li>
                   <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/wishlistpage"><i class="ci-heart opacity-60 me-2"></i>Wishlist<span class="fs-sm text-muted ms-auto">3</span></a></li>
-                  <!-- <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-tickets.html"><i class="ci-help opacity-60 me-2"></i>Support tickets<span class="fs-sm text-muted ms-auto">1</span></a></li> -->
+               
                 </ul>
                 <div class="bg-secondary px-4 py-3">
                   <h3 class="fs-sm mb-0 text-muted">Account settings</h3>
                 </div>
                 <ul class="list-unstyled mb-0">
-                  <!-- <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3 active" href="account-profile.html"><i class="ci-user opacity-60 me-2"></i>Profile info</a></li> -->
                   <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/addresspage"><i class="ci-location opacity-60 me-2"></i>Addresses</a></li>
-                  <!-- <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-payment.html"><i class="ci-card opacity-60 me-2"></i>Payment methods</a></li> -->
-                  <!-- <li class="d-lg-none border-top mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/signout"><i class="ci-sign-out opacity-60 me-2"></i>Sign ut</a></li> -->
                 </ul>
               </div>
             </div>
@@ -360,7 +352,6 @@
             <div class="d-none d-lg-flex justify-content-between align-items-center pt-lg-3 pb-4 pb-lg-5 mb-lg-3">
               <h6 class="fs-base text-light mb-0">Update you profile details below:</h6><a class="btn btn-primary btn-sm" href="/signout"><i class="ci-sign-out me-2"></i>Sign out</a>
             </div>
-            <!-- Profile form--> <!--WALLET BALANCE GOES HERE-->
             <form>
               <div class="bg-secondary rounded-3 p-4 mb-4">
                 <div class="d-flex align-items-center"><img class="rounded" src="---" width="90" alt="">
@@ -376,10 +367,7 @@
                   <label class="form-label" for="account-fn">full name</label>
                   <input class="form-control" name="fullName" type="text" id="account-fn" value="<%= users.name %>">
                 </div>
-                <!-- <div class="col-sm-6">
-                  <label class="form-label" for="account-ln">Last Name</label>
-                  <input class="form-control" type="text" id="account-ln" value="Gardner">
-                </div> -->
+               
                 <div class="col-sm-6">
                   <label class="form-label" for="account-email">Email Address</label>
                   <input class="form-control" type="email" name="email" id="account-email" value="<%= users.email %>">
@@ -388,31 +376,9 @@
                   <label class="form-label" for="account-phone">Phone Number</label>
                   <input class="form-control" type="text" id="account-phone" name="phone" value="<%= users.mobileno %>" required>
                 </div>
-                <!-- <div class="col-sm-6">
-                  <label class="form-label" for="account-pass">New Password</label>
-                  <div class="password-toggle">
-                    <input class="form-control" type="password" id="account-pass">
-                    <label class="password-toggle-btn" aria-label="Show/hide password">
-                      <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                    </label>
-                  </div>
-                </div> -->
-                <!-- <div class="col-sm-6">
-                  <label class="form-label" for="account-confirm-pass">Confirm Password</label>
-                  <div class="password-toggle">
-                    <input class="form-control" type="password" id="account-confirm-pass">
-                    <label class="password-toggle-btn" aria-label="Show/hide password">
-                      <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                    </label>
-                  </div>
-                </div> -->
                 <div class="col-12">
                   <hr class="mt-2 mb-3">
                   <div class="d-flex flex-wrap justify-content-between align-items-center">
-                    <!-- <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="subscribe_me" checked>
-                      <label class="form-check-label" for="subscribe_me">Subscribe me to Newsletter</label>
-                    </div> -->
                     <a class="btn btn-primary mt-3 mt-sm-0" onclick="updateProfile()" >Update profile</a>
                   </div>
                 </div>
@@ -496,7 +462,6 @@
                   <input class="form-control rounded-start" type="email" name="EMAIL" placeholder="Your email" required>
                   <button class="btn btn-primary" type="submit" name="subscribe">Subscribe*</button>
                 </div>
-                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                 <div style="position: absolute; left: -5000px;" aria-hidden="true">
                   <input class="subscription-form-antispam" type="text" name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
                 </div>
@@ -602,6 +567,4 @@
     <!-- Main theme script-->
     <script src="js/theme.min.js"></script>
   </body>
-
-<!-- Mirrored from cartzilla.createx.studio/account-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Dec 2022 04:02:18 GMT -->
 </html>

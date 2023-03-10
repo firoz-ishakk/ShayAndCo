@@ -47,24 +47,19 @@ const otp = async (otp, res, cb) => {
 const doLogin = async (req, res) => {
   let userlogin = req.body;
   let user = await userData.findOne({ email: req.body.email });
-  console.log("user signed ", user);
   if (user) {
     bcrypt.compare(userlogin.password, user.password).then((status) => {
       if (status) {
         req.session.userId = user._id;
-        console.log("success aayi");
         req.session.error = false;
-
         res.redirect("/home");
       } else {
-        console.log("login failed1");
         req.session.loggedIn = false;
         req.session.error = true;
         res.redirect("/login");
       }
     });
   } else {
-    console.log("login failed");
     req.session.loggedIn = false;
     req.session.error = true;
     res.redirect("/login");
@@ -101,17 +96,12 @@ const cart = async (req, res) => {
 const changeQuantity = async (req, res) => {
   try {
     let count = parseInt(req.body.count);
-    console.log(req.body, " countttcccccccccccccccccccccccccccccccccccc");
     let userId = req.session.userId;
-    // console.log(userId, "this is userid");
     let cartUser = await userData.findById({ _id: userId });
-    console.log(req.body, "this is req.body");
     let proId = req.body.id;
-    // console.log(proId, " this is proId")
    proId = proId.trim();
     proId = objId(proId)
      await products.findById(proId).then((data)=>{
-      console.log("product: ", data);
       cartUser.changeQuantity(data, count, userId, (response) => {
         res.json(response);
       });

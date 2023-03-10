@@ -81,6 +81,26 @@ app.use("/admin",adminRouter)
 //WHERE OUR PUBLIC FILES WILL BE 👇
 app.use(express.static('public'))
 
+// error handler
+app.use(function (err, req, res, next) {
+  console.log(err);
+  // render the error page
+  res.status(err.status || 500);
+  if (err.status == 404) {
+    if (err.admin) {
+      res.render("admin/404", { error: err.message });
+    } else {
+      res.render("404", { error: err.message });
+    }
+  } else {
+    if (err.admin) {
+      res.render("admin/500", { error: "server down" });
+    } else {
+      res.render("500", { error: "server down" });
+    }
+  }
+});
+
 app.listen(process.env.PORT || 9999,()=>{
     console.log(`server started http://localhost:9999`);
 })

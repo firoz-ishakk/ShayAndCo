@@ -1,10 +1,4 @@
-<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+
 <style>
   body {
       color: #566787;
@@ -182,10 +176,8 @@
                           <a href="/admin/add-product" class="btn btn-secondary"><i class="null"></i> <span>Add New Product</span></a>
                       </div>
                   </div>
-              </div>
-           
-              <table class="table table-striped table-hover">
-                  
+              </div>          
+              <table class="table table-striped table-hover">                
                   <thead>
                       <tr>
                           <th scope="col">#</th>
@@ -196,8 +188,7 @@
                           <th scope="col">category</th>
                           <th scope="col">stock</th>
                           <th scope="col">images</th>
-                          <th scope="col">actions</th>
-                          
+                          <th scope="col">actions</th>                         
                       </tr>
                   </thead>
                   <tbody>
@@ -210,11 +201,8 @@
                         <td><a href="#"> <%=el.price%></a></td>
                         <td><a href="#"> <%=el.category.title%></a></td>
                         <td><a href="#"> <%=el.stock%></a></td>
-
                         <td><img style="max-width: 150px; height: auto;"  src="<%= el.images %> " alt=""></td>
-
                         <td><a href="/admin/producteditpage?id=<%=el._id %>" class="btn btn-primary text-white">Edit</a></td>
-
                         <% if(el.access){ %> 
                         <td><a href="/admin/listing/<%=el._id%>" class="btn btn-danger text-white">block</a></td>
                         <% }else{ %> 
@@ -224,18 +212,6 @@
                     <% }) %>
                 </tbody>
               </table>
-              <!-- <div class="clearfix">
-                  <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                  <ul class="pagination">
-                      <li class="page-item disabled"><a href="#">Previous</a></li>
-                      <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                      <li class="page-item"><a href="#" class="page-link">2</a></li>
-                      <li class="page-item "><a href="#" class="page-link">3</a></li>
-                      <li class="page-item"><a href="#" class="page-link">4</a></li>
-                      <li class="page-item"><a href="#" class="page-link">5</a></li>
-                      <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                  </ul>
-              </div> -->
           </div>
       </div>
                   
@@ -271,17 +247,14 @@ if (result.isConfirmed) {
               console.log("delete? ",res);
               if(res.data.delete){
                  document.getElementById(categoryId).remove()
-              }
-              
+              }             
           }))
   swalWithBootstrapButtons.fire(
     'Deleted!',
     'Your file has been deleted.',
     'success'
   )
-
 } else if (
-  /* Read more about handling dismissals below */
   result.dismiss === Swal.DismissReason.cancel
 ) {
   swalWithBootstrapButtons.fire(

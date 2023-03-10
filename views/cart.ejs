@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   
-<!-- Mirrored from cartzilla.createx.studio/food-delivery-cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Dec 2022 04:02:08 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8">
@@ -25,10 +24,6 @@
     <link rel="stylesheet" media="screen" href="vendor/tiny-slider/dist/tiny-slider.css"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="css/theme.min.css">
-    <!-- Google Tag Manager-->
-    <script>
-      
-    </script>
   </head>
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
@@ -57,19 +52,14 @@
                    
                         <form action="/signout" method="get">
                       <div class="dropdown">
-                        <button class="btn btn-secondary dropdown " type="button" id="dropdownMenuButton"  aria-haspopup="true" aria-expanded="false" >
-                       
-                        </button>
-                       
+                        <button class="btn btn-secondary dropdown " type="button" id="dropdownMenuButton"  aria-haspopup="true" aria-expanded="false" >                     
+                        </button>                    
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                           <button class="dropdown-item" href="#">Sign Out</button>
-  
                         </div>
                       </div>
                     </div>
-                  </form>
-                    
-                
+                  </form>                                 
               <div class="mb-3 d-flex flex-wrap justify-content-between">
                 <div class="form-check mb-2">
                   <input class="form-check-input" type="checkbox" id="si-remember">
@@ -114,8 +104,6 @@
       </div>
     </div>
     <main class="page-wrapper">
-      <!-- Navbar for Food Delivery Service demo-->
-      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
       <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -127,29 +115,21 @@
               <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body tab-content py-4">
-              <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">
-              
+              <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">      
                   <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool navbar-stuck-toggler" href="#"><span class="navbar-tool-tooltip">Toggle menu</span>
                       <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-menu"></i></div></a><a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="#signin-modal" data-bs-toggle="modal">
-                      <div class="navbar-tool-text ms-n3" >sign in </div></a>
-                     
-                       
-                          <form action="/signout" method="get">
+                      <div class="navbar-tool-text ms-n3" >sign in </div></a>                                       
+                       <form action="/signout" method="get">
                         <div class="dropdown">
-                          <button class="btn btn-secondary dropdown " type="button" id="dropdownMenuButton"  aria-haspopup="true" aria-expanded="false" >
-                         
-                          </button>
-                         
+                          <button class="btn btn-secondary dropdown " type="button" id="dropdownMenuButton"  aria-haspopup="true" aria-expanded="false" >                        
+                          </button>    
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <button class="dropdown-item" href="#">Sign Out</button>
-    
+                            <button class="dropdown-item" href="#">Sign Out</button>   
                           </div>
                         </div>
                       </div>
-                    </form>
-                      
-                  
+                    </form>                
                 <div class="mb-3 d-flex flex-wrap justify-content-between">
                   <div class="form-check mb-2">
                     <input class="form-check-input" type="checkbox" id="si-remember">
@@ -211,14 +191,11 @@
               <!-- Items in cart-->
               <div class="col-lg-8 col-md-7 pt-sm-2">
                 <!-- Item-->
-
                 <% if(cartItems.length == 0) {%>
-                <div class="d-sm-flex justify-content-between align-items-center mt-3 mb-4 pb-3 border-bottom align-items-center">
-                  
+                <div class="d-sm-flex justify-content-between align-items-center mt-3 mb-4 pb-3 border-bottom align-items-center">                  
                   <h2><i>cart is empty</i></h2>
                 </div>
                 <% }else{ %>
-           
                <% cartItems.forEach((el,index) => { %>
                 <div id="cartItem<%= el._id %>" class="d-sm-flex justify-content-between align-items-center mt-3 mb-4 pb-3 border-bottom">
                   <div class="d-block d-sm-flex align-items-center text-center text-sm-start"><a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="#"><img src="<%= el.productId.images %>" width="120" alt="Pizza"></a>
@@ -234,18 +211,14 @@
                     
                     <button onclick="changequantity('<%=el._id %>','<%= el.productId._id %>',1)">+</button>
                     <input id="qty<%= el._id %>" class="form-control" type="number" id="quantity1" value="<%= el.qty %>" min="1" >
-                    <button onclick="changequantity('<%=el._id %>','<%= el.productId._id %>',-1)">-</button>
-                    
+                    <button onclick="changequantity('<%=el._id %>','<%= el.productId._id %>',-1)">-</button>                 
                     <button onclick="changequantity('<%=el._id %>','<%= el.productId._id %>',-2)" class="btn btn-link px-0 text-danger" id="removeitem" type="button"><i class="ci-close-circle me-2"></i><span class="fs-sm">Remove</span></button>
-
                   </div>
                 </div>
                 <% }) %>
-                <% } %>
-              
+                <% } %>     
               </div>
-              <!-- Sidebar-->
-              
+              <!-- Sidebar-->     
               <div class="col-lg-4 col-md-5 pt-3 pt-sm-4">
                 <div class="rounded-3 bg-secondary px-3 px-sm-4 py-4">
                   <div class="text-center mb-4 pb-3 border-bottom">
@@ -263,12 +236,8 @@
     <script src="jquery-3.6.3.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
       <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-    
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>   
     <script>
-
-
-
       const changequantity = function(cart_id,id,count){
         console.log(id,"id in cart ajax");
         console.log(count, " count in cart ajax");
@@ -293,22 +262,19 @@
                 encoded:"true",
                 data:{id:id,count:count}
                 }).done((data)=>{
-                console.log(data)   //|| data.qty == 1 && count == -1
+                console.log(data)
                 console.log('total: ',data.totalPrice)
-                if(data.remove){
-                  
+                if(data.remove){                
                   $('#cartItem'+cart_id).remove()
-                $('#cartTotal').text(data.totalPrice) //html tag is regarded as text. so as to get updated version of the text. //part of jquer
+                $('#cartTotal').text(data.totalPrice) 
                 Swal.fire(
                   'Deleted!',
                   'Your file has been deleted.',
                   'success'
-
                 )
               }
             })
-          }
-        
+          }      
         })
       }else{
         $.ajax({
@@ -389,7 +355,6 @@
         </div>
         <hr class="hr-light mt-md-2 mb-3">
         <div class="d-md-flex justify-content-between pt-4 pb-1">
-          <!-- <div class="pb-4 fs-xs text-light opacity-50 text-center text-md-start">© All rights reserved. Made by <a class="text-light" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></div> -->
           <div class="widget widget-links widget-light pb-4">
             <ul class="widget-list d-flex flex-wrap justify-content-center justify-content-md-start">
               <li class="widget-list-item ms-4"><a class="widget-list-link fs-ms" href="#">Privacy Policy</a></li>
@@ -405,7 +370,6 @@
       <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="#signin-modal" data-bs-toggle="modal"><span class="handheld-toolbar-icon"><i class="ci-user"></i></span><span class="handheld-toolbar-label">Account</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" href="food-delivery-cart.html"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">3</span></span><span class="handheld-toolbar-label">$24.00</span></a></div>
     </div>
     <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
-    <!-- Vendor scrits: js libraries and plugins-->
     <script src="vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="vendor/simplebar/dist/simplebar.min.js"></script>
     <script src="vendor/tiny-slider/dist/min/tiny-slider.js"></script>
@@ -413,6 +377,4 @@
     <!-- Main theme script-->
     <script src="js/theme.min.js"></script>
   </body>
-
-<!-- Mirrored from cartzilla.createx.studio/food-delivery-cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Dec 2022 04:02:08 GMT -->
 </html>

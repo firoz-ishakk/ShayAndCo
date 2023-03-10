@@ -166,7 +166,11 @@
         font-size: 13px;
     }
     </style>
-    <!-- in case if anything goes wrong, check line 285-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+
     </head>
     <body>
     <div class="container-xl">
@@ -182,28 +186,19 @@
                             
                         </div>
                     </div>
-                </div>
-             
+                </div>            
                 <table class="table table-striped table-hover ml-5" id="userTable">
-                    <div class="gap mb-5 mt-5">
-                        
+                    <div class="gap mb-5 mt-5">                      
                     <thead>
-                        <tr>
-                    
+                        <tr>                
                             <th scope="col">Date Purchased</th>
                             <th scope="col">Status</th>						
                             <th scope="col">Total</th>
-                       
-                         
-                            
+                            <th scope="col">Action</th>   
                         </tr>
                     </thead>
             </div>
                     <tbody>
-                     <!-- < % order.forEach((el,index)=>{ %> -->
-                      
-                 
-                    
                            <% order.forEach(el=> { %>
     
                             <% if (el.orderStat=='Canceled' ) {%>
@@ -248,29 +243,66 @@
                                   <td class="py-3">₹ <%= el.totalPrice %>
                                   </td>
                                   <td class="py-3 align-middle">
-                                    <a class="btn bg-faded-info btn-icon  me-2"
-                                    href="#order-details<%= el._id %>" data-bs-toggle="modal" title="Quick View"><i
-                                        class="ci-eye pe-1"></i>view</a>
+                                    <button type="button" data-bs-target="#delivered<%= el._id %>" class="btn bg-faded-info btn-icon  me-2"
+                                      data-bs-toggle="modal" title="Quick View"><i
+                                       class="ci-eye pe-1"></i>view</button>
                                         <button class="btn bg-success btn-icon  text-white" disabled
                                           data-bs-toggle="tooltip" title="Cancel">
                                           <%= el.orderStat %>
                                         </button>
                                   </td>
                                 </tr>
-                                
-                              <%} else {%>
-          
+
+                                <div class="modal fade" id="delivered<%= el._id %>">
+                                  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title">Order Details </h5>
+                                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body pb-0">
+                                        <% el.items.forEach(order=>{%>
+                                         
+                                          <div class="d-sm-flex justify-content-between mb-4 pb-3 pb-sm-2 border-bottom">
+                                            <div class="d-sm-flex text-center text-sm-start"><a class="d-inline-block flex-shrink-0 mx-auto"
+                                                href="" style="width: 10rem;"><img class="rounded"
+                                                  src="<%=order.productId.images%>" alt="Product Image"></a>
+                                              <div class="ps-sm-4 pt-2">
+                                                <h3 class="product-title fs-base mb-2"><a href=>
+                                                    <%=order.productId.brand %>
+                                                  </a></h3>
+                                                <div class="fs-sm"><span class="text-muted me-2">Title:</span>
+                                                  <%= order.productId.title %>
+                                                </div>
+                                                <div class="fs-lg text-accent pt-2">₹ <%= order.productId.price %>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
+                                              <div class="text-muted mb-2">Quantity:</div>
+                                              <%= order.qty %>
+                                            </div>
+                                            <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
+                                              <div class="text-muted mb-2">Subtotal</div>₹ <%= order.productId.price*order.qty %>
+                                            </div>
+                                          </div>                                       
+                                          <%})%>
+                                          </div>
+                                            <div class="modal-footer flex-wrap justify-content-between bg-secondary fs-md">
+                                              <div class="px-2 py-1"><span class="text-muted">Total:&nbsp;</span><span class="fs-xl"> ₹ <%=el.totalPrice %> </span></div>
+                                            </div>
+                                          </div>
+                                    </div>
+                                  </div>
+                              <%} else {%>        
                                 <tr id="<%= el._id %>reaload">
                                   <td class="py-3"><a class="nav-link-style fw-medium fs-sm"
                                       href="#order-details<%= el._id %>" data-bs-toggle="modal">
                                       <%= el.createdAt.toLocaleString() %>
-                                    </a></td>
-          
+                                    </a></td>        
                                   <td class="py-3"> 
                                    <% if(el.orderStat == "'cancelled'" || el.orderStat == 'Delivered'){ %>
-                                    <p class=" bg-white text-danger " ><%= el.orderStat %></p>
-                                    
-                                    
+                                    <p class=" bg-white text-danger " ><%= el.orderStat %></p>                                   
                                     <% }else { %>
                                     <select class="form-select bg-dark text-white"  onchange="changests('<%= el._id%>',this)">
                                     <option value="<%= el.orderStat %>"><%= el.orderStat %> </option>
@@ -281,28 +313,67 @@
                                     <% } %>
                                   <td class="py-3">₹ <%= el.totalPrice %>
                                   </td>
-                                  <td class="py-3 align-middle"><button data-bs-target="#order-details<%= el._id %>" class="btn bg-faded-info btn-icon  me-2"
+                                  <td class="py-3 align-middle">
+                                    <button type="button" data-bs-target="#hai<%= el._id %>" class="btn bg-faded-info btn-icon  me-2"
                                        data-bs-toggle="modal" title="Quick View"><i
                                         class="ci-eye pe-1"></i>view</button>
+                                   
                                         <% if(el.orderStat === "'cancelled"){ %>
                                             <button class="btn bg-faded-danger btn-icon  text-danger " href="/admin/cancelOrder?id=<%= el._id %>&status='cancelled'" value="Canceled"
                                                 data-bs-toggle="tooltip" title="Cancel" >
                                                 Cancelled <div class="ci-trash"></div></button>
                                             <% }else{ %>
-                                                <a class="btn bg-faded-danger btn-icon  text-danger" href="/admin/cancelOrder?id=<%= el._id %>&status='cancelled'" value="Canceled"
-                                                  data-bs-toggle="tooltip" title="Cancel">
+                                                <button class="btn bg-faded-danger btn-icon  text-danger" href="/admin/cancelOrder?id=<%= el._id %>&status='cancelled'" value="Canceled"
+                                                  data-bs-toggle="tooltip" title="Cancel" disabled>
                                                   Cancel <div class="ci-trash"></div>
-                                                </a>
+                                                </button>
                                                   <% } %>
-            
-                                  </td>
+                                    </td>
+                                  <div class="modal fade" id="hai<%= el._id %>">
+                                    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title">Order Details </h5>
+                                          <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body pb-0">
+                                          <% el.items.forEach(order=>{%>
+                                            <div class="d-sm-flex justify-content-between mb-4 pb-3 pb-sm-2 border-bottom">
+                                              <div class="d-sm-flex text-center text-sm-start"><a class="d-inline-block flex-shrink-0 mx-auto"
+                                                  href="" style="width: 10rem;"><img class="rounded"
+                                                    src="<%=order.productId.images%>" alt="Product Image"></a>
+                                                <div class="ps-sm-4 pt-2">
+                                                  <h3 class="product-title fs-base mb-2"><a href=>
+                                                      <%=order.productId.brand %>
+                                                    </a></h3>
+                                                  <div class="fs-sm"><span class="text-muted me-2">Title:</span>
+                                                    <%= order.productId.title %>
+                                                  </div>
+                                                  <div class="fs-lg text-accent pt-2">₹ <%= order.productId.price %>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
+                                                <div class="text-muted mb-2">Quantity:</div>
+                                                <%= order.qty %>
+                                              </div>
+                                              <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
+                                                <div class="text-muted mb-2">Subtotal</div>₹ <%= order.productId.price*order.qty %>
+                                              </div>
+                                            </div>                                         
+                                            <%})%>
+                                            </div>
+                                              <div class="modal-footer flex-wrap justify-content-between bg-secondary fs-md">
+                                                <div class="px-2 py-1"><span class="text-muted">Total:&nbsp;</span><span class="fs-xl"> ₹ <%=el.totalPrice %> </span></div>
+                                              </div>
+                                            </div>
+                                      </div>
+                                    </div>
                                 </tr>
                                 <%} %>
-                        <% }); %>
-          
+                        <% }); %>      
                   </tbody>
-                </table>
-             
+                </table>            
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
@@ -322,56 +393,12 @@
                 }
                }).done((data)=>{
                 console.log(data)
+                window.location.reload()
                })
-            }
-           
+            }        
           </script>
-          <%order.forEach(el=>{%>
-            <div class="modal fade" id="order-details<%= el._id %>">
-              <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">Order Details </h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body pb-0">
-                    <%el.items.forEach(order=>{%>
-                      <!-- Item--> 
-                      <div class="d-sm-flex justify-content-between mb-4 pb-3 pb-sm-2 border-bottom">
-                        <div class="d-sm-flex text-center text-sm-start"><a class="d-inline-block flex-shrink-0 mx-auto"
-                            href="" style="width: 10rem;"><img class="rounded"
-                              src="<%=order.productId.images%>" alt="Product Image"></a>
-                          <div class="ps-sm-4 pt-2">
-                            <h3 class="product-title fs-base mb-2"><a href=>
-                                <%=order.productId.brand %>
-                              </a></h3>
-                            <div class="fs-sm"><span class="text-muted me-2">Title:</span>
-                              <%= order.productId.title %>
-                            </div>
-                            <div class="fs-lg text-accent pt-2">₹ <%= order.productId.price %>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
-                          <div class="text-muted mb-2">Quantity:</div>
-                          <%= order.qty %>
-                        </div>
-                        <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center">
-                          <div class="text-muted mb-2">Subtotal</div>₹ <%= order.productId.price*order.qty %>
-                        </div>
-                      </div>
-                      <!-- Item-->
-                      <%})%>
-                        <!-- Footer-->
-                      </div>
-                        <div class="modal-footer flex-wrap justify-content-between bg-secondary fs-md">
-                          <div class="px-2 py-1"><span class="text-muted">Total:&nbsp;</span><span class="fs-xl"> ₹ <%=el.totalPrice %> </span></div>
-                        </div>
-                      </div>
-                </div>
-              </div>
+          <%order.forEach(el=>{%>            
+              <%})%>
             </div>
-          <%})%>
   
-  
-    
+           

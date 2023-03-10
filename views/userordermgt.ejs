@@ -258,7 +258,7 @@
           <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
-                <li class="breadcrumb-item"><a class="text-nowrap" href="index.html"><i class="ci-home"></i>Home</a></li>
+                <li class="breadcrumb-item"><a class="text-nowrap" href="/home"><i class="ci-home"></i>Home</a></li>
                 <li class="breadcrumb-item text-nowrap"><a href="/addresspage">Account</a>
                 </li>
                 <li class="breadcrumb-item text-nowrap active" aria-current="page"><a href="/usermgtpage">orders</li></a>
@@ -297,10 +297,8 @@
                   <h3 class="fs-sm mb-0 text-muted">Account settings</h3>
                 </div>
                 <ul class="list-unstyled mb-0">
-                  <!-- <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3 active" href="account-profile.html"><i class="ci-user opacity-60 me-2"></i>Profile info</a></li> -->
                   <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/addresspage"><i class="ci-location opacity-60 me-2"></i>Addresses</a></li>
-                  <!-- <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-payment.html"><i class="ci-card opacity-60 me-2"></i>Payment methods</a></li> -->
-                  <!-- <li class="d-lg-none border-top mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/signout"><i class="ci-sign-out opacity-60 me-2"></i>Sign ut</a></li> -->
+                 
                 </ul>
               </div>
             </div>
@@ -342,10 +340,8 @@
                   </td>
 
                   <td>
-                  <%if(el.orderStat == "cancelled"|| el.orderStat =="'cancelled'"){%>
-                    <p class="text-danger"
-                       title="Cancel" >
-                      Cancelled </p>
+                  <%if(el.orderStat == "cancelled"|| el.orderStat =="'cancelled'"||el.orderStat == "Delivered"){%>
+                
                     <% }else{ %>
                       <td class="py-3 align-middle"><button class="btn bg-faded-info me-2 btn-outline-danger" onclick="cancel('<%=el._id%>')" title="cancel order">Cancel</button>
                       <% } %>

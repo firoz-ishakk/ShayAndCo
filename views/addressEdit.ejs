@@ -178,8 +178,7 @@
                                 </div>
                               </div>
                             </div>
-                          </form>
-                            
+                          </form>                 
                             <% } %> 
                   <!-- Cart dropdown-->
                   <div class="dropdown-menu dropdown-menu-end">
@@ -249,18 +248,12 @@
                     <div class="dropdown-menu p-0">
                       <div class="d-flex flex-wrap flex-sm-nowrap px-2">
                         <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
-                          <div class="widget widget-links mb-4">
-                           
-                        
-                          </div>
-                         
-                         
+                          <div class="widget widget-links mb-4">                     
+                          </div>                                              
                         </div>
-                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
-                         
+                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">                        
                         </div>
-                        <div class="mega-dropdown-column pt-1 pt-lg-4 px-2 px-lg-3">
-                          
+                        <div class="mega-dropdown-column pt-1 pt-lg-4 px-2 px-lg-3">                          
                         </div>
                       </div>
                     </div>
@@ -268,20 +261,17 @@
                   <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Account</a>
                     <ul class="dropdown-menu">
                       <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Shop User Account</a>
-                        <ul class="dropdown-menu">
-                          
+                        <ul class="dropdown-menu">                         
                           <li><a class="dropdown-item" href="account-profile.html">Profile Settings</a></li>
                           <li><a class="dropdown-item" href="/addresspage">Account Addresses</a></li>
                           <li><a class="dropdown-item" href="account-payment.html">Payment Methods</a></li>
                         </ul>
                       </li>
-
                       <li><a class="dropdown-item" href="account-password-recovery.html">Password Recovery</a></li>
                     </ul>
                   </li>
                   <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Pages</a>
-                    <ul class="dropdown-menu">
-                     
+                    <ul class="dropdown-menu">                    
                       <li class="dropdown-divider"></li>
                       <li><a class="dropdown-item" href="about.html">About Us</a></li>
                       <li><a class="dropdown-item" href="contacts.html">Contacts</a></li>
@@ -294,8 +284,7 @@
                       </li>
                     </ul>
                   </li>
-                  <class="nav-item dropdown><a class="nav-link dropdown-toggle" href="/shop">Products</a>
-                  
+                  <class="nav-item dropdown><a class="nav-link dropdown-toggle" href="/shop">Products</a>                 
                 </ul>
               </div>
             </div>
@@ -340,16 +329,12 @@
                 <ul class="list-unstyled mb-0">
                   <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/cart"><i class="ci-bag opacity-60 me-2"></i>Orders<span class="fs-sm text-muted ms-auto">1</span></a></li>
                   <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/wishlistpage"><i class="ci-heart opacity-60 me-2"></i>Wishlist<span class="fs-sm text-muted ms-auto">3</span></a></li>
-                  <!-- <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-tickets.html"><i class="ci-help opacity-60 me-2"></i>Support tickets<span class="fs-sm text-muted ms-auto">1</span></a></li> -->
                 </ul>
                 <div class="bg-secondary px-4 py-3">
                   <h3 class="fs-sm mb-0 text-muted">Account settings</h3>
                 </div>
                 <ul class="list-unstyled mb-0">
-                  <!-- <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3 active" href="account-profile.html"><i class="ci-user opacity-60 me-2"></i>Profile info</a></li> -->
-                  <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/addresspage"><i class="ci-location opacity-60 me-2"></i>Addresses</a></li>
-                  <!-- <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-payment.html"><i class="ci-card opacity-60 me-2"></i>Payment methods</a></li> -->
-                  <!-- <li class="d-lg-none border-top mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/signout"><i class="ci-sign-out opacity-60 me-2"></i>Sign ut</a></li> -->
+                  <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/addresspage"><i class="ci-location opacity-60 me-2"></i>Addresses</a></li>                
                 </ul>
               </div>
             </div>
@@ -375,11 +360,7 @@
                    
                   <label class="form-label" for="fullName">full name</label>
                   <input class="form-control" name="fullName" type="text" id="fullName" value="<%=data.address[0].fullName%>">
-                </div>
-                <!-- <div class="col-sm-6">
-                  <label class="form-label" for="mobile">mobile</label>
-                  <input class="form-control" name="mobile" type="text" id="mobile" value="F>
-                </div> -->
+                </div>              
                 <div class="col-sm-6">
                   <label class="form-label" for="pincode">pincode</label>
                   <input class="form-control" name="pincode" type="text" id="pincode" value="<%=data.address[0].pincode%>">
@@ -392,8 +373,7 @@
                 <div class="col-sm-6">
                     <label class="form-label" for="address-country">State</label>
                     <select class="form-select"  name="state" id="state" required>
-                    <option value="<%=data.address[0].state%>"><%=data.address[0].state%></option>
-                    <!-- <option value>Select State</option> -->
+                    <option value="<%=data.address[0].state%>"><%=data.address[0].state%></option>                 
                     <option value="kerala">Kerala</option>
                     <option value="Karnataka">Karnataka</option>
                       <option value="Tamil">Tamil Nadu</option>
@@ -414,20 +394,12 @@
                   </div>
                 <div class="col-12">
                   <hr class="mt-2 mb-3">
-                  <div class="d-flex flex-wrap justify-content-between align-items-center">
-                    <!-- <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="subscribe_me" checked>
-                      <label class="form-check-label" for="subscribe_me">Subscribe me to Newsletter</label>
-                    </div> -->
+                  <div class="d-flex flex-wrap justify-content-between align-items-center">                
                     <button type="submit" class="btn btn-primary mt-3 mt-sm-0" >Update address</a>
                   </div>
                 </div>
               </div>
             </form>
-            <script>
-             
-            </script>
-           
           </section>
         </div>
       </div>
@@ -486,9 +458,8 @@
                   <input class="form-control rounded-start" type="email" name="EMAIL" placeholder="Your email" required>
                   <button class="btn btn-primary" type="submit" name="subscribe">Subscribe*</button>
                 </div>
-                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                 <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                  <input class="subscription-form-antispam" type="text" name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
+                <input class="subscription-form-antispam" type="text" name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
                 </div>
                 <div class="form-text text-light opacity-50">*Subscribe to our newsletter to receive early discount offers, updates and new products info.</div>
                 <div class="subscription-status"></div>
@@ -592,6 +563,4 @@
     <!-- Main theme script-->
     <script src="js/theme.min.js"></script>
   </body>
-
-<!-- Mirrored from cartzilla.createx.studio/account-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Dec 2022 04:02:18 GMT -->
 </html>

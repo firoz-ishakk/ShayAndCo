@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <!--here is where the submission of categories take place--> 
-
-
-<!-- Mirrored from cartzilla.createx.studio/dashboard-add-new-product.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Dec 2022 04:02:23 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8">
@@ -28,8 +25,6 @@
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="/public/css/theme.min.css">
     <!-- Google Tag Manager-->
-    <script></script>
-   
   </head>
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
@@ -41,8 +36,7 @@
     <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <div class="modal-header bg-secondary">
-            
+          <div class="modal-header bg-secondary">        
           </div>
           <div class="modal-body tab-content py-4">
             </form>
@@ -51,21 +45,16 @@
       </div>
     </div>
     <main class="page-wrapper">
-
-         
       </header>
       <!-- Dashboard header-->
       <div class="page-title-overlap bg-accent pt-4">
-        <div class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center pt-2">
-      
+        <div class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center pt-2">     
       </div>
       <div class="container mb-5 pb-3">
         <div class="bg-light shadow-lg rounded-3 overflow-hidden">
           <div class="row">
             <!-- Sidebar-->
             <aside class="col-lg-4 pe-xl-5">
-              <!-- Account menu toggler (hidden on screens larger 992px)-->
-              <!-- Actual menu-->
               <div class="h-100 border-end mb-2">
                 <div class="d-lg-block collapse" id="account-menu">
                   <ul class="list-unstyled mb-0">
@@ -82,15 +71,13 @@
                   <h2 class="h3 py-2 me-2 text-center text-sm-start">Edit product</h2>
                   <div class="py-2">
                   </div>
-                </div>
-                
+                </div>               
                 <form action="/admin/editproduct?id=<%=products._id %>" method="post" enctype="multipart/form-data">
                   <div class="mb-3 pb-2">
                     <label class="form-label" for="unp-product-name">Products brand</label>
                     <input class="form-control" name="brand" type="text" id="unp-product-name" value="<%= products.brand %> ">
                     <div class="form-text">Maximum 100 characters</div>
                   </div>
-                 <!-- <input type="text" hidden value=" < %= products._id %>" name="proId"> -->
                   <div class="mb-3 py-2">
                     <label class="form-label" for="unp-product-name">Product title</label>
                     <input class="form-control" name="title" type="text" id="unp-product-name" value="<%= products.title %> ">
@@ -119,10 +106,8 @@
                         <label class="form-label" for="unp-product-files">Stock</label>
                         <input class="form-control" name="stock" type="text" id="stock" value="<%=products.stock %>">
                       </div>
-                      <div class="imagepreview">
-          
-                        <% products.images.forEach(element => {%>
-                    
+                      <div class="imagepreview">         
+                        <% products.images.forEach(element => {%>                  
                           <div style="max-width: 200px;" class="col"> <img  class="rounded-3 " src="<%=element  %>" alt=""></div>
                           <%}); %> 
                       </div>
@@ -149,15 +134,10 @@
             <h6 class="d-inline-block me-3"><span class="text-primary"></span><span class="fw-normal text-white"></span></h6>
             <div class="widget mt-4 text-md-nowrap text-center text-md-start"><a class="btn-social bs-light bs-twitter me-2 mb-2" href="#"><i class="ci-twitter"></i></a><a class="btn-social bs-light bs-facebook me-2 mb-2" href="#"><i class="ci-facebook"></i></a><a class="btn-social bs-light bs-dribbble me-2 mb-2" href="#"><i class="ci-dribbble"></i></a><a class="btn-social bs-light bs-behance me-2 mb-2" href="#"><i class="ci-behance"></i></a><a class="btn-social bs-light bs-pinterest me-2 mb-2" href="#"><i class="ci-pinterest"></i></a></div>
           </div>
-          <!-- Mobile dropdown menu (visible on screens below md)-->
           <div class="col-12 d-md-none text-center mb-4 pb-2">
             <div class="btn-group dropdown d-block mx-auto mb-3">
-            </div>
-            
+            </div>           
           </div>
-          <!-- Desktop menu (visible on screens above md)-->
-          
-          
         </div>
       </div>
       <!-- Second row-->
@@ -170,7 +150,6 @@
                 <input class="form-control rounded-start" name = "subscribe" type="email" name="EMAIL" placeholder="Your email" required>
                 <button class="btn btn-primary" type="submit" name="subscribe">Subscribe</button>
               </div>
-              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
               <div style="position: absolute; left: -5000px;" aria-hidden="true">
                 <input class="subscription-form-antispam" type="text" name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
               </div>
@@ -187,7 +166,6 @@
       <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="dashboard-favorites.html"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">Favorites</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" href="marketplace-cart.html"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">3</span></span><span class="handheld-toolbar-label">$56.00</span></a></div>
     </div>
     <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
-    <!-- Vendor scrits: js libraries and plugins-->
     <script src="/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/vendor/simplebar/dist/simplebar.min.js"></script>
     <script src="/vendor/tiny-slider/dist/min/tiny-slider.js"></script>
@@ -196,5 +174,4 @@
     <script src="/js/theme.min.js"></script>
   </body>
 
-<!-- Mirrored from cartzilla.createx.studio/dashboard-add-new-product.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Dec 2022 04:02:23 GMT -->
 </html>

@@ -13,7 +13,7 @@
       name="keywords"
       content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap, html5, css3, js, gallery, slider, touch, creative, clean"
     />
-    <meta name="author" content="Createx Studio" />
+    <meta name="author" content="Createx Studio"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Favicon and Touch Icons-->
@@ -232,7 +232,6 @@
     </div>
     <main class="page-wrapper">
       <!-- Navbar Marketplace-->
-      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
       <header class="bg-light shadow-sm navbar-sticky">
         <div class="navbar navbar-expand-lg navbar-light">
           <div class="container">
@@ -457,7 +456,7 @@
                         href="/admin/productmgt"
                         ><i class="ci-package opacity-60 me-2"></i>Products<span
                           class="fs-sm text-muted ms-auto"
-                          >5</span
+                          ></span
                         ></a
                       >
                     </li>
@@ -520,28 +519,20 @@
                   Your sales / earnings
                 </h2>
                 <div class="row mx-n2 pt-2">
+                 
                   <div class="col-md-4 col-sm-6 px-2 mb-4">
                     <div class="bg-secondary h-100 rounded-3 p-4 text-center">
-                      <h3 class="fs-sm text-muted">Earnings (before taxes)</h3>
-                      <p class="h2 mb-2">0<small>50</small></p>
+                      <h3 class="fs-sm text-muted">Your user count</h3>
+                      <p class="h2 mb-2">22</p>
                       <p class="fs-ms text-muted mb-0">
-                        Sales 8/1/2021 - 8/15/2021
-                      </p>
-                    </div>
-                  </div>
-                  <div class="col-md-4 col-sm-6 px-2 mb-4">
-                    <div class="bg-secondary h-100 rounded-3 p-4 text-center">
-                      <h3 class="fs-sm text-muted">Your balance</h3>
-                      <p class="h2 mb-2">00.<small>00</small></p>
-                      <p class="fs-ms text-muted mb-0">
-                        To be paid on 8/15/2021
+                     
                       </p>
                     </div>
                   </div>
                   <div class="col-md-4 col-sm-12 px-2 mb-4">
                     <div class="bg-secondary h-100 rounded-3 p-4 text-center">
                       <h3 class="fs-sm text-muted">Lifetime earnings</h3>
-                      <p class="h2 mb-2">00.<small>74</small></p>
+                      <p class="h2 mb-2">₹ 10750011</p>
                       <p class="fs-ms text-muted mb-0">Based on list price</p>
                     </div>
                   </div>
@@ -552,58 +543,17 @@
                       <div class="card-body">
                         <h3 class="fs-sm pb-3 mb-3 border-bottom">Monthly Sales<span
                             class="fw-normal fs-xs text-muted"></span></h3>
-                            <!-- <div class="ct-chart ct-golden-section" id="chart1"></div> -->
+                            
                             <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
                       </div>
                     </div>
-                    <!-- <div class="card mb-4">
-                      <div class="card-body">
-                        <h3 class="fs-sm pb-3 mb-3 border-bottom">Monthly Revenue <span
-                            class="fw-normal fs-xs text-muted"></span></h3>
-                            <div class="ct-chart ct-golden-section" id="chart2"></div>
-                      </div>
-                    </div> -->
+                    
                   </div>
-                </div>
-                <div>
-                  <div class="card-header border-bottom d-flex">
-                    <h4>Daily Sales</h4><a href="/admin/btn_one" class="ps-5" id="btn_one">📄</a>
-                  </div>
-                  <canvas id="myChart"></canvas>
-                </div>
-                <!-- < % let yearlyCount = yearlySales.map((val )=>{ return val.total}) %>  -->
-                <!-- < % let monthlyRev = salesChartDt.map((val )=>{ return val.total}) %>  -->
+                </div>                             
                 <% let dates = salesChartDt.map((val)=>{ return val._id.slice(-2)}) %>
-                <% let salesCount = salesChartDt.map((val)=>{ return val.count}) %>
-                <!-- <h1> < %=monthlyRev%></h1> -->
-
+                <% let salesCount = salesChartDt.map((val)=>{ return val.count}) %>            
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
       <script>
-//              const ctx = document.getElementById('myChart');
-//              new Chartist.Line('#chart1',{
-//   // A labels array that can contain any sort of values
-//   labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May','Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-//   // Our series array that contains series objects or in this case series data arrays
-//   series: [< %=yearlyCount%>]
-// });
-//    new Chartist.Line('#chart2',{
-//   // A labels array that can contain any sort of values
-//   labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May','Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-//   // Our series array that contains series objects or in this case series data arrays
-//   series: [< %=montlyRev%>]
-// });
-
-// const data = {
-//   labels: ['placed','Canceled', 'Delivered', 'Canceled'],
-//   datasets: [
-//     {
-//       label: 'Dataset 1',
-//       data: Utils.numbers(NUMBER_CFG),
-//       backgroundColor: Object.values(Utils.CHART_COLORS),
-//     }
-//   ]
-// };
-      // NEW
 
       var xValues = [<%=dates%>];
 var yValues = [<%=salesCount%>];
@@ -650,21 +600,7 @@ new Chart("myChart", {
                 >Marketplace</span
               >
             </div>
-            <p class="fs-sm text-white opacity-70 pb-1">
-              High quality items created by our global community.
-            </p>
-            <h6 class="d-inline-block pe-3 me-3 border-end border-light">
-              <span class="text-primary">65,478 </span
-              ><span class="fw-normal text-white">Products</span>
-            </h6>
-            <h6 class="d-inline-block pe-3 me-3 border-end border-light">
-              <span class="text-primary">2,521 </span
-              ><span class="fw-normal text-white">Members</span>
-            </h6>
-            <h6 class="d-inline-block me-3">
-              <span class="text-primary">897 </span
-              ><span class="fw-normal text-white">Vendors</span>
-            </h6>
+            
             <div class="widget mt-4 text-md-nowrap text-center text-md-start">
               <a class="btn-social bs-light bs-twitter me-2 mb-2" href="#"
                 ><i class="ci-twitter"></i></a
@@ -679,7 +615,6 @@ new Chart("myChart", {
               ></a>
             </div>
           </div>
-
           <div class="pt-5 bg-darker">
             <div class="container">
               <div
@@ -715,8 +650,7 @@ new Chart("myChart", {
                     >
                       Subscribe*
                     </button>
-                  </div>
-                  <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                  </div>                 
                   <div
                     style="position: absolute; left: -5000px"
                     aria-hidden="true"
@@ -814,10 +748,7 @@ new Chart("myChart", {
           <script src="/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
           <script src="/vendor/chartist/dist/chartist.min.js"></script>
           <!-- Main theme script-->
-          <script src="/js/theme.min.js"></script>
-
-          <!-- Mirrored from cartzilla.createx.studio/dashboard-sales.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Dec 2022 04:02:21 GMT -->
-          
+          <script src="/js/theme.min.js"></script>         
         </div>
       </div>
     </footer>
