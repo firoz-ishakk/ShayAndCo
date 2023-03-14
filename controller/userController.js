@@ -1,16 +1,16 @@
-const userHelpers = require("../helpers/userHelpers");
-const { response } = require("../routes/adminRoute");
+const userHelpers = require("../helpers/userhelpers");
+const { response } = require("../routes/adminroute");
 const productData = require("../models/product");
-const categoryMgtModel = require("../models/categoryMgtModel");
-const usersession = require("../models/userModels");
+const categoryMgtModel = require("../models/categorymgtmodel");
+const usersession = require("../models/usermodels");
 const otpHelper = require("../util/otp");
-const User = require("../models/userModels");
-const Order = require("../models/orderModel")
+const User = require("../models/usermodels");
+const Order = require("../models/ordermodel")
 const Address = require("../models/address")
-const Coupon = require("../models/couponModel")
+const Coupon = require("../models/couponmodel")
 
 const objId = require('mongoose').Types.ObjectId;
-const { findById, findByIdAndUpdate } = require("../models/userModels");
+const { findById, findByIdAndUpdate } = require("../models/usermodels");
 const {
   ConversationPage,
 } = require("twilio/dist/lib/rest/conversations/v1/conversation");

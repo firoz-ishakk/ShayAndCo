@@ -1,14 +1,14 @@
 const adminEmail = process.env.adEmail;
 const adminPassword = process.env.adPassword;
-const userDataBase = require("../models/userModels");
-const category = require("../models/categoryMgtModel");
+const userDataBase = require("../models/usermodels");
+const category = require("../models/categorymgtmodel");
 const {
   findOne,
   findByIdAndUpdate,
   updateOne,
-} = require("../models/userModels");
+} = require("../models/usermodels");
 const Product = require("../models/product");
-const couponData = require("../models/couponModel");
+const couponData = require("../models/couponmodel");
 
 //admin login
 const adminLog = (req, res) => {

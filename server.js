@@ -2,12 +2,12 @@ if(process.env.NODE_ENV !== "production"){
     require("dotenv").config()
 }
 
-const bodyParser = require('body-parser')
+
 const express = require("express")
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const nocache = require("nocache");
-const userRouter  = require ("./routes/userRoute")
+const userRouter  = require ("./routes/userroute")
 const adminRouter = require("./routes/adminRoute")
 const path = require('path');
 const session  = require("express-session")
@@ -17,7 +17,7 @@ const flash = require("connect-flash")
 
 app.use(nocache());
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }))
 app.set(express.static(path.join(__dirname,"/public")))
 app.set("view engine","ejs")
 app.set("views",__dirname+"/views")
@@ -63,7 +63,7 @@ app.use(expressLayouts)
 
 //bringing in mongoose
  const mongoose = require("mongoose")
-const userModel= require("./models/userModels")
+const userModel= require("./models/usermodels")
 
 mongoose.connect(process.env.DATABASE_URL,{
     useNewUrlParser : true
@@ -75,8 +75,8 @@ db.once("open",()=>console.log("connected to mongoose"))
 
 
 //applying routers to users and admin
-app.use("/",userRouter)
 app.use("/admin",adminRouter)
+app.use("/",userRouter)
 
 //WHERE OUR PUBLIC FILES WILL BE 👇
 app.use(express.static('public'))

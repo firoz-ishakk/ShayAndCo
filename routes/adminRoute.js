@@ -1,7 +1,7 @@
 const { application } = require('express')
 const express = require('express')
 const adminRoute = express()
-const adminController = require("../controller/adminController")
+const adminController = require("../controller/admincontroller")
 const fileUpload = require('../middleware/multer')
 //get
 adminRoute.get("/",adminController.dashboard)

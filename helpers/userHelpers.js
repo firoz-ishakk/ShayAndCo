@@ -1,8 +1,7 @@
-const userData = require("../models/userModels");
+const userData = require("../models/usermodels");
 const bcrypt = require("bcrypt");
 const otpHelper = require("../util/otp");
 const products = require("../models/product");
-// const { TrustProductsChannelEndpointAssignmentInstance } = require("twilio/dist/lib/rest/trusthub/v1/trustProducts/trustProductsChannelEndpointAssignment")
 const objId = require('mongoose').Types.ObjectId;
 
 let signup;

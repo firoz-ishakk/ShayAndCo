@@ -1,14 +1,14 @@
-const { render } = require("../routes/adminRoute");
-const adminHelpers = require("../helpers/adminHelpers");
-const category = require("../models/categoryMgtModel");
+const { render } = require("../routes/adminroute");
+const adminHelpers = require("../helpers/adminhelpers");
+const category = require("../models/categorymgtmodel");
 const {
   NetworkContextImpl,
 } = require("twilio/dist/lib/rest/supersim/v1/network");
 const productData = require("../models/product");
-const { update } = require("../models/userModels");
-const couponData = require("../models/couponModel");
-const Order = require("../models/orderModel");
-const User = require("../models/userModels")
+const { update } = require("../models/usermodels");
+const couponData = require("../models/couponmodel");
+const Order = require("../models/ordermodel");
+const User = require("../models/usermodels")
 
 //admin login
 const adminLogin = (req, res) => {

@@ -2,7 +2,7 @@ const { application } = require('express')
 const express = require('express')
 const { UserChannelPage } = require('twilio/dist/lib/rest/chat/v1/service/user/userChannel')
 const userRoute = express()
-const userController = require("../controller/userController")
+const userController = require("../controller/usercontroller")
 
 //get
 userRoute.get("/home",userController.userHome)
