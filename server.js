@@ -75,8 +75,8 @@ db.once("open",()=>console.log("connected to mongoose"))
 
 
 //applying routers to users and admin
-app.use("/admin",adminRouter)
 app.use("/",userRouter)
+app.use("/admin",adminRouter)
 
 //WHERE OUR PUBLIC FILES WILL BE 👇
 app.use(express.static('public'))

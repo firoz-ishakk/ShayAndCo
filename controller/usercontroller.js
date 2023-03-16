@@ -32,7 +32,7 @@ const userHome = async (req, res) => {
       // console.log(cartlength, " over herree");
     }
 
-    res.render("userHome", {
+    res.render("userhome", {
       products: productlisting,
       loginaccess: user,
       cartlength,
@@ -52,7 +52,7 @@ const userLogin = (req, res, next) => {
       let err = req.session.error;
       req.session.error = false;
       console.log("error: ", err);
-      res.render("userLogin", { err });
+      res.render("userlogin", { err });
     }
   } catch (error) {
     console.log("page not found");
@@ -65,7 +65,7 @@ const userSignup = (req, res, next) => {
     if (req.session.loggedIn) {
       res.redirect("/home");
     }
-    res.render("userSignup");
+    res.render("usersignup");
   } catch (error) {
     console.log("404 not found ", error);
     next(error);
@@ -74,7 +74,7 @@ const userSignup = (req, res, next) => {
 
 const userOtp = (req, res, next) => {
   try {
-    res.render("userOtp");
+    res.render("userotp");
   } catch (error) {
     console.log("page not found");
     next(error);
@@ -219,7 +219,7 @@ const signOut = async (req, res,next) => {
 
 //failure of otp
 const otpFail = async (req, res) => {
-  res.render("Otpfail");
+  res.render("otpfail");
 };
 
 //resending of otp
@@ -493,7 +493,7 @@ const editAddressPage = async(req,res,next)=>{
   try {
     let address = await Address.findOne({_id:req.query.id})
     let user = req.query.id
-    res.render("addressEdit",{loginaccess:user, data: address})}
+    res.render("addressedit",{loginaccess:user, data: address})}
  catch (error) {
   next(error);
 }}

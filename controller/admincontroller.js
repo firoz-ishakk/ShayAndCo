@@ -18,7 +18,7 @@ const adminLogin = (req, res) => {
     } else {
       let error = req.session.loginERR;
       req.session.loginERR = false;
-      res.render("adminLogin", { error });
+      res.render("adminlogin", { error });
     }
   } catch (error) {
     console.log("404 error");
@@ -37,8 +37,6 @@ const adminLogged = (req, res) => {
 //admin main menu
 const dashboard = async(req, res, next) => {
 try {
-  
-
   if (req.session.adminLoggedIn) {
     const startOfMonth = new Date();
     startOfMonth.setDate(1);
@@ -72,7 +70,7 @@ try {
     },
   ]);
 
-    res.render("adminHome",{
+    res.render("adminhome",{
       admin: true,
       successOrders,
       salesChartDt
@@ -104,7 +102,6 @@ const adminUserData = (req, res,next) => {
 const UserBlock = (req, res,next) => {
   try {
     adminHelpers.UserBlock(req, res);
-    
   } catch (error) {
   error.admin = true
   next(error)
@@ -115,7 +112,6 @@ const userUnBlock = (req, res,next) => {
   try {
     console.log("unblocked");
     adminHelpers.UserUnblock(req, res);
-    
   } catch (error) {
     error.admin = true
   next(error)
@@ -141,7 +137,6 @@ const adminCategory = async (req, res) => {
 //displaying of category pg
 const newCategory = (req, res) => {
   try {
-    
     const err = req.flash("err");
     res.render("adminaddcategory", {
       categoryAddErr: req.flash("categoryAddErr"),

@@ -32,7 +32,7 @@ const adminLog = (req, res) => {
 };
 const adminUserData = async (req, res) => {
   let userData = await userDataBase.find();
-  res.render("adminUserTable", { userData });
+  res.render("adminusertable", { userData });
 };
 
 //blocking of users
