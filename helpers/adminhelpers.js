@@ -58,8 +58,6 @@ const UserBlock = async (req, res, next) => {
 };
 
 
-
-
 //unblocking of users
 const UserUnblock = async (req, res,next) => {
   try {
@@ -138,7 +136,6 @@ const editCategory = (req, res, id,next) => {
 //editing of products 
 const editProd = async(req, res,next) => {
   let proId = req.query.id;
-
   try {  
     let image = req.files.productImage
     let path = []

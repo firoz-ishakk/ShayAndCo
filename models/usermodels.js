@@ -26,13 +26,6 @@ const userSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-
-  // addresses:{
-  //   type:mongoose.Types.ObjectId,
-  //   ref:"address",
-
-  // },
-
   cart :{
     items :[{
        productId:{

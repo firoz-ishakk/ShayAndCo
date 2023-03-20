@@ -63,7 +63,7 @@ app.use(expressLayouts)
 
 //bringing in mongoose
  const mongoose = require("mongoose")
-const userModel= require("./models/usermodels")
+const userModel= require("./models/usermodels");
 
 mongoose.connect(process.env.DATABASE_URL,{
     useNewUrlParser : true

@@ -2,6 +2,12 @@
     integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sortable/0.8.0/js/sortable.min.js" 
+    integrity="sha512-DEcSaL0BWApJ//v7ZfqAI04nvK+NQcUVwrrx/l1x7OJgU0Cwbq7e459NBMzLPrm8eLPzAwBtiJJS4AvLZDZ8xA==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
 <style>
 
     body {
@@ -168,6 +174,23 @@
     <body>
     <div class="container-xl">
         <div class="table-responsive">
+            <!-- form start -->
+            <div class="w-100 d-flex justify-content-center pb-5">
+            <form class="w-50 d-flex justify-content-center flex-column">
+                <div class="mb-3">
+                  <label for="fromDate" class="form-label">from :</label>
+                  <input type="date" name="fromDate" class="form-control" id="fromDate">
+                 
+                </div>
+                <div class="mb-3">
+                  <label for="toDate" class="form-label">to :</label>
+                  <input type="date" name="toDate" class="form-control" id="toDate">
+                </div>
+                
+                <button type="button" onclick="dateSubmit()" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+            <!-- form end -->
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
@@ -192,18 +215,24 @@
                             <th scope="col">Date & Time</th>
                             <th scope="col">orderID</th>
                             <th scope="col">Customer</th>
+                            <th scope="col">Address</th>
                             <th scope="col">Status</th>
+                            <th scope="col">Payment Method</th>
                             <th scope="col">Total</th>            
-            </thead>
+                    </thead>
                     <tbody>
-                        <% order.forEach((el,index)=>{ %>  
-                             <td><a href="#"><%=index+1  %></a></td>
-                             <td><a href="#"><%=el.createdAt%></a></td>
-                             <td><a href="#"><%=el._id %></a></td>     
-                             <td><a href="#"><%=el.user.name%></a></td>       
-                            <td><a href="#"><%=el.orderStat  %></a></td>     
-                            <td><a href="#"><%=el.totalPrice %></a></td>     
-                            <td><a href="#"><%=  %></a></td>     
+                       
+                        <% order.forEach((el,index)=>{ %> 
+                            
+                             <td><a href="#" id="index"><%=index+1  %></a></td>
+                             <td><a href="#" id="date"><%=el.createdAt.toLocaleDateString()%></a></td>
+                             <td><a href="#" id="id"><%=el._id %></a></td>     
+                             <td><a href="#" id="name"><%=el.result[0].address[0].fullName%></a></td>       
+                             <td><a href="#" id="landMark"><%=el.result[0].address[0].landMark%></a></td>       
+                            <td><a href="#" id="status"><%=el.orderStat  %></a></td>     
+                            <td><a href="#" id="method"><%=el.paymentMethod  %></a></td>     
+                            <td><a href="#" id="total"><%=el.totalPrice %></a></td>     
+                        
                         </tr>
                     </tbody>    
                     <% }) %>
@@ -211,6 +240,8 @@
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td></td>
+                    <td></td>   
                     <td><b>TOTAL:</b></td>
                     <td><b>₹<%=total[0].total%></b></td>
                 </table>
@@ -220,6 +251,40 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js" integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
+    <script>
+        const dateSubmit = async function  (){
+            const fromDate = document.getElementById('fromDate').value;
+            const toDate = document.getElementById('toDate').value;
+            console.log(fromDate)
+            console.log(toDate)
+            
+            const response = await axios ({
+                method:'post',
+                url:'/admin/salesreport',
+                data:{
+                    fromDate:fromDate,
+                    toDate:toDate
+                }
+            })
+            console.log(response.data);
+            for (let i = 0; i < response.data.length; i++) {
+                $('#index').html = response.data.order[i].i+1;
+                $('#date').html = response.data.order[i].createdAt;
+                $('#id').html = response.data.order[i]._id;
+                $('#name').html = response.data.order[i]._id;
+                $('#landMark').html = response.data.order[i].address;
+                $('#status').html = response.data.order[i].address.result[0].address[0].landMark;
+                $('#method').html = response.data.order[i].paymentMethod;
+                
+            }
+            $('#total').html = response.data.total;
+        }
+    </script>
+
     <script>
         const button = document.getElementById('download-button');
         function generatePDF() {

@@ -3846,17 +3846,17 @@ fieldset:disabled .btn {
 }
 .navbar {
   --cz-navbar-padding-x: 0;
-  --cz-navbar-padding-y: 0.75rem;
+  --cz-navbar-padding-y: -3.75rem;
   --cz-navbar-color: #4b566b;
   --cz-navbar-hover-color: var(--cz-primary);
   --cz-navbar-disabled-color: #7d879c;
   --cz-navbar-active-color: var(--cz-primary);
-  --cz-navbar-brand-padding-y: 0.625rem;
+  --cz-navbar-brand-padding-y: -1.625rem;
   --cz-navbar-brand-margin-end: 1rem;
   --cz-navbar-brand-font-size: 1.75rem;
   --cz-navbar-brand-color: #373f50;
   --cz-navbar-brand-hover-color: #373f50;
-  --cz-navbar-nav-link-padding-x: 1.125rem;
+  --cz-navbar-nav-link-padding-x: 4.125rem;
   --cz-navbar-toggler-padding-y: 0.75rem;
   --cz-navbar-toggler-padding-x: 0.75rem;
   --cz-navbar-toggler-font-size: 1rem;
@@ -14827,6 +14827,7 @@ a.nav-link:hover .media-tab-media {
   position: relative;
   display: flex;
   align-items: center;
+  margin-right: 60px;
 }
 .navbar-tool.dropdown::before {
   position: absolute;

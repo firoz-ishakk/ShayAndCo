@@ -8,7 +8,8 @@ const productData = require("../models/product");
 const { update } = require("../models/usermodels");
 const couponData = require("../models/couponmodel");
 const Order = require("../models/ordermodel");
-const User = require("../models/usermodels")
+const User = require("../models/usermodels");
+const Address = require("../models/address");
 
 //admin login
 const adminLogin = (req, res) => {
@@ -35,86 +36,97 @@ const adminLogged = (req, res) => {
 };
 
 //admin main menu
-const dashboard = async(req, res, next) => {
-try {
-  if (req.session.adminLoggedIn) {
-    const startOfMonth = new Date();
-    startOfMonth.setDate(1);
-    startOfMonth.setHours(0, 0, 0, 0);
-  
-    const endOfMonth = new Date();
-    endOfMonth.setMonth(endOfMonth.getMonth() + 1);
-    endOfMonth.setDate(0);
-    endOfMonth.setHours(23, 59, 59, 999);
-    let successOrders = await Order
-    .find({ order_status: "completed" })
-    .sort({ ordered_date: -1 })
-    .limit(15);
-  let salesChartDt = await Order.aggregate([
-    {
-      $match: {
-        createdAt: {
-          $gte: startOfMonth,
-          $lt: endOfMonth,
+const dashboard = async (req, res, next) => {
+  try {
+    let userCount = await User.countDocuments();
+    let ordersDelivered = await Order.countDocuments({
+      orderStat: "Delivered",
+    });
+    let total = await Order.aggregate([
+      { $match: { orderStat: "Delivered" } },
+      {
+        $group: {
+          _id: null,
+          totalPrice: { $sum: "$totalPrice" },
         },
       },
-    },
-    {
-      $group: {
-        _id: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
-        count: { $sum: 1 },
-      },
-    },
-    {
-      $sort: { _id: 1 },
-    },
-  ]);
+    ]);
+    if (req.session.adminLoggedIn) {
+      const startOfMonth = new Date();
+      startOfMonth.setDate(1);
+      startOfMonth.setHours(0, 0, 0, 0);
+      const endOfMonth = new Date();
+      endOfMonth.setMonth(endOfMonth.getMonth() + 1);
+      endOfMonth.setDate(0);
+      endOfMonth.setHours(23, 59, 59, 999);
+      let successOrders = await Order.find({ order_status: "completed" })
+        .sort({ ordered_date: -1 })
+        .limit(15);
+      let salesChartDt = await Order.aggregate([
+        {
+          $match: {
+            createdAt: {
+              $gte: startOfMonth,
+              $lt: endOfMonth,
+            },
+          },
+        },
+        {
+          $group: {
+            _id: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
+            count: { $sum: 1 },
+          },
+        },
+        {
+          $sort: { _id: 1 },
+        },
+      ]);
 
-    res.render("adminhome",{
-      admin: true,
-      successOrders,
-      salesChartDt
-    });
-
-  } else {
-    res.redirect("/admin/adminlogin");
+      res.render("adminhome", {
+        admin: true,
+        successOrders,
+        salesChartDt,
+        userCount,
+        ordersDelivered,
+        total,
+      });
+    } else {
+      res.redirect("/admin/adminlogin");
+    }
+  } catch (error) {
+    error.admin = true;
+    next(error);
   }
-}
- catch (error) {
-  error.admin = true
-  next(error)
-}
-}
-
+};
 
 //admin user datas
-const adminUserData = (req, res,next) => {
+const adminUserData = (req, res, next) => {
   try {
     adminHelpers.adminUserData(req, res);
   } catch (error) {
     console.log("no data found");
-    error.admin = true
-  next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
 //user block and unblock
-const UserBlock = (req, res,next) => {
+const UserBlock = (req, res, next) => {
   try {
     adminHelpers.UserBlock(req, res);
   } catch (error) {
-  error.admin = true
-  next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
-const userUnBlock = (req, res,next) => {
+const userUnBlock = (req, res, next) => {
   try {
     console.log("unblocked");
     adminHelpers.UserUnblock(req, res);
   } catch (error) {
-    error.admin = true
-  next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
@@ -129,8 +141,8 @@ const adminCategory = async (req, res) => {
     }
   } catch (error) {
     console.log("404 not found");
-    error.admin = true
-    next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
@@ -143,18 +155,18 @@ const newCategory = (req, res) => {
       err,
     });
   } catch (error) {
-    error.admin = true
-    next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
 //addition of categories
-const addcategory = (req, res,next) => {
+const addcategory = (req, res, next) => {
   try {
     adminHelpers.addcategory(req, res);
   } catch (error) {
-    error.admin = true
-  next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
@@ -168,90 +180,88 @@ const editCategory = async (req, res, id) => {
     console.log(edit);
     const error = req.flash("error");
     res.render("admineditcategory", { id: id, error, edit });
-    
   } catch (error) {
-    error.admin = true
-  next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
 //updation of categories
-const updateCategory = (req, res,next) => {
+const updateCategory = (req, res, next) => {
   try {
     adminHelpers.editCategory(req, res);
   } catch (error) {
-    error.admin = true
-  next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
 //deletion of category
-const deleteCategory = (req, res,next) => {
+const deleteCategory = (req, res, next) => {
   try {
     adminHelpers.deleteCategory(req, res);
   } catch (error) {
-    error.admin = true
-    next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
 //admin products thingy
-const productManagement = async (req, res,next) => {
+const productManagement = async (req, res, next) => {
   try {
     const products = await productData.find().populate("category");
     console.log(products);
-    res.render("adminproductmgt", { products });  
+    res.render("adminproductmgt", { products });
   } catch (error) {
-    error.admin = true
-    next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
 //admin addition of products
-const addproduct = (req, res,next) => {
+const addproduct = (req, res, next) => {
   try {
     adminHelpers.addproduct(req, res);
-    
   } catch (error) {
-    error.admin = true
-  next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
-const addGetProduct = async (req, res,next) => {
+const addGetProduct = async (req, res, next) => {
   try {
     const categories = await category.find();
     console.log("categories: ", categories);
     res.render("productmgtadd", { categories });
   } catch (error) {
-    error.admin = true
-  next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
 //listing and unlisting a product
-const listingProd = (req, res,next) => {
+const listingProd = (req, res, next) => {
   try {
     console.log("listing processing..");
     adminHelpers.prodList(req, res);
   } catch (error) {
-    error.admin = true
-  next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
-const unlistingProd = (req, res,next) => {
+const unlistingProd = (req, res, next) => {
   try {
     console.log("Unlisting processing..");
     adminHelpers.prodUnlist(req, res);
   } catch (error) {
-    error.admin = true
-  next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
 //editing area for products
-const prodEdit = async (req, res,next) => {
+const prodEdit = async (req, res, next) => {
   try {
     console.log(req.query.id);
     let proid = req.query.id;
@@ -260,8 +270,8 @@ const prodEdit = async (req, res,next) => {
     console.log(products);
     res.render("adminproductedit", { products, categories });
   } catch (error) {
-    error.admin = true
-  next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
@@ -270,84 +280,83 @@ const productEdit = (req, res) => {
     console.log("editing working..");
     adminHelpers.editProd(req, res);
   } catch (error) {
-    error.admin = true
-  next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
 //coupon page
-const couponPage = async (req, res,next) => {
+const couponPage = async (req, res, next) => {
   try {
     let couponDetails = await couponData.find();
     console.log(couponDetails, "this is coupon details");
     res.render("admincoupon", { couponDetails });
   } catch (error) {
     console.log("no coupon inout page", error);
-    error.admin = true
-    next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
 //adding coupon page
-const addCouponPage = async (req, res,next) => {
+const addCouponPage = async (req, res, next) => {
   let couponDetails = await couponData.find();
   console.log(couponDetails, "this is coupon details");
   try {
     res.render("addcoupon");
   } catch (error) {
     console.log("error in adding coupon", error);
-  error.admin = true
-  next(error)
+    error.admin = true;
+    next(error);
   }
 };
 //functions for addition of coupons
-const addCoupon = (req, res,next) => {
+const addCoupon = (req, res, next) => {
   try {
     adminHelpers.addcoupon(req, res);
   } catch (error) {
     console.log("error in adding coupon", error);
-    error.admin = true
-  next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
 //coupon editing page
-const couponEditPage = async(req, res,next) => {
+const couponEditPage = async (req, res, next) => {
   console.log(req.query.id, " query got passed");
-  let userData = await couponData.findById(req.query.id)
+  let userData = await couponData.findById(req.query.id);
   try {
-    res.render("couponedit",{userData});
+    res.render("couponedit", { userData });
   } catch (error) {
-    if(error){
+    if (error) {
       console.log("error in loading edit page", error);
-      error.admin = true
-     next(error)
+      error.admin = true;
+      next(error);
     }
   }
 };
 
 //editing of coupons
-const couponEdit =async(req, res,next) => {
+const couponEdit = async (req, res, next) => {
   try {
-    
     // let coupon = await couponData.findById(_id,req.query.id)
     // console.log(coupon," coupppppppooooonnnnn eDDDiit")
     adminHelpers.couponEdit(req, res);
   } catch (error) {
     console.log("editing error occured:", error);
-    error.admin = true
-  next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
 //order management page
-const orderManagmentPage = async (req, res,next) => {
+const orderManagmentPage = async (req, res, next) => {
   try {
     let order = await Order.find().populate("items.productId");
     res.render("adminordermgt", { order: order });
   } catch (error) {
-    error.admin = true
-  next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
@@ -359,13 +368,13 @@ const cancelOrder = async (req, res, next) => {
     });
     res.redirect("/admin/ordermanagementpage");
   } catch (error) {
-    error.admin = true
-  next(error)
+    error.admin = true;
+    next(error);
   }
 };
 
 //changin of status
-const changeOrderStatus = (req, res,next) => {
+const changeOrderStatus = (req, res, next) => {
   try {
     Order.findOneAndUpdate(
       { _id: req.body.orderId },
@@ -383,35 +392,134 @@ const changeOrderStatus = (req, res,next) => {
       }
     );
   } catch (error) {
-    error.admin = true
-    next(error)
+    error.admin = true;
+    next(error);
+  }
+};
+
+const salesreport = async (req, res, next) => {
+  try {
+    console.log(req.body);
+    let response = {};
+    let order = await Order.aggregate(
+      [
+        {
+          $match: {
+            orderStat: "Delivered",
+            $and: [
+              { createdAt: { $gte: new Date(req.body.fromDate) } },
+              // {createdAt:{$lte:new Date(req.body.toDate)}}
+              {
+                createdAt: {
+                  $lte: new Date(
+                    new Date(req.body.toDate).setDate(
+                      new Date(req.body.toDate).getDate() + 1
+                    )
+                  ),
+                },
+              },
+            ],
+          },
+        },
+        {
+          $lookup: {
+            from: "addresses",
+            localField: "address",
+            foreignField: "address._id",
+            as: "result",
+          },
+        },
+      ],
+      (err, doc) => {
+        if (err) {
+          console.log(err, "thiserror");
+        } else {
+          console.log(doc, "thisdosodsdosdo");
+          response.order = doc;
+        }
+      }
+    );
+
+    console.log(order, "ORRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
+
+    const total = await Order.aggregate(
+      [
+        {
+          $match: {
+            orderStat: "Delivered",
+            $and: [
+              { createdAt: { $gte: new Date(req.body.fromDate) } },
+              {
+                createdAt: {
+                  $lte: new Date(
+                    new Date(req.body.toDate).setDate(
+                      new Date(req.body.toDate).getDate() + 1
+                    )
+                  ),
+                },
+              },
+            ],
+          },
+        },
+        {
+          $group: {
+            _id: null,
+            total: { $sum: "$totalPrice" },
+          },
+        },
+      ],
+      (err, doc) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(doc, "dooooooccccc");
+          response.total = doc[0].total;
+        }
+      }
+    );
+    console.log('response  ',response)
+     res.json({ order: order, total: total[0].total })
+
+  } catch (error) {
+    console.log(error);
+    error.admin = true;
+    next(error);
   }
 };
 
 //report
-const report = async(req,res,next)=>{
+const report = async (req, res, next) => {
   try {
-    let user = await User.find()
-    let order = await Order.find({orderStat:"Delivered"}).populate("user")     
+    let order = await Order.aggregate([
+      { $match: { orderStat: "Delivered" } },
+      {
+        $lookup: {
+          from: "addresses",
+          localField: "address",
+          foreignField: "address._id",
+          as: "result",
+        },
+      },
+    ]);
     const total = await Order.aggregate([
-        {
-          $group:
-          {
-           _id:null,
-           total: { $sum: "$totalPrice" }
-       }}
-    ])
-     
-    res.render("report",{order:order,total})
+      {
+        $match: { orderStat: "Delivered" },
+      },
+      {
+        $group: {
+          _id: null,
+          total: { $sum: "$totalPrice" },
+        },
+      },
+    ]);
+
+    res.render("report", { order: order, total });
   } catch (error) {
-    console.log("error in loading report page", error)
-    error.admin = true
-    next(error)
+    console.log("error in loading report page", error);
+    error.admin = true;
+    next(error);
   }
-}
-
-
-
+};
 
 module.exports = {
   adminLogin,
@@ -442,6 +550,5 @@ module.exports = {
   cancelOrder,
   changeOrderStatus,
   report,
- 
-
+  salesreport,
 };

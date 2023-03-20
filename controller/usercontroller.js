@@ -8,7 +8,6 @@ const User = require("../models/usermodels");
 const Order = require("../models/ordermodel")
 const Address = require("../models/address")
 const Coupon = require("../models/couponmodel")
-
 const objId = require('mongoose').Types.ObjectId;
 const { findById, findByIdAndUpdate } = require("../models/usermodels");
 const {
@@ -16,6 +15,7 @@ const {
 } = require("twilio/dist/lib/rest/conversations/v1/conversation");
 const { validateBody } = require("twilio/dist/lib/webhooks/webhooks");
 const { log } = require("console");
+
 
 const userHome = async (req, res) => {
   try {
@@ -47,7 +47,7 @@ const userHome = async (req, res) => {
 const userLogin = (req, res, next) => {
   try {
     if (req.session.userId) {
-      res.redirect("/home");
+      res.redirect("/");
     } else {
       let err = req.session.error;
       req.session.error = false;
@@ -63,7 +63,7 @@ const userLogin = (req, res, next) => {
 const userSignup = (req, res, next) => {
   try {
     if (req.session.loggedIn) {
-      res.redirect("/home");
+      res.redirect("/");
     }
     res.render("usersignup");
   } catch (error) {
@@ -104,7 +104,7 @@ const otpVerification = (req, res,next) => {
   try {
     userHelpers.otp(req.body.otp, res, (user) => {
       req.session.loggedIn = true;
-      res.redirect("/home");
+      res.redirect("/");
     });
   } catch (error) {
     next(error);
@@ -210,7 +210,7 @@ const shop = async (req, res) => {
 const signOut = async (req, res,next) => {
   try {
     req.session.destroy();
-    res.redirect("/home");
+    res.redirect("/");
   } catch (error) {
     console.log(error);
     next(error);

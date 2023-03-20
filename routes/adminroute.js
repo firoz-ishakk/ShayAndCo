@@ -32,6 +32,7 @@ adminRoute.post("/editproduct", adminController.productEdit)
 adminRoute.post("/couponedit",adminController.couponEdit)
 adminRoute.post("/orderStatus",adminController.changeOrderStatus)
 adminRoute.post("/adminlogged",adminController.adminLogged)
+adminRoute.post("/salesreport",adminController.salesreport)
 //others
 adminRoute.delete("/deletecategory",adminController.deleteCategory)
  

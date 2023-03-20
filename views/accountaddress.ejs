@@ -174,46 +174,11 @@
       </form>
       <!-- Navbar 3 Level (Light)-->
       <header class="shadow-sm">
-        <!-- Topbar-->
-        <div class="topbar topbar-dark bg-dark">
-          <div class="container">
-            <div class="topbar-text dropdown d-md-none"><a class="topbar-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Useful links</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="tel:00331697720"><i class="ci-support text-muted me-2"></i>(00) 33 169 7720</a></li>
-                <li><a class="dropdown-item" href="order-tracking.html"><i class="ci-location text-muted me-2"></i>Order tracking</a></li>
-              </ul>
-            </div>
-            <div class="topbar-text text-nowrap d-none d-md-inline-block"><i class="ci-support"></i><span class="text-muted me-1">Support</span><a class="topbar-link" href="tel:00331697720">(00) 33 169 7720</a></div>
-            <div class="tns-carousel tns-controls-static d-none d-md-block">
-              <div class="tns-carousel-inner" data-carousel-options="{&quot;mode&quot;: &quot;gallery&quot;, &quot;nav&quot;: false}">
-                <div class="topbar-text">Free shipping for order over $200</div>
-                <div class="topbar-text">We return money within 30 days</div>
-                <div class="topbar-text">Friendly 24/7 customer support</div>
-              </div>
-            </div>
-            <div class="ms-3 text-nowrap"><a class="topbar-link me-4 d-none d-md-inline-block" href="order-tracking.html"><i class="ci-location"></i>Order tracking</a>
-              <div class="topbar-text dropdown disable-autohide"><a class="topbar-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><img class="me-2" src="img/flags/en.png" width="20" alt="English">Eng / $</a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                  <li class="dropdown-item">
-                    <select class="form-select form-select-sm">
-                      <option value="usd">$ USD</option>
-                      <option value="eur">€ EUR</option>
-                      <option value="ukp">£ UKP</option>
-                      <option value="jpy">¥ JPY</option>
-                    </select>
-                  </li>
-                  <li><a class="dropdown-item pb-1" href="#"><img class="me-2" src="img/flags/fr.png" width="20" alt="Français">Français</a></li>
-                  <li><a class="dropdown-item pb-1" href="#"><img class="me-2" src="img/flags/de.png" width="20" alt="Deutsch">Deutsch</a></li>
-                  <li><a class="dropdown-item" href="#"><img class="me-2" src="img/flags/it.png" width="20" alt="Italiano">Italiano</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+      
         <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
         <div class="navbar-sticky bg-light">
           <div class="navbar navbar-expand-lg navbar-light">
-            <div class="container"><a class="navbar-brand d-none d-sm-block flex-shrink-0" href="index.html"><img src="img/logo-dark.png" width="142" alt="Cartzilla"></a><a class="navbar-brand d-sm-none flex-shrink-0 me-2" href="index.html"><img src="img/logo-icon.png" width="74" alt="Cartzilla"></a>
+            <div class="container"><a class="navbar-brand d-none d-sm-block flex-shrink-0" href="index.html"><img src="img/logo-dark3.png" width="142" alt="Cartzilla"></a><a class="navbar-brand d-sm-none flex-shrink-0 me-2" href="index.html"><img src="img/logo-icon.png" width="74" alt="Cartzilla"></a>
               <div class="input-group d-none d-lg-flex mx-4">
                 <input class="form-control rounded-end pe-5" type="text" placeholder="Search for products"><i class="ci-search position-absolute top-50 end-0 translate-middle-y text-muted fs-base me-3"></i>
               </div>
@@ -308,7 +273,7 @@
                
                 <!-- Primary menu-->
                 <ul class="navbar-nav">
-                  <li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" href="/home" data-bs-toggle="dropdown">Home</a>
+                  <li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" href="/" data-bs-toggle="dropdown">Home</a>
                    
                   </li>
                   <!-- <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Shop</a> -->
@@ -336,13 +301,11 @@
                       <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Shop User Account</a>
                         <ul class="dropdown-menu">
                           
-                          <li><a class="dropdown-item" href="account-profile.html">Profile Settings</a></li>
+                          <li><a class="dropdown-item" href="/profilepage">Profile Settings</a></li>
                           <li><a class="dropdown-item" href="/addresspage">Account Addresses</a></li>
-                          <li><a class="dropdown-item" href="account-payment.html">Payment Methods</a></li>
+                          <li><a class="dropdown-item" href="/usermgtpage">Order Management</a></li>
                         </ul>
                       </li>
-
-                      <li><a class="dropdown-item" href="account-password-recovery.html">Password Recovery</a></li>
                     </ul>
                   </li>
                   <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Pages</a>
@@ -374,7 +337,7 @@
           <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
-                <li class="breadcrumb-item"><a class="text-nowrap" href="index.html"><i class="ci-home"></i>Home</a></li>
+                <li class="breadcrumb-item"><a class="text-nowrap" href="/"><i class="ci-home"></i>Home</a></li>
                 <li class="breadcrumb-item text-nowrap"><a href="#">Account</a>
                 </li>
                 <li class="breadcrumb-item text-nowrap active" aria-current="page">Addresses</li>
@@ -405,8 +368,8 @@
                   <h3 class="fs-sm mb-0 text-muted">Dashboard</h3>
                 </div>
                 <ul class="list-unstyled mb-0">
-                  <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/cart"><i class="ci-bag opacity-60 me-2"></i>Orders<span class="fs-sm text-muted ms-auto">1</span></a></li>
-                  <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/wishlistpage"><i class="ci-heart opacity-60 me-2"></i>Wishlist<span class="fs-sm text-muted ms-auto">3</span></a></li>
+                  <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/"><i class="ci-bag opacity-60 me-2"></i>Home<span class="fs-sm text-muted ms-auto"></span></a></li>
+                  <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="/wishlistpage"><i class="ci-heart opacity-60 me-2"></i>Wishlist<span class="fs-sm text-muted ms-auto"></span></a></li>
                 </ul>
                 <div class="bg-secondary px-4 py-3">
                   <h3 class="fs-sm mb-0 text-muted">Account settings</h3>
@@ -476,19 +439,17 @@
             <div class="widget widget-links widget-light pb-2 mb-4">
               <h3 class="widget-title text-light">Shop departments</h3>
               <ul class="widget-list">
-                <li class="widget-list-item"><a class="widget-list-link" href="#">Sneakers &amp; Athletic</a></li>
-                <li class="widget-list-item"><a class="widget-list-link" href="#">Athletic Apparel</a></li>
-                <li class="widget-list-item"><a class="widget-list-link" href="#">Sandals</a></li>
-                <li class="widget-list-item"><a class="widget-list-link" href="#">Jeans</a></li>
-                <li class="widget-list-item"><a class="widget-list-link" href="#">Shirts &amp; Tops</a></li>
-                <li class="widget-list-item"><a class="widget-list-link" href="#">Shorts</a></li>
-                <li class="widget-list-item"><a class="widget-list-link" href="#">T-Shirts</a></li>
-                <li class="widget-list-item"><a class="widget-list-link" href="#">Swimwear</a></li>
-                <li class="widget-list-item"><a class="widget-list-link" href="#">Clogs &amp; Mules</a></li>
-                <li class="widget-list-item"><a class="widget-list-link" href="#">Bags &amp; Wallets</a></li>
-                <li class="widget-list-item"><a class="widget-list-link" href="#">Accessories</a></li>
-                <li class="widget-list-item"><a class="widget-list-link" href="#">Sunglasses &amp; Eyewear</a></li>
-                <li class="widget-list-item"><a class="widget-list-link" href="#">Watches</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Electronic </a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Phones</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Consoles</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">TV</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Smart Watches &amp; Tops</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Headsets</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Mouse</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Monitor</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">CPU &amp; Mules</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Laptops &amp; Wallets</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Gaming Gears</a></li>
               </ul>
             </div>
           </div>

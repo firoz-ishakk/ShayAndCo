@@ -5,7 +5,7 @@ const userRoute = express()
 const userController = require("../controller/usercontroller")
 
 //get
-userRoute.get("/home",userController.userHome)
+userRoute.get("/",userController.userHome)
 userRoute.get("/otpfail",userController.otpFail)
 userRoute.get("/resendotp",userController.resendOtp)
 userRoute.get("/login",userController.userLogin)

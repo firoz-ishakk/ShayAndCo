@@ -233,33 +233,6 @@
     <main class="page-wrapper">
       <!-- Navbar Marketplace-->
       <header class="bg-light shadow-sm navbar-sticky">
-        <div class="navbar navbar-expand-lg navbar-light">
-          <div class="container">
-            <a
-              class="navbar-brand d-none d-sm-block flex-shrink-0 me-4 order-lg-1"
-              href="index.html"
-              ><img src="/img/logo-dark.png" width="142" alt="Cartzilla" /></a
-            ><a class="navbar-brand d-sm-none me-2 order-lg-1" href="index.html"
-              ><img src="img/logo-icon.png" width="74" alt="Cartzilla"
-            /></a>
-            <div
-              class="collapse navbar-collapse me-auto order-lg-2"
-              id="navbarCollapse"
-            >
-              <!-- Search-->
-              <div class="input-group d-lg-none my-3">
-                <i
-                  class="ci-search position-absolute top-50 start-0 translate-middle-y text-muted fs-base ms-3"
-                ></i>
-                <input
-                  class="form-control rounded-start"
-                  type="text"
-                  placeholder="Search marketplace"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
         <!-- Search collapse-->
         <div class="search-box collapse" id="searchBox">
           <div class="card pt-2 pb-4 border-0 rounded-0">
@@ -279,10 +252,12 @@
         </div>
       </header>
       <!-- Dashboard header-->
-      <div class="page-title-overlap bg-accent pt-4">
-        <div
-          class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center pt-2"
-        >
+      <div class="page-title-overlap bg-accent pt-4" >  <a
+        class="navbar-brand d-none d-sm-block flex-shrink-0 me-4 order-lg-1"
+        href="index.html"
+        ></a
+      >
+        <div class="container d-flex flex-wrap flex-sm-nowrap justify-content-center justify-content-sm-between align-items-center pt-2">
           <div class="d-flex align-items-center pb-3">
             <div class="ps-3"></div>
           </div>
@@ -400,23 +375,31 @@
                   Your sales / earnings
                 </h2>
                 <div class="row mx-n2 pt-2">
-                 
+               
                   <div class="col-md-4 col-sm-6 px-2 mb-4">
                     <div class="bg-secondary h-100 rounded-3 p-4 text-center">
-                      <h3 class="fs-sm text-muted">Your user count</h3>
-                      <p class="h2 mb-2">22</p>
+                      <h3 class="fs-sm text-muted">User count</h3>
+                      <p class="h2 mb-2"><%=userCount%></p>
                       <p class="fs-ms text-muted mb-0">
-                     
                       </p>
                     </div>
                   </div>
+
+                  <div class="col-md-4 col-sm-12 px-2 mb-4">
+                    <div class="bg-secondary h-100 rounded-3 p-4 text-center">
+                      <h3 class="fs-sm text-muted">Orders Delivered</h3>
+                      <p class="h2 mb-2"><%=ordersDelivered%></p>
+                    </div>
+                  </div>
+
+
                   <div class="col-md-4 col-sm-12 px-2 mb-4">
                     <div class="bg-secondary h-100 rounded-3 p-4 text-center">
                       <h3 class="fs-sm text-muted">Lifetime earnings</h3>
-                      <p class="h2 mb-2">₹ 10750011</p>
-                      <p class="fs-ms text-muted mb-0">Based on list price</p>
+                      <p class="h2 mb-2">₹<%=total[0].totalPrice%></p>
                     </div>
                   </div>
+                  
                 </div>
                 <div class="row mx-n2">
                   <div class="col-lg-8 px-2">
@@ -427,8 +410,7 @@
                             
                             <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
                       </div>
-                    </div>
-                    
+                    </div>           
                   </div>
                 </div>                             
                 <% let dates = salesChartDt.map((val)=>{ return val._id.slice(-2)}) %>
@@ -473,9 +455,9 @@ new Chart("myChart", {
               <a class="d-inline-block align-middle mt-n2 me-2" href="#"
                 ><img
                   class="d-block"
-                  src="/img/footer-logo-light.png"
+                  src="/img/logo-dark3.png"
                   width="117"
-                  alt="Cartzilla" /></a
+                  alt="ShayAndCo" /></a
               ><span
                 class="d-inline-block align-middle h5 fw-light text-white mb-0"
                 >Marketplace</span

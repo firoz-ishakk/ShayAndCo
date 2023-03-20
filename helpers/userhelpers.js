@@ -51,7 +51,7 @@ const doLogin = async (req, res) => {
       if (status) {
         req.session.userId = user._id;
         req.session.error = false;
-        res.redirect("/home");
+        res.redirect("/");
       } else {
         req.session.loggedIn = false;
         req.session.error = true;

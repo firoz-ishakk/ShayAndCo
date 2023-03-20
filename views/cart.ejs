@@ -177,14 +177,13 @@
       <div class="container pt-4 pb-3 py-sm-4">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb flex-lg-nowrap justify-content-center justify-content-lg-start">
-            <li class="breadcrumb-item"><a class="text-nowrap" href="/home"><i class="ci-home"></i>Home</a></li>
+            <li class="breadcrumb-item"><a class="text-nowrap" href="/"><i class="ci-home"></i>Home</a></li>
             <li class="breadcrumb-item text-nowrap active" aria-current="page">Cart</li>
           </ol>
         </nav>
         <div class="rounded-3 shadow-lg mt-4 mb-5">
           <ul class="nav nav-tabs nav-justified mb-4">
             <li class="nav-item"><a class="nav-link fs-lg fw-medium py-4 active" href="food-delivery-cart.html">1. Your order</a></li>
-            <li class="nav-item"><a class="nav-link fs-lg fw-medium py-4" href="food-delivery-checkout.html">2. Checkout</a></li>
           </ul>
           <div class="px-3 px-sm-4 px-xl-5 pt-1 pb-4 pb-sm-5">
             <div class="row">
@@ -198,7 +197,7 @@
                 <% }else{ %>
                <% cartItems.forEach((el,index) => { %>
                 <div id="cartItem<%= el._id %>" class="d-sm-flex justify-content-between align-items-center mt-3 mb-4 pb-3 border-bottom">
-                  <div class="d-block d-sm-flex align-items-center text-center text-sm-start"><a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="#"><img src="<%= el.productId.images %>" width="120" alt="Pizza"></a>
+                  <div class="d-block d-sm-flex align-items-center text-center text-sm-start"><a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="#"><img src="<%= el.productId.images[0] %>" width="120" alt=""></a>
                     <div class="pt-2">
                       <h3 class="product-title fs-base mb-2"><a href="#"><%= el.productId.title %></a></h3>
                       <div class="fs-sm"><span class="text-muted me-2">Size:</span>Medium</div>
@@ -226,6 +225,7 @@
                     <h4 class="fw-normal" >$<span id="cartTotal"><%= cartTotal %></span>.<small>00</small></h4>
                   </div>  
                   <a class="btn btn-primary btn-shadow d-block w-100 mt-4 mb-3" href="/checkoutpage?id=<%=loginaccess %>"><i class="ci-card fs-lg me-2"></i>Proceed to Checkout</a>
+                  <a class="btn btn-primary btn-shadow d-block w-100 mt-4 mb-3" href="/shop"><i class="ci-cart fs-lg me-2"></i>Go Back to products </a>
                 </div>
               </div>
             </div>
