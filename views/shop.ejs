@@ -311,9 +311,11 @@
         <div class="row pt-3 mx-n2">
           <!-- Product --> <!-- FOREACH -->
           <% products.forEach((el)=>{ %> 
+            <!-- <p><%= el.images[0] %></p> -->
           <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
             <div class="card product-card">
-              <button onclick="addWishList('<%=el._id%>')" class="btn-wishlist btn-sm" type='submit' data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="/singleproduct?id=<%=el.id %>"><img width="300" height="300" src="<%= el.images[0] %>" data-zoom="<%= el.images %>"  alt="Product"></a>
+              <button onclick="addWishList('<%=el._id%>')" class="btn-wishlist btn-sm" type='submit' data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="/singleproduct?id=<%=el.id %>">
+                <img width="300" height="300" src="<%= el.images[0] %>" data-zoom="<%= el.images[0] %>"  alt=""></a>
               <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#"><%= el.category.title %> </a>
                 <h3 class="product-title fs-sm"><a href=""><%= el.title %> </a></h3>
                 <div class="d-flex justify-content-between">

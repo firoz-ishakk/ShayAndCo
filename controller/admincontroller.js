@@ -261,7 +261,7 @@ const unlistingProd = (req, res, next) => {
 };
 
 //editing area for products
-const prodEdit = async (req, res, next) => {
+const prodEdit = async (req, res) => {
   try {
     console.log(req.query.id);
     let proid = req.query.id;
@@ -271,7 +271,7 @@ const prodEdit = async (req, res, next) => {
     res.render("adminproductedit", { products, categories });
   } catch (error) {
     error.admin = true;
-    next(error);
+    
   }
 };
 
